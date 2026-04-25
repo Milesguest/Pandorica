@@ -1,0 +1,24 @@
+/**
+ * @defgroup pg_main General
+ * @brief General classes and functions.
+ *
+ * @defgroup pg_window Window
+ * @brief Window-related classes and functions.
+ *
+ * @defgroup pg_gpu GPU
+ * @brief GPU-related classes and functions.
+ *
+ * @defgroup pg_audio Audio
+ * @brief Audio-related classes and functions.
+ *
+ * @defgroup pg_text Text
+ * @brief Text-related classes and functions.
+ *
+ * @defgroup pg_plugin Plugins
+ * @brief Classes and functions from plugins.
+ *
+ * @example tutorial_01.cpp
+ * @example tutorial_02.cpp
+ *
+ * @example example.twf
+ */

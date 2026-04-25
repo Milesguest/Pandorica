@@ -1,0 +1,64 @@
+# To use '.twf' (text workspace file) follow this simple syntax:
+#
+# '!o'      Create Object
+# '!tex'    Create texture
+# '!cam'    Create camera
+# '!ws'     Create workspace
+# '!tb'     Create TransferBuffer
+# '!db'     Create buffer (data buffer)
+# '!ad'     Create audio data
+# '!txt'    Create text
+#
+# 'ATTRIBUTE=VALUE'             Set specific attribute to a value.
+# For this syntax possible attributes are:
+#   POSX, POSY, POSZ, WIDTH, HEIGHT, ROTX, ROTY, ROTZ, CUTX, CUTY, CUTW,
+#   CUTH, ORIX, ORIY, ORIZ, R, G, B, A, TEXID, E, TBID, TBOFF, WSID,
+#   SAMID, IBID, IBOFF, MANAGE, TARX, TARY, TARZ, FOVY, AR (Aspect Ratio),
+#   DDD, ADDWSID, RMWSID, PATH, ID, BSIZE (Transfer-/Buffersize), OBJID
+#
+# 'ATTRIBUTE=VALUEX,VALUEY...'  Set multiple values for an attribute
+# For this syntax possible attributes are:
+#   POS (3), SIZE (2), ROT (3), CUTPOS (2), CUTSIZE (2), ORIPOS (3),
+#   COLOR (4), TAR (3)
+#
+# Whitespaces are ignored outside of a string.
+#
+# Note TEXID becomes the fontId for texts.
+#
+# If creating e.g. an object after a texture, the object will use that
+# texture if not specified otherwise.
+# Example:
+
+!o
+POSX=2.0f
+SIZE=0.5,1.5
+
+# In this case the object will have a position X of 2.0, a width of 0.5 and
+# a height of 1.5.
+# This object would belong to no texture.
+
+!tex
+PATH="test/test.png"
+ID=5
+!o
+ID=10
+
+# This would create a texture from "test/test.png" at id 5, create an
+# object at id 10 and assign that object to the texture at id 5.
+#
+# If you want to overwrite existing ressources. You would still create
+# that new ressource and assign it the id of the ressource you want to
+# overwrite:
+# Object already exists at id 8
+
+!o
+ID=8
+POSX=10
+
+# This would set the position x of the object at id 8 to 10.
+#
+# If no id is specified the progamm will automatically choose the lowest
+# id after settings::START_SYSTEM_RESOURCES.
+#
+# Note: Do not use this file type in a program, compile it first to '.bwf'
+# (binary workspace file) using the workspace compiler.

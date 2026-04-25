@@ -1,0 +1,73 @@
+var group__pg__main =
+[
+    [ "pg::Context", "d8/d42/structpg_1_1Context.html", [
+      [ "gpu", "d8/d42/structpg_1_1Context.html#adfc5f9639bdeea725bbd9511f362fb04", null ],
+      [ "window", "d8/d42/structpg_1_1Context.html#ac6e73edb6dfd7581176200dbd64d0ecb", null ],
+      [ "textDevice", "d8/d42/structpg_1_1Context.html#a4d243ef68bf0abafa02c60b02848ee0a", null ],
+      [ "audioDevice", "d8/d42/structpg_1_1Context.html#ad862ce128444245811cce499cbdbff4b", null ],
+      [ "running", "d8/d42/structpg_1_1Context.html#ae9495a4db878af09e4fd406801d1e680", null ],
+      [ "logFile", "d8/d42/structpg_1_1Context.html#aeaef47860e6afa731827953f95d3adef", null ],
+      [ "basePath", "d8/d42/structpg_1_1Context.html#a18c77412d0b5039b5b76c150aff759a6", null ],
+      [ "linkToPlugin", "d8/d42/structpg_1_1Context.html#a56a10026403f45ab7fc12dd05634348b", null ]
+    ] ],
+    [ "pg::EngineResource", "d6/d05/structpg_1_1EngineResource.html", [
+      [ "id", "d6/d05/structpg_1_1EngineResource.html#add684b1be9db75515a8bea611a103d4a", null ]
+    ] ],
+    [ "pg::Vertex", "d1/db6/structpg_1_1Vertex.html", null ],
+    [ "pg::Instance", "d8/da8/structpg_1_1Instance.html", null ],
+    [ "pg::GenericValue32", "d8/d8d/structpg_1_1GenericValue32.html", null ],
+    [ "pg::ManagementType", "d6/d43/group__pg__main.html#ga0677a3740aefd0f1e734095295e70944", [
+      [ "pg::MANAGEMENT_UNDEFINED", "d6/d43/group__pg__main.html#gga0677a3740aefd0f1e734095295e70944a573a24732fc9d931148d0294be04b410", null ],
+      [ "pg::MANAGEMENT_STATIC", "d6/d43/group__pg__main.html#gga0677a3740aefd0f1e734095295e70944a46189d3a94e6d9b87804df90918e1753", null ],
+      [ "pg::MANAGEMENT_DYNAMIC", "d6/d43/group__pg__main.html#gga0677a3740aefd0f1e734095295e70944af45425b97b3b40544d674dc6794cbb1a", null ]
+    ] ],
+    [ "pg::SettingsHint", "d6/d43/group__pg__main.html#ga2f62cb067eb4c1e036e91166b89b886c", [
+      [ "pg::DEFAULT_DYNAMIC_SIZE", "d6/d43/group__pg__main.html#gga2f62cb067eb4c1e036e91166b89b886cab3c0c96da988b3d54fa5fd6876a6a52e", null ],
+      [ "pg::DEFAULT_STATIC_SIZE", "d6/d43/group__pg__main.html#gga2f62cb067eb4c1e036e91166b89b886ca97363ad540967124b60fd2b58e487494", null ],
+      [ "pg::START_SYSTEM_RESOURCES", "d6/d43/group__pg__main.html#gga2f62cb067eb4c1e036e91166b89b886cab4b324b1c4ed735ce2978897133b0686", null ],
+      [ "pg::LOG_LEVEL", "d6/d43/group__pg__main.html#gga2f62cb067eb4c1e036e91166b89b886ca6542aaa5d9a4d341d9f60182035dcc7a", null ],
+      [ "pg::DEFAULT_SAMPLE_COUNT", "d6/d43/group__pg__main.html#gga2f62cb067eb4c1e036e91166b89b886ca04f4d6830aba38971ad123f5a16c537c", null ],
+      [ "pg::VSYNC", "d6/d43/group__pg__main.html#gga2f62cb067eb4c1e036e91166b89b886ca9c72222f60e405224a2819cb4cc408a1", null ],
+      [ "pg::COMPRESSED_TEXTURE_FORMAT", "d6/d43/group__pg__main.html#gga2f62cb067eb4c1e036e91166b89b886ca8e2290f2531605cd269d17f66746c6fb", null ],
+      [ "pg::LOGFILE_NAME", "d6/d43/group__pg__main.html#gga2f62cb067eb4c1e036e91166b89b886cade4287daf1638abf49ec73880ecd6a47", null ],
+      [ "pg::DEFAULT_MANAGEMENT_TYPE", "d6/d43/group__pg__main.html#gga2f62cb067eb4c1e036e91166b89b886ca76088195c5ba2292d24121956ab4c165", null ],
+      [ "pg::CLEAR_COLOR", "d6/d43/group__pg__main.html#gga2f62cb067eb4c1e036e91166b89b886ca167cdafe2cff331f080f190c706a59cc", null ]
+    ] ],
+    [ "pg::Attribute", "d6/d43/group__pg__main.html#ga3aa00c9733ff1f9d9b86f27d95ac36b2", [
+      [ "pg::POSITION_X", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2aa849f5cf8c7b98d36c29dd35f5a87e13", null ],
+      [ "pg::R_POSITION_X", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a5a5e6247ccedfddb7222f2c58bf18a74", null ],
+      [ "pg::POSITION_Y", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a1b107a3eb6a1ed22abc528958fc6d8fc", null ],
+      [ "pg::R_POSITION_Y", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a7f02f971b3bf413cf76e11b467b1dcf2", null ],
+      [ "pg::POSITION_Z", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a1cce33026ac781e8572f0a630529ff04", null ],
+      [ "pg::R_POSITION_Z", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a395f83b718fee48b4858cd9daecd62c2", null ],
+      [ "pg::WIDTH", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2ae639ccc4e1532b300c7ba58307aec573", null ],
+      [ "pg::R_WIDTH", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a56237f4324eaa88e24b6fee912f3434d", null ],
+      [ "pg::HEIGHT", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a32391caec5399c5f5cec0977e167653e", null ],
+      [ "pg::R_HEIGHT", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a3f41f534b2ff00c559bc3d9422139aa1", null ],
+      [ "pg::ROTATION_X", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a2995b3519b603e508210e4c615f3aad5", null ],
+      [ "pg::R_ROTATION_X", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2ac1e92fe9475cbc44c8a0ac8456c228a7", null ],
+      [ "pg::ROTATION_Y", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a25832da6a6cb5388097b1b2a8fb2f1d3", null ],
+      [ "pg::R_ROTATION_Y", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a875b88c9aff87f61bce9610f275d371d", null ],
+      [ "pg::ROTATION_Z", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2ad212761dc4b62810543e8ea745daa818", null ],
+      [ "pg::R_ROTATION_Z", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2af338a4139763f1a70c3cab53522e8c52", null ],
+      [ "pg::CUT_X", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2ab3e7bb94c5fef312859078637bfc7ba9", null ],
+      [ "pg::R_CUT_X", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a3609da679c201f11811d10985c3921c1", null ],
+      [ "pg::CUT_Y", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2ae7b562859ab70111514cf64be37783cd", null ],
+      [ "pg::R_CUT_Y", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2ae280d9cd3d426bb1396f2d25a290b022", null ],
+      [ "pg::CUT_WIDTH", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2adbdf5b33553a871cc859ba9e5f847ce5", null ],
+      [ "pg::R_CUT_WIDTH", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2ae354b2a38bccec41fb11fda3de9f5f88", null ],
+      [ "pg::CUT_HEIGHT", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2af21cdcf69fc626d32bf360e9b652d932", null ],
+      [ "pg::R_CUT_HEIGHT", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2ad90c6987c7af2c7855ff51eeebcdec12", null ],
+      [ "pg::ORIGIN_X", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2ae494232e8d03e35c69c4e9f100ed3ab7", null ],
+      [ "pg::DDD", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a02c7e58fbcaf4129cc0de4d0597f3855", null ]
+    ] ],
+    [ "pg::SetHint", "d6/d43/group__pg__main.html#ga9389ded7d54f124f53dd63369efd7917", null ],
+    [ "pg::GetLowestKey", "d6/d43/group__pg__main.html#gabbf62026ee38bd076e8ec8cfde592bbe", null ],
+    [ "pg::Init", "d6/d43/group__pg__main.html#ga4649ad7bb8e7b76cc8d401ab8d71dee5", null ],
+    [ "pg::Quit", "d6/d43/group__pg__main.html#gab8f502267e7f6fa23204af8e9e7e0dbf", null ],
+    [ "pg::Log", "d6/d43/group__pg__main.html#ga4856dd528222f6ca715ec6c85722cd9d", null ],
+    [ "pg::CreateWindowAndGPU", "d6/d43/group__pg__main.html#ga2f8f67cfa0f0263521d084d03b374e88", null ],
+    [ "pg::CreateStandardContext", "d6/d43/group__pg__main.html#ga6924effc49bdd3edf3869a1a0621507a", null ],
+    [ "pg::StartLoop", "d6/d43/group__pg__main.html#ga36c1cc7b17c165c54bf1b126c4929098", null ],
+    [ "pg::Render", "d6/d43/group__pg__main.html#gadcb8c328e8caf71540add374bd5e4953", null ]
+];
