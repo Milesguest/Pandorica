@@ -9,149 +9,111 @@
 /** @file */
 namespace pg {
 namespace ws {
-static const std::vector<std::pair<std::string, uint8_t>> commands{
-    {"o", 1},
-    {"tex", 2},
-    {"cam", 3},
-    {"ws", 4},
-    {"tb", 5},
-    {"db", 6},
-    {"ad", 7},
-    {"txt", 8},
+
+inline constexpr std::array<std::pair<uint8_t, std::string_view>, 8> commands = {{
+    {1, "o"},
+    {2, "tex"},
+    {3, "cam"},
+    {4, "ws"},
+    {5, "tb"},
+    {6, "db"},
+    {7, "ad"},
+    {8, "txt"},
+}};
+#define WC_ATTRIBUTES                            \
+    X(POSX, "POSX", pg::POSITION_X)              \
+    X(POSY, "POSY", pg::POSITION_Y)              \
+    X(POSZ, "POSZ", pg::POSITION_Z)              \
+    X(WIDTH, "WIDTH", pg::WIDTH)                 \
+    X(HEIGHT, "HEIGHT", pg::HEIGHT)              \
+    X(ROTX, "ROTX", pg::ROTATION_X)              \
+    X(ROTY, "ROTY", pg::ROTATION_Y)              \
+    X(ROTZ, "ROTZ", pg::ROTATION_Z)              \
+    X(CUTX, "CUTX", pg::CUT_X)                   \
+    X(CUTY, "CUTY", pg::CUT_Y)                   \
+    X(CUTW, "CUTW", pg::CUT_WIDTH)               \
+    X(CUTH, "CUTH", pg::CUT_HEIGHT)              \
+    X(ORIX, "ORIX", pg::ORIGIN_X)                \
+    X(ORIY, "ORIY", pg::ORIGIN_Y)                \
+    X(ORIZ, "ORIZ", pg::ORIGIN_Z)                \
+    X(R, "R", pg::RED)                           \
+    X(G, "G", pg::GREEN)                         \
+    X(B, "B", pg::BLUE)                          \
+    X(A, "A", pg::ALPHA)                         \
+    X(TEXID, "TEXID", pg::TEXTURE_ID)            \
+    X(E, "E", pg::ENABLED)                       \
+    X(TBID, "TBID", pg::TRANSFERBUFFER_ID)       \
+    X(TBOFF, "TBOFF", pg::TRANSFERBUFFER_OFFSET) \
+    X(WSID, "WSID", pg::WORKSPACE_ID)            \
+    X(SAMID, "SAMID", pg::SAMPLER_ID)            \
+    X(IBID, "IBID", pg::INSTANCEBUFFER_ID)       \
+    X(IBOFF, "IBOFF", pg::INSTANCEBUFFER_OFFSET) \
+    X(MANAGE, "MANAGE", pg::MANAGEMENT_TYPE)     \
+    X(TARX, "TARX", pg::TARGET_X)                \
+    X(TARY, "TARY", pg::TARGET_Y)                \
+    X(TARZ, "TARZ", pg::TARGET_Z)                \
+    X(FOVY, "FOVY", pg::FOV_Y)                   \
+    X(AR, "AR", pg::ASPECT_RATIO)                \
+    X(DDD, "DDD", pg::DDD)                       \
+    X(ADDWSID, "ADDWSID", pg::ADD_WORKSPACE_ID)  \
+    X(RMWSID, "RMWSID", pg::REMOVE_WORKSPACE_ID) \
+    X(ID, "ID", -1)                              \
+    X(PATH, "PATH", -1)                          \
+    X(BSIZE, "BSIZE", -1)                        \
+    X(OBJID, "OBJID", -1)                        \
+    Y(WIDTH, "SIZE", -1)                         \
+    Y(CUTX, "CUTPOS", -1)                        \
+    Y(CUTW, "CUTSIZE", -1)                       \
+    Y(POSX, "POS", -1)                           \
+    Y(ROTX, "ROT", -1)                           \
+    Y(TARX, "TAR", -1)                           \
+    Y(ORIX, "ORIPOS", -1)                        \
+    Y(R, "COLOR", -1)
+
+#define X(enum, string, pg) enum,
+#define Y(enum, string, pg)
+enum class Attr : uint8_t {
+    WC_ATTRIBUTES
 };
 
-enum names {
-    START_N1,
-    POSX,
-    POSY,
-    POSZ,
-    WIDTH,
-    HEIGHT,
-    ROTX,
-    ROTY,
-    ROTZ,
-    CUTX,
-    CUTY,
-    CUTW,
-    CUTH,
-    ORIX,
-    ORIY,
-    ORIZ,
-    R,
-    G,
-    B,
-    A,
-    TEXID,
-    E,
-    TBID,
-    TBOFF,
-    WSID,
-    SAMID,
-    IBID,
-    IBOFF,
-    MANAGE,
-    TARX,
-    TARY,
-    TARZ,
-    FOVY,
-    AR,
-    DDD,
-    ADDWSID,
-    RMWSID,
-    ID,
-    PATH,
-    BSIZE,
-    OBJID
-};
+#undef X
+#undef Y
 
-static const std::map<std::string, uint8_t> attributeNames{
-    {"POSX", POSX},
-    {"POSY", POSY},
-    {"POSZ", POSZ},
-    {"WIDTH", WIDTH},
-    {"HEIGHT", HEIGHT},
-    {"ROTX", ROTX},
-    {"ROTY", ROTY},
-    {"ROTZ", ROTZ},
-    {"CUTX", CUTX},
-    {"CUTY", CUTY},
-    {"CUTW", CUTW},
-    {"CUTH", CUTH},
-    {"ORIX", ORIX},
-    {"ORIY", ORIY},
-    {"ORIZ", ORIZ},
-    {"R", R},
-    {"G", G},
-    {"B", B},
-    {"A", A},
-    {"TEXID", TEXID},
-    {"E", E},
-    {"TBID", TBID},
-    {"TBOFF", TBOFF},
-    {"WSID", WSID},
-    {"SAMID", SAMID},
-    {"IBID", IBID},
-    {"IBOFF", IBOFF},
-    {"MANAGE", MANAGE},
-    {"TARX", TARX},
-    {"TARY", TARY},
-    {"TARZ", TARZ},
-    {"FOVY", FOVY},
-    {"AR", AR},
-    {"DDD", DDD},
-    {"ADDWSID", ADDWSID},
-    {"RMWSID", RMWSID},
-    {"ID", ID},
-    {"PATH", PATH},
-    {"BSIZE", BSIZE},
-    {"OBJID", OBJID},
-    {"SIZE", WIDTH},
-    {"CUTPOS", CUTX},
-    {"CUTSIZE", CUTW},
-    {"POS", POSX},
-    {"ROT", ROTX},
-    {"TAR", TARX},
-    {"ORIPOS", ORIX},
-    {"COLOR", R}};
+#define X(enum, string, pg) {string, Attr::enum},
+#define Y(enum, string, pg) {string, Attr::enum},
+inline constexpr std::array<std::pair<std::string_view, Attr>, 48> attrStrings = {{WC_ATTRIBUTES}};
+#undef X
+#undef Y
 
-static const std::map<uint8_t, int> attributesPG{
-    {POSX, pg::POSITION_X},
-    {POSY, pg::POSITION_Y},
-    {POSZ, pg::POSITION_Z},
-    {WIDTH, pg::WIDTH},
-    {HEIGHT, pg::HEIGHT},
-    {ROTX, pg::ROTATION_X},
-    {ROTY, pg::ROTATION_Y},
-    {ROTZ, pg::ROTATION_Z},
-    {CUTX, pg::CUT_X},
-    {CUTY, pg::CUT_Y},
-    {CUTW, pg::CUT_WIDTH},
-    {CUTH, pg::CUT_HEIGHT},
-    {ORIX, pg::ORIGIN_X},
-    {ORIY, pg::ORIGIN_Y},
-    {ORIZ, pg::ORIGIN_Z},
-    {R, pg::RED},
-    {G, pg::GREEN},
-    {B, pg::BLUE},
-    {A, pg::ALPHA},
-    {TEXID, pg::TEXTURE_ID},
-    {E, pg::ENABLED},
-    {TBID, pg::TRANSFERBUFFER_ID},
-    {TBOFF, pg::TRANSFERBUFFER_OFFSET},
-    {WSID, pg::WORKSPACE_ID},
-    {SAMID, pg::SAMPLER_ID},
-    {IBID, pg::INSTANCEBUFFER_ID},
-    {IBOFF, pg::INSTANCEBUFFER_OFFSET},
-    {MANAGE, pg::MANAGEMENT_TYPE},
-    {TARX, pg::TARGET_X},
-    {TARY, pg::TARGET_Y},
-    {TARZ, pg::TARGET_Z},
-    {FOVY, pg::FOV_Y},
-    {AR, pg::ASPECT_RATIO},
-    {DDD, pg::DDD},
-    {ADDWSID, pg::ADD_WORKSPACE_ID},
-    {RMWSID, pg::REMOVE_WORKSPACE_ID},
-};
+#define X(enum, string, pg) \
+    case Attr::enum:        \
+        return pg;
+#define Y(enum, string, pg)
+constexpr int GetPG(Attr attr) {
+    switch (attr) {
+        WC_ATTRIBUTES
+    }
+}
+#undef X
+#undef Y
+
+inline std::optional<pg::ws::Attr> GetAttributeByName(std::string_view name) {
+    for (const auto& pair : pg::ws::attrStrings) {
+        if (pair.first == name) {
+            return pair.second;
+        }
+    }
+    return std::nullopt;
+}
+
+inline std::string_view GetAttributeName(pg::ws::Attr attr) {
+    for (const auto& pair : pg::ws::attrStrings) {
+        if (pair.second == attr) {
+            return pair.first;
+        }
+    }
+    return "";
+}
 
 } // namespace ws
 } // namespace pg

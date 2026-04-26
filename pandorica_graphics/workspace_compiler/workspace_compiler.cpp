@@ -10,14 +10,16 @@
 #include <cereal/types/string.hpp>
 #include <cereal/types/variant.hpp>
 
+#include <CLI/CLI.hpp>
+
 #include "enums.hpp"
 
-static int8_t valueType = '0';
+int8_t valueType = '0';
 
 uint8_t CheckCommand(std::string& command) {
-    for (std::pair<std::string, int> cPair : pg::ws::commands) {
-        if (cPair.first.compare(command) == 0) {
-            return cPair.second;
+    for (const std::pair<int, std::string_view>& cPair : pg::ws::commands) {
+        if (cPair.second.compare(command) == 0) {
+            return cPair.first;
         }
     }
     return 0;
@@ -60,7 +62,7 @@ pg::GenericValue32 parseString(std::string_view sv) {
 bool CheckValue(int16_t attribute, std::string& value, pg::GenericValue32& val32) {
     val32 = parseString(value);
 
-    if (val32.type == pg::GenericValue32::Type::Invalid && attribute != pg::ws::PATH) {
+    if (val32.type == pg::GenericValue32::Type::Invalid && attribute != static_cast<uint8_t>(pg::ws::Attr::PATH)) {
         return 0;
     }
 
@@ -68,55 +70,41 @@ bool CheckValue(int16_t attribute, std::string& value, pg::GenericValue32& val32
 }
 
 int main(int argc, char* argv[]) {
-    std::list<std::string> paths(argv, argv + argc);
-    paths.pop_front();
+    CLI::App app{"Pandorica Graphics Workspace Compiler"};
 
-    std::string basePath = "";
+    std::vector<std::string> paths;
+    std::string              basePath;
+    bool                     isFolder;
 
-    bool setOutput = 0;
-    bool isFolder  = 0;
+    app.add_option("-o", basePath, "Set output directory");
+    app.add_flag("-r", isFolder, "Use folders as input");
+    app.add_option("paths", paths, "The paths for the input files");
+
+    CLI11_PARSE(app, argc, argv);
+
+    std::vector<std::string> folders;
+
+    if (isFolder) {
+        basePath.append("/");
+
+        folders = paths;
+        paths.clear();
+
+        for (std::string folder : folders) {
+            if (!std::filesystem::exists(folder) || !std::filesystem::is_directory(folder)) {
+                std::cout << std::format("ERROR: Directory at {} does not exist or is not a folder.\n", folder);
+                continue;
+            }
+
+            for (const auto& file : std::filesystem::directory_iterator(folder)) {
+                if (file.is_regular_file()) {
+                    paths.push_back(file.path().string());
+                }
+            }
+        }
+    }
 
     for (std::string path : paths) {
-        if (path.starts_with("-")) {
-            switch (path[1]) {
-            case 'o':
-                setOutput = 1;
-                continue;
-            case 'r':
-                isFolder = 1;
-                continue;
-            default:
-                std::cout << "ERROR: Unsupported argument.\n";
-                return 1;
-            }
-        }
-
-        if (setOutput) {
-            setOutput = 0;
-            basePath  = path;
-            continue;
-        }
-
-        if (isFolder) {
-            isFolder = 0;
-            if (!std::filesystem::exists(path)) {
-                std::cout << std::format("ERROR: Folder at {} does not exist.\n", path);
-                continue;
-            }
-
-            if (!std::filesystem::is_directory(path)) {
-                std::cout << std::format("ERROR: {} is not a folder", path);
-                continue;
-            }
-
-            for (const auto& file : std::filesystem::directory_iterator(path)) {
-                paths.push_back(file.path());
-                if (!paths.back().ends_with(".twf"))
-                    paths.pop_back();
-            }
-            continue;
-        }
-
         if (!path.ends_with(".twf"))
             path.append(".twf");
         if (!std::filesystem::exists(path)) {
@@ -126,8 +114,17 @@ int main(int argc, char* argv[]) {
 
         std::ifstream in(path);
 
+        if (isFolder || !basePath.empty()) {
+            path = std::filesystem::path(path).filename();
+        }
+
         int           len = path.size() - 4;
-        std::ofstream out(std::format("{}/{:.{}}.bwf", basePath, path, len), std::ios::binary);
+        std::ofstream out(std::format("{}{}.bwf", basePath, std::filesystem::path(path).stem().string()), std::ios::binary);
+
+        if (!out.is_open()) {
+            std::cout << std::format("ERROR: Could not set output directory: {}\n", basePath);
+            continue;
+        }
 
         cereal::BinaryOutputArchive archive(out);
 
@@ -190,12 +187,13 @@ int main(int argc, char* argv[]) {
                 }
 
                 if (letter == '=') {
-                    if (!pg::ws::attributeNames.contains(attributeName)) {
+                    auto attr = pg::ws::GetAttributeByName(attributeName);
+                    if (!attr) {
                         std::cout << std::format("ERROR: Attribute {} does not exist\n", attributeName);
                         break;
                     }
 
-                    attributes.push_back({pg::ws::attributeNames.at(attributeName), ""});
+                    attributes.push_back({static_cast<uint8_t>(*attr), ""});
 
                     afterEqual = 1;
                     continue;
@@ -207,12 +205,14 @@ int main(int argc, char* argv[]) {
                 }
 
                 if (letter == ',') {
-                    if (!pg::ws::attributeNames.contains(attributeName)) {
+                    auto attr = pg::ws::GetAttributeByName(attributeName);
+                    if (!attr) {
                         std::cout << std::format("ERROR: Attribute {} does not exist\n", attributeName);
                         break;
                     }
 
-                    attributes.push_back({pg::ws::attributeNames.at(attributeName) + attributes.size(), ""});
+                    attributes.push_back({static_cast<uint8_t>(*attr) + attributes.size(), ""});
+
                     continue;
                 }
 

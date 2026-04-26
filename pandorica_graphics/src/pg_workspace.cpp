@@ -76,7 +76,7 @@ bool SetWorkspaceAttributes(const id_t workspaceId, std::vector<attributeAndValu
     return error;
 }
 
-inline bool CreateCommand(uint8_t command, std::vector<std::pair<uint16_t, GenericValue32>>& attributes, std::string& path, id_t& texId, id_t& tbId, id_t& wsId) {
+inline bool CreateCommand(uint8_t command, std::vector<std::pair<ws::Attr, GenericValue32>>& attributes, std::string& path, id_t& texId, id_t& tbId, id_t& wsId) {
     std::vector<attributeAndValue> setAttributes{};
 
     bool error = 1;
@@ -87,30 +87,30 @@ inline bool CreateCommand(uint8_t command, std::vector<std::pair<uint16_t, Gener
     id_t    fontId    = 0;
     id_t    specialId = 0;
 
-    for (std::pair<int16_t, GenericValue32> attribute : attributes) {
+    for (std::pair<ws::Attr, GenericValue32> attribute : attributes) {
         switch (attribute.first) {
-        case ws::ID:
+        case ws::Attr::ID:
             id = attribute.second.asUint();
             continue;
-        case ws::BSIZE:
+        case ws::Attr::BSIZE:
             size = attribute.second.asUint();
             continue;
-        case ws::TEXID:
+        case ws::Attr::TEXID:
             if (command == 'x')
                 fontId = attribute.second.asUint();
             if (command == 'o')
                 specialId = attribute.second.asUint();
             continue;
-        case ws::TBID:
+        case ws::Attr::TBID:
             if (command == 't' || command == 'x')
                 specialId = attribute.second.asUint();
             continue;
-        case ws::WSID:
+        case ws::Attr::WSID:
             if (command == 'r' || command == 'a')
                 specialId = attribute.second.asUint();
             continue;
         default:
-            attCode = ws::attributesPG.at(attribute.first);
+            attCode = ws::GetPG(attribute.first);
             setAttributes.push_back({static_cast<Attribute>(attCode), attribute.second});
             continue;
         }
@@ -231,7 +231,7 @@ bool LoadWorkspace(const std::string& path) {
     uint8_t attName = 0;
     uint8_t letter  = 0;
 
-    std::vector<std::pair<uint16_t, GenericValue32>> attributes;
+    std::vector<std::pair<ws::Attr, GenericValue32>> attributes;
 
     std::string valuePath;
 
@@ -265,7 +265,7 @@ bool LoadWorkspace(const std::string& path) {
             archive(valuePath);
         } else {
             archive(value);
-            attributes.push_back({attName, value});
+            attributes.push_back({static_cast<ws::Attr>(attName), value});
         }
     }
     return error;
