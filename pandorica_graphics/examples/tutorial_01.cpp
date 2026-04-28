@@ -72,6 +72,7 @@ int main(int argc, char* argv[]) {
     // Now we can actually render to the screen and see something.
     pg::Render(1);
 
-    return 0;
     // For more information about Pandorica Graphics see the documentation or the next tutorial.
+
+    return 0;
 }

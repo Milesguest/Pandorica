@@ -1,3 +1,7 @@
+/*
+ * Just compile this file and look at the binary.
+ */
+
 #include <filesystem>
 #include <format>
 #include <fstream>

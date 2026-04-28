@@ -125,65 +125,65 @@ bool SetHint(SettingsHint hint, GenericValue32 value);
  * @ingroup pg_main
  */
 enum Attribute {
-    POSITION_X,   ///< The X-coordinate [-FLOAT_MAX; FLOAT_MAX]
-    R_POSITION_X, ///< The relative X-coordinate [-FLOAT_MAX; FLOAT_MAX]
-    POSITION_Y,   ///< The Y-coordinate [-FLOAT_MAX; FLOAT_MAX]
-    R_POSITION_Y, ///< The relative Y-coordinate [-FLOAT_MAX; FLOAT_MAX]
-    POSITION_Z,   ///< The Z-coordinate [-FLOAT_MAX; FLOAT_MAX]
-    R_POSITION_Z, ///< The relative Z-Coordinate [-FLOAT_MAX; FLOAT_MAX]
-    WIDTH,        ///< The width [0; FLOAT_MAX]
-    R_WIDTH,      ///< The relative width [0; FLOAT_MAX]
-    HEIGHT,       ///< The height [0; FLOAT_MAX]
-    R_HEIGHT,     ///< The relative height [0; FLOAT_MAX]
-    ROTATION_X,   ///< The X-axis rotation (in degrees) [-FLOAT_MAX; FLOAT_MAX]
-    R_ROTATION_X, ///< The relative X-axis rotation (in degrees) [-FLOAT_MAX; FLOAT_MAX]
-    ROTATION_Y,   ///< The Y-axis rotation (in degrees) [-FLOAT_MAX; FLOAT_MAX]
-    R_ROTATION_Y, ///< The relative Y-axis rotation (in degrees) [-FLOAT_MAX; FLOAT_MAX]
-    ROTATION_Z,   ///< The Z-axis rotation (in degrees) [-FLOAT_MAX; FLOAT_MAX]
-    R_ROTATION_Z, ///< The relative Z-axis rotation (in degrees) [-FLOAT_MAX; FLOAT_MAX]
-    CUT_X,        ///< The X-coordinate of the cut position [0; 1]
-    R_CUT_X,      ///< The relative X-coordinate of the cut position [0; 1]
-    CUT_Y,        ///< The Y-coordinate of the cut position [0; 1]
-    R_CUT_Y,      ///< The relative Y-coordinate of the cut position [0; 1]
-    CUT_WIDTH,    ///< The width of the cut rectangle [0; 1]
-    R_CUT_WIDTH,  ///< The relative width of the cut rectangle [0; 1]
-    CUT_HEIGHT,   ///< The height of the cut rectangle [0; 1]
-    R_CUT_HEIGHT, ///< The relative height of the cut rectangle [0; 1]
-    ORIGIN_X,     ///< The width of the cut rectangle [0; 1]
-    R_ORIGIN_X,
-    ORIGIN_Y,
-    R_ORIGIN_Y,
-    ORIGIN_Z,
-    R_ORIGIN_Z,
-    RED,
-    R_RED,
-    GREEN,
-    R_GREEN,
-    BLUE,
-    R_BLUE,
-    ALPHA,
-    R_ALPHA,
-    TEXTURE_ID,
-    ENABLED,
-    TRANSFERBUFFER_ID,
-    TRANSFERBUFFER_OFFSET,
-    WORKSPACE_ID,
-    SAMPLER_ID,
-    INSTANCEBUFFER_ID,
-    INSTANCEBUFFER_OFFSET,
-    MANAGEMENT_TYPE,
-    TARGET_X,
-    R_TARGET_X,
-    TARGET_Y,
-    R_TARGET_Y,
-    TARGET_Z,
-    R_TARGET_Z,
-    FOV_Y,
-    ASPECT_RATIO,
-    DDD, ///< 3D
-    ADD_WORKSPACE_ID,
-    REMOVE_WORKSPACE_ID,
-    OBJECT_ID
+    POSITION_X,            ///< The X-coordinate [-FLOAT_MAX; FLOAT_MAX]
+    R_POSITION_X,          ///< The relative X-coordinate [-FLOAT_MAX; FLOAT_MAX]
+    POSITION_Y,            ///< The Y-coordinate [-FLOAT_MAX; FLOAT_MAX]
+    R_POSITION_Y,          ///< The relative Y-coordinate [-FLOAT_MAX; FLOAT_MAX]
+    POSITION_Z,            ///< The Z-coordinate [-FLOAT_MAX; FLOAT_MAX]
+    R_POSITION_Z,          ///< The relative Z-Coordinate [-FLOAT_MAX; FLOAT_MAX]
+    WIDTH,                 ///< The width [0; FLOAT_MAX]
+    R_WIDTH,               ///< The relative width [0; FLOAT_MAX]
+    HEIGHT,                ///< The height [0; FLOAT_MAX]
+    R_HEIGHT,              ///< The relative height [0; FLOAT_MAX]
+    ROTATION_X,            ///< The X-axis rotation (in degrees) [-FLOAT_MAX; FLOAT_MAX]
+    R_ROTATION_X,          ///< The relative X-axis rotation (in degrees) [-FLOAT_MAX; FLOAT_MAX]
+    ROTATION_Y,            ///< The Y-axis rotation (in degrees) [-FLOAT_MAX; FLOAT_MAX]
+    R_ROTATION_Y,          ///< The relative Y-axis rotation (in degrees) [-FLOAT_MAX; FLOAT_MAX]
+    ROTATION_Z,            ///< The Z-axis rotation (in degrees) [-FLOAT_MAX; FLOAT_MAX]
+    R_ROTATION_Z,          ///< The relative Z-axis rotation (in degrees) [-FLOAT_MAX; FLOAT_MAX]
+    CUT_X,                 ///< The X-coordinate of the cut position [0; 1]
+    R_CUT_X,               ///< The relative X-coordinate of the cut position [0; 1]
+    CUT_Y,                 ///< The Y-coordinate of the cut position [0; 1]
+    R_CUT_Y,               ///< The relative Y-coordinate of the cut position [0; 1]
+    CUT_WIDTH,             ///< The width of the cut rectangle [0; 1]
+    R_CUT_WIDTH,           ///< The relative width of the cut rectangle [0; 1]
+    CUT_HEIGHT,            ///< The height of the cut rectangle [0; 1]
+    R_CUT_HEIGHT,          ///< The relative height of the cut rectangle [0; 1]
+    ORIGIN_X,              ///< The X-coordinate of the origin [0; 1] or outside the instance [-FLOAT_MAX; FLOAT_MAX]
+    R_ORIGIN_X,            ///< The relative X-coordinate of the origin [0; 1] or outside the instance [-FLOAT_MAX; FLOAT_MAX]
+    ORIGIN_Y,              ///< The Y-coordinate of the origin [0; 1] or outside the instance [-FLOAT_MAX; FLOAT_MAX]
+    R_ORIGIN_Y,            ///< The relative Y-coordinate of the origin [0; 1] or outside the instance [-FLOAT_MAX; FLOAT_MAX]
+    ORIGIN_Z,              ///< The Z-coordinate of the origin [0; 1] or outside the instance [-FLOAT_MAX; FLOAT_MAX]
+    R_ORIGIN_Z,            ///< The relative Z-coordinate of the origin [0; 1] or outside the instance [-FLOAT_MAX; FLOAT_MAX]
+    RED,                   ///< How much red will be blocked (8bit) [0; 255]
+    R_RED,                 ///< How much red will be relatively blocked (8bit) [0; 255]
+    GREEN,                 ///< How much green will be blocked (8bit) [0; 255]
+    R_GREEN,               ///< How much green will be relativeley blocked (8bit) [0; 255]
+    BLUE,                  ///< How much blue will be blocked (8bit) [0; 255]
+    R_BLUE,                ///< How much blue will be relatively blocked (8bit) [0; 255]
+    ALPHA,                 ///< How much alpha will be blocked (8bit) [0; 255]
+    R_ALPHA,               ///< How much alpha will be relatively blocked (8bit) [0; 255]
+    TEXTURE_ID,            ///< The id of the texture to use [0; 2^32]
+    ENABLED,               ///< Whether or not something should be drawn {true, false}
+    TRANSFERBUFFER_ID,     ///< The id of the transferbuffer to use [0; 2^32]
+    TRANSFERBUFFER_OFFSET, ///< The offset inside the transferbuffer to use (ignored) [0; 2^32]
+    WORKSPACE_ID,          ///< The id of the workspace to be part of [0; 2^32]
+    SAMPLER_ID,            ///< The id of the sampler to use (ignored) [0; 2^32]
+    INSTANCEBUFFER_ID,     ///< The id of the buffer to use [0; 2^32]
+    INSTANCEBUFFER_OFFSET, ///< The offset inside the buffer to use [0; 2^32]
+    MANAGEMENT_TYPE,       ///< The type of management to use (see @ref ManagementType)
+    TARGET_X,              ///< The X-coordinate of the point to look at [-FLOAT_MAX; FLOAT_MAX]
+    R_TARGET_X,            ///< The relative X-coordinate of the point to look at [-FLOAT_MAX; FLOAT_MAX]
+    TARGET_Y,              ///< The Y-coordinate of the point to look at [-FLOAT_MAX; FLOAT_MAX]
+    R_TARGET_Y,            ///< The relative Y-coordinate of the point to look at [-FLOAT_MAX; FLOAT_MAX]
+    TARGET_Z,              ///< The Z-coordinate of the point to look at [-FLOAT_MAX; FLOAT_MAX]
+    R_TARGET_Z,            ///< The relative Z-coordinate of the point to look at [-FLOAT_MAX; FLOAT_MAX]
+    FOV_Y,                 ///< The field of view on the Y-axis (in degrees) [0; 360]
+    ASPECT_RATIO,          ///< The aspect ratio of the camera ]0; FLOAT_MAX]
+    DDD,                   ///< 3D
+    ADD_WORKSPACE_ID,      ///< Add a workspace to a camera [0; 2^32]
+    REMOVE_WORKSPACE_ID,   ///< Remove a workspace from a camera [0; 2^32]
+    OBJECT_ID              ///< The id of the object to use [0; 2^32]
 };
 
 typedef Eigen::Vector2f           vec2f;

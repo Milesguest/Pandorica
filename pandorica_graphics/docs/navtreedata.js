@@ -33,7 +33,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"d0/dbc/structpg_1_1Buffer.html"
+"d0/dbc/structpg_1_1Buffer.html",
+"df/d52/group__pg__audio.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
