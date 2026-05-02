@@ -209,6 +209,9 @@ var NAVTREEINDEX0 =
 "d8/d42/structpg_1_1Context.html#ae9495a4db878af09e4fd406801d1e680":[0,0,0,4],
 "d8/d42/structpg_1_1Context.html#aeaef47860e6afa731827953f95d3adef":[0,0,0,5],
 "d8/d68/group__pg__plugin.html":[0,5],
+"d8/d68/group__pg__plugin.html#ga9d1f9c7dcdcf211fbb8b579647199b10":[0,5,1],
+"d8/d68/group__pg__plugin.html#gad67f8ea07d82549a4011523392fbb6e5":[0,5,0],
+"d8/d68/group__pg__plugin.html#gaed07470c7c4002a001ac1062c420e727":[0,5,2],
 "d8/d6d/tutorial_01_8cpp-example.html":[2,0],
 "d8/d85/example_8twf-example.html":[2,3],
 "d8/d8d/structpg_1_1GenericValue32.html":[0,0,4],
@@ -246,8 +249,5 @@ var NAVTREEINDEX0 =
 "dc/d33/group__pg__text.html#ga57f0f87c07c2bb6afa135ce57578c85e":[0,4,10],
 "dc/d33/group__pg__text.html#ga62380864122c99a3ac851687a6ff8082":[0,4,5],
 "dc/d33/group__pg__text.html#ga6ffce061aed4e23778e6a8551ff6985a":[0,4,11],
-"dc/d33/group__pg__text.html#gad6c2246f61a8fbb01c084d02053d5424":[0,4,3],
-"dd/db9/tutorial_03_8cpp-example.html":[2,2],
-"de/d16/structpg_1_1Shader.html":[0,2,4],
-"de/d16/structpg_1_1Shader.html#a0ce66c153aa90c0a4da85f40dedd167a":[0,2,4,0]
+"dc/d33/group__pg__text.html#gad6c2246f61a8fbb01c084d02053d5424":[0,4,3]
 };

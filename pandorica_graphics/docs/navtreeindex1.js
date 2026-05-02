@@ -1,5 +1,8 @@
 var NAVTREEINDEX1 =
 {
+"dd/db9/tutorial_03_8cpp-example.html":[2,2],
+"de/d16/structpg_1_1Shader.html":[0,2,4],
+"de/d16/structpg_1_1Shader.html#a0ce66c153aa90c0a4da85f40dedd167a":[0,2,4,0],
 "df/d52/group__pg__audio.html":[0,3],
 "df/d52/group__pg__audio.html#ga5568126b5203eb3bf2468c4031677700":[0,3,9],
 "df/d52/group__pg__audio.html#ga61c67e6f00c460165a475e1e1281267b":[0,3,5],

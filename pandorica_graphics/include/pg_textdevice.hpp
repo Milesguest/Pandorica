@@ -26,7 +26,7 @@ struct TextDevice {
     TextDevice();
     ~TextDevice();
 };
-extern TextDevice* textDevice; /**< Pointer to created @ref TextDevice */
+extern TextDevice* textDevice; /**< Pointer to created TextDevice */
 
 /**
  * @brief Creates a TextDevice

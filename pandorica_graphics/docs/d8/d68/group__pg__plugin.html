@@ -67,9 +67,119 @@ $(function() {
 <div class="contents">
 
 <p>Classes and functions from plugins.  
-</p>
+<a href="#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gad67f8ea07d82549a4011523392fbb6e5" id="r_gad67f8ea07d82549a4011523392fbb6e5"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#gad67f8ea07d82549a4011523392fbb6e5">pg::credits::PlayCredits</a> ()</td></tr>
+<tr class="memdesc:gad67f8ea07d82549a4011523392fbb6e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Play the Pandorica Graphics credits.  <br /></td></tr>
+<tr class="memitem:ga9d1f9c7dcdcf211fbb8b579647199b10" id="r_ga9d1f9c7dcdcf211fbb8b579647199b10"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:ga9d1f9c7dcdcf211fbb8b579647199b10 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ga9d1f9c7dcdcf211fbb8b579647199b10">pg::save::SaveState</a> (T *data, std::string path)</td></tr>
+<tr class="memdesc:ga9d1f9c7dcdcf211fbb8b579647199b10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the given object to a file.  <br /></td></tr>
+<tr class="memitem:gaed07470c7c4002a001ac1062c420e727" id="r_gaed07470c7c4002a001ac1062c420e727"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:gaed07470c7c4002a001ac1062c420e727 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#gaed07470c7c4002a001ac1062c420e727">pg::save::LoadState</a> (T *data, std::string path)</td></tr>
+<tr class="memdesc:gaed07470c7c4002a001ac1062c420e727"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the given file to an object.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classes and functions from plugins. </p>
-</div></div><!-- contents -->
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="gad67f8ea07d82549a4011523392fbb6e5" name="gad67f8ea07d82549a4011523392fbb6e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad67f8ea07d82549a4011523392fbb6e5">&#9670;&#160;</a></span>PlayCredits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pg::credits::PlayCredits </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Play the Pandorica Graphics credits. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if it succeeded, false if it failed. See the logs for more information. </dd></dl>
+
+</div>
+</div>
+<a id="ga9d1f9c7dcdcf211fbb8b579647199b10" name="ga9d1f9c7dcdcf211fbb8b579647199b10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9d1f9c7dcdcf211fbb8b579647199b10">&#9670;&#160;</a></span>SaveState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pg::save::SaveState </td>
+          <td>(</td>
+          <td class="paramtype">T *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Saves the given object to a file. </p>
+<p>Using this function you can save any struct to a file using cereal. The struct only needs a 'serialize' or 'load' and 'save' function. See cereal for more.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>A pointer to the object to save. </td></tr>
+    <tr><td class="paramname">path</td><td>The path to save the file to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if it succeeded, false if it failed. See the logs for more information. </dd></dl>
+
+</div>
+</div>
+<a id="gaed07470c7c4002a001ac1062c420e727" name="gaed07470c7c4002a001ac1062c420e727"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaed07470c7c4002a001ac1062c420e727">&#9670;&#160;</a></span>LoadState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pg::save::LoadState </td>
+          <td>(</td>
+          <td class="paramtype">T *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Loads the given file to an object. </p>
+<p>Using this function you can load any struct from a file using cereal. The struct only needs a 'serialize' or 'load' and 'save' function. See cereal for more.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>A pointer to the object to load to. </td></tr>
+    <tr><td class="paramname">path</td><td>The path to load the file from. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if it succeeded, false if it failed. See the logs for more information. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

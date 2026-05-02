@@ -5,5 +5,5 @@ var topics =
     [ "GPU", "d3/df2/group__pg__gpu.html", "d3/df2/group__pg__gpu" ],
     [ "Audio", "df/d52/group__pg__audio.html", "df/d52/group__pg__audio" ],
     [ "Text", "dc/d33/group__pg__text.html", "dc/d33/group__pg__text" ],
-    [ "Plugins", "d8/d68/group__pg__plugin.html", null ]
+    [ "Plugins", "d8/d68/group__pg__plugin.html", "d8/d68/group__pg__plugin" ]
 ];

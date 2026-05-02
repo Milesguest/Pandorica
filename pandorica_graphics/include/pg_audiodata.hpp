@@ -19,7 +19,7 @@ struct AudioData : EngineResource {
 
     std::string path; /**< The path from which the audioData was created. */
 
-    id_t workspaceId = 0; /**< he id of the workspace it is assigned to. */
+    id_t workspaceId = 0; /**< The id of the workspace it is assigned to. */
     /**
      * @brief A list of audio tracks created with this data.
      * @note Audio tracks will not stop playing if their audio
