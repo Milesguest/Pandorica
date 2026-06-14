@@ -3,7 +3,7 @@ name: CMake Build and Install
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   build:
@@ -23,22 +23,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup vcpkg
-        uses: lukka/run-vcpkg@v11
-        with:
-          vcpkgJsonGlob: 'pandorica_graphics/vcpkg.json'
-
       - name: Install Linux Dependencies
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libwayland-dev libxkbcommon-dev libegl1-mesa-dev libx11-dev libxcursor-dev libxinerama-dev libxi-dev libxrandr-dev libxss-dev libxtst-dev
+          sudo apt-get install -y autoconf autoconf-archive automake libtool build-essential ninja-build libwayland-dev libxkbcommon-dev libegl1-mesa-dev libx11-dev libxcursor-dev libxinerama-dev libxi-dev libxrandr-dev libxss-dev libxtst-dev
+
+      - name: Install macOS Dependencies
+        if: runner.os == 'macOS'
+        run: brew install autoconf autoconf-archive automake libtool ninja
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgJsonGlob: "pandorica_graphics/vcpkg.json"
 
       - name: Configure CMake
         run: >
-          cmake -S pandorica_graphics -B pandorica_graphics/build
-          -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace
-          }}/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=Release
+          cmake -S pandorica_graphics -B pandorica_graphics/build -G Ninja
+          -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
+          -DCMAKE_BUILD_TYPE=Release
 
       - name: Build Library
         run: cmake --build pandorica_graphics/build --config Release

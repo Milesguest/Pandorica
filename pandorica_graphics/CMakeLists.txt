@@ -12,6 +12,7 @@ find_package(SDL3_mixer REQUIRED)
 find_package(Eigen3 CONFIG REQUIRED)
 find_package(cereal CONFIG REQUIRED)
 find_package(CLI11 CONFIG REQUIRED)
+find_package(Boost REQUIRED)
 
 file(GLOB_RECURSE ENGINE_SOURCES
   CONFIGURE_DEPENDS
@@ -28,6 +29,7 @@ target_link_libraries(PGEngine PUBLIC
     Eigen3::Eigen
     cereal::cereal
     CLI11::CLI11
+    Boost::headers
 )
 
 target_include_directories(PGEngine PUBLIC
