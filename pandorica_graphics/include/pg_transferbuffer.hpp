@@ -28,8 +28,8 @@ struct TransferBuffer : EngineResource {
 
     bool enabled = 1; /**< Whether or not the instances assigned to the transferbuffer should be rendered. */
 
-    std::list<Texture*> textures; /**< List of all textures assigned to this transferbuffer. */
-    std::list<Text*>    texts;    /**< List of all texts assigned to this transferbuffer. */
+    pg::vector<Texture*> textures; /**< List of all textures assigned to this transferbuffer. */
+    pg::vector<Text*>    texts;    /**< List of all texts assigned to this transferbuffer. */
 
     size_t cOffset     = 0; /**< @internal offset of the texture data. */
     id_t   workspaceId = 0; /**< The id of the workspace the transferbuffer is assigned to. */

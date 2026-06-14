@@ -34,9 +34,9 @@ struct Window {
     Uint32 width;  /**< The width of the window. */
     Uint32 height; /**< The height of the window. */
 
-    long double deltaTime  = 0; /**< The time between the last two frames. */
-    uint64_t    frameCount = 0; /**< The number of frames since the start of the loop. */
-    uint64_t    timeMS     = 0; /**< The time in ms since the start of the loop. */
+    double   deltaTime  = 0; /**< The time between the last two frames. */
+    uint64_t frameCount = 0; /**< The number of frames since the start of the loop. */
+    uint64_t timeMS     = 0; /**< The time in ms since the start of the loop. */
 };
 extern Window* window; /**< Pointer to the created window. */
 

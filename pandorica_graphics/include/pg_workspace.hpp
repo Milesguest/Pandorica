@@ -20,8 +20,8 @@ namespace pg {
  * @ingroup pg_window
  */
 struct Workspace : EngineResource {
-    std::list<TransferBuffer*> transferBuffers{}; /**< List of all assigned transferBuffers. */
-    std::list<AudioData*>      audioDatas{};      /**< List of all assigned audio data */
+    pg::vector<TransferBuffer*> transferBuffers{}; /**< List of all assigned transferBuffers. */
+    pg::vector<AudioData*>      audioDatas{};      /**< List of all assigned audio data */
 
     bool enabled = 1; /**< Whether or not the workspace should be drawn. */
 
@@ -57,7 +57,7 @@ bool DeleteWorkspace(const id_t workspaceId);
 /**
  * @brief Load a workspace(s) from a binary workspace file (.bwf)
  *
- * Loads the workspace(s) from the file into the programm.
+ * Loads the workspace(s) from the file into the program.
  * See @ref example.twf for more information.
  *
  * @param path The path at which to find the .bwf

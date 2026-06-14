@@ -93,7 +93,7 @@ Functions</h2></td></tr>
 <tr class="memitem:ga836eb945e7dcd2218cc274a46ae450a3" id="r_ga836eb945e7dcd2218cc274a46ae450a3"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ga836eb945e7dcd2218cc274a46ae450a3">pg::CreateAudioTrack</a> (const id_t audioTrackId, const id_t audioDataId)</td></tr>
 <tr class="memdesc:ga836eb945e7dcd2218cc274a46ae450a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and plays an audio track.  <br /></td></tr>
 <tr class="memitem:ga5568126b5203eb3bf2468c4031677700" id="r_ga5568126b5203eb3bf2468c4031677700"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ga5568126b5203eb3bf2468c4031677700">pg::DeleteAudioTrack</a> (const id_t audioTrackId)</td></tr>
-<tr class="memdesc:ga5568126b5203eb3bf2468c4031677700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes and stops and audio track.  <br /></td></tr>
+<tr class="memdesc:ga5568126b5203eb3bf2468c4031677700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes and stops an audio track.  <br /></td></tr>
 <tr class="memitem:gaa6800551ffbb1953cfe297d10371ba8c" id="r_gaa6800551ffbb1953cfe297d10371ba8c"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#gaa6800551ffbb1953cfe297d10371ba8c">pg::ContinueAudioTrack</a> (const id_t audioTrackId)</td></tr>
 <tr class="memdesc:gaa6800551ffbb1953cfe297d10371ba8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Continue an audio track.  <br /></td></tr>
 <tr class="memitem:ga7a2c2f854ce036f6fb1f821af56c2b59" id="r_ga7a2c2f854ce036f6fb1f821af56c2b59"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ga7a2c2f854ce036f6fb1f821af56c2b59">pg::PauseAudioTrack</a> (const id_t audioTrackId)</td></tr>
@@ -290,7 +290,7 @@ WORKSPACE_ID</p>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if it succeeded, false if it failed. See the logs for more information.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../da/d2f/structpg_1_1AudioTrack.html" title="An audio track playing audio.">AudioTrack</a>, <a class="el" href="#ga5568126b5203eb3bf2468c4031677700" title="Deletes and stops and audio track.">DeleteAudioTrack()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../da/d2f/structpg_1_1AudioTrack.html" title="An audio track playing audio.">AudioTrack</a>, <a class="el" href="#ga5568126b5203eb3bf2468c4031677700" title="Deletes and stops an audio track.">DeleteAudioTrack()</a> </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../dd/db9/tutorial_03_8cpp-example.html#a2">tutorial_03.cpp</a>.</dd>
 </dl>
 
@@ -311,7 +311,7 @@ WORKSPACE_ID</p>
       </table>
 </div><div class="memdoc">
 
-<p>Deletes and stops and audio track. </p>
+<p>Deletes and stops an audio track. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">audioTrackId</td><td>The id of the audio track to delete. </td></tr>
@@ -397,7 +397,7 @@ WORKSPACE_ID</p>
 <p>Get an audio track. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">audioTrackId</td><td>The if of the audio track to return. </td></tr>
+    <tr><td class="paramname">audioTrackId</td><td>The id of the audio track to return. </td></tr>
   </table>
   </dd>
 </dl>

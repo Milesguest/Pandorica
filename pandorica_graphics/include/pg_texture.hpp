@@ -24,7 +24,7 @@ struct Object;
 struct Texture : EngineResource {
     SDL_GPUTexture* texture = nullptr; /**< Pointer to the texture on the GPU. */
 
-    std::list<Object*> objects{}; /**< Vector of all objects using this texture. */
+    pg::vector<Object*> objects{}; /**< Vector of all objects using this texture. */
 
     id_t samplerId        = settings::START_SYSTEM_RESOURCES; /**< The sampler the texture should use (in the standard context, this is not used). */
     id_t transferBufferId = 0;                                /**< The id of the transferbuffer the texture is part of. */

@@ -9,13 +9,13 @@ var group__pg__window =
       [ "near", "df/d83/structpg_1_1Camera.html#a93d5e61662ca2427764fc4fe08f83390", null ],
       [ "far", "df/d83/structpg_1_1Camera.html#ad62fae8c2be38659db92cec500e5e768", null ],
       [ "ddd", "df/d83/structpg_1_1Camera.html#adeff804787f1891013acfb33952fb3da", null ],
-      [ "enabledWorkspaces", "df/d83/structpg_1_1Camera.html#a187084b3aa8733191f1edc579159e167", null ],
+      [ "enabledWorkspaces", "df/d83/structpg_1_1Camera.html#a241ab5f8ed6fa73c62ce55cb6a1f3640", null ],
       [ "enabled", "df/d83/structpg_1_1Camera.html#a84358966b0d1aeddcd673d316b7b4f92", null ]
     ] ],
     [ "pg::Object", "da/dd2/structpg_1_1Object.html", [
       [ "instance", "da/dd2/structpg_1_1Object.html#ae4be2f854208781397b96b55fabb5f33", null ],
       [ "rotation", "da/dd2/structpg_1_1Object.html#a053164a1970be251cf508da54255e1ba", null ],
-      [ "color", "da/dd2/structpg_1_1Object.html#ae9985e16352c10a86d2490d6c99e43d1", null ],
+      [ "color", "da/dd2/structpg_1_1Object.html#a2af61cd888a215da80a48ac92f0028f5", null ],
       [ "colorChanged", "da/dd2/structpg_1_1Object.html#af2144d916f0573a8f1cf716e942e995b", null ],
       [ "enabled", "da/dd2/structpg_1_1Object.html#a2f2a26994b68aaa6d06cb8e568f0fe4a", null ],
       [ "texture", "da/dd2/structpg_1_1Object.html#ab59000c4f0eccec8760e133643d2d5c6", null ],
@@ -29,13 +29,13 @@ var group__pg__window =
       [ "events", "d6/dad/structpg_1_1Window.html#a24e0e94a739845ee45c4fc96ce0a7719", null ],
       [ "width", "d6/dad/structpg_1_1Window.html#a237a468abf2d37914bf9fed3d8f6f2b4", null ],
       [ "height", "d6/dad/structpg_1_1Window.html#a7bb1f7138ea042f1ba39750e30262a24", null ],
-      [ "deltaTime", "d6/dad/structpg_1_1Window.html#ab044509391c10924a6e6982f17d5b749", null ],
+      [ "deltaTime", "d6/dad/structpg_1_1Window.html#a3f968721968117fcd5fe3abd29d12ef5", null ],
       [ "frameCount", "d6/dad/structpg_1_1Window.html#a83f50718f5b92bb8f5696422e9cc0203", null ],
       [ "timeMS", "d6/dad/structpg_1_1Window.html#a9453e7f76795cf5008558d7279491512", null ]
     ] ],
     [ "pg::Workspace", "d8/d3a/structpg_1_1Workspace.html", [
-      [ "transferBuffers", "d8/d3a/structpg_1_1Workspace.html#aa070aad239e6a65104df7c940b5cf75a", null ],
-      [ "audioDatas", "d8/d3a/structpg_1_1Workspace.html#af786e022e75af1bba6a435154b3f9028", null ],
+      [ "transferBuffers", "d8/d3a/structpg_1_1Workspace.html#a31c3fd6b0e1e0990bbcfec7c41baf946", null ],
+      [ "audioDatas", "d8/d3a/structpg_1_1Workspace.html#a317d2835463c92a68f64438b703b0e75", null ],
       [ "enabled", "d8/d3a/structpg_1_1Workspace.html#a6232b20324c6cec4ee99fc6791250c60", null ]
     ] ],
     [ "pg::CreateCamera", "d5/d30/group__pg__window.html#ga55add78a1bf7aef72a4a896819b05c93", null ],

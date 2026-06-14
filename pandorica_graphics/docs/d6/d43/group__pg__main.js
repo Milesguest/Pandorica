@@ -13,6 +13,7 @@ var group__pg__main =
     [ "pg::EngineResource", "d6/d05/structpg_1_1EngineResource.html", [
       [ "id", "d6/d05/structpg_1_1EngineResource.html#add684b1be9db75515a8bea611a103d4a", null ]
     ] ],
+    [ "pg::vector&lt; T &gt;", "dd/dbe/structpg_1_1vector.html", null ],
     [ "pg::Vertex", "d1/db6/structpg_1_1Vertex.html", null ],
     [ "pg::Instance", "d8/da8/structpg_1_1Instance.html", null ],
     [ "pg::GenericValue32", "d8/d8d/structpg_1_1GenericValue32.html", null ],

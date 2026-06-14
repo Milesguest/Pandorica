@@ -20,10 +20,10 @@ struct Texture;
 struct Object : EngineResource {
     std::shared_ptr<Instance> instance; /**< Pointer to the Instance that will be uploaded to the GPU. Can be shared with @ref Text. */
 
-    vec3f rotation     = {0.0f, 0.0f, 0.0f};       /**< The rotation of the object. */
-    bool  rotated      = 1;                        /**< @internal Whether or not the object was rotated. */
-    vec4i color        = {0xFF, 0xFF, 0xFF, 0xFF}; /**< The color of the object (R8G8B8A8) */
-    bool  colorChanged = 1;                        /**< Whether or not the object color changed. */
+    vec3f   rotation     = {0.0f, 0.0f, 0.0f};       /**< The rotation of the object. */
+    bool    rotated      = 1;                        /**< @internal Whether or not the object was rotated. */
+    vec4ui8 color        = {0xFF, 0xFF, 0xFF, 0xFF}; /**< The color of the object (R8G8B8A8) */
+    bool    colorChanged = 1;                        /**< Whether or not the object color changed. */
 
     bool enabled = 1; /**< Whether or not the object should be drawn. Only updates when uploaded. */
 

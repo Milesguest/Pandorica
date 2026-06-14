@@ -46,7 +46,7 @@ ID=10
 # This would create a texture from "test/test.png" at id 5, create an
 # object at id 10 and assign that object to the texture at id 5.
 #
-# If you want to overwrite existing ressources. You would still create
+# If you want to overwrite existing resources. You would still create
 # that new ressource and assign it the id of the ressource you want to
 # overwrite:
 # Object already exists at id 8

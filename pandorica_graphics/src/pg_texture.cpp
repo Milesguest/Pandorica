@@ -21,8 +21,31 @@ Texture::~Texture() {
         transferBuffers->at(transferBufferId)->textures.remove(this);
 }
 
-void CopyTextureToTransferBuffer(Texture* texture, const SDL_Surface* surface, TransferBuffer* transferBuffer) {
+bool CopyTextureToTransferBuffer(Texture* texture, const SDL_Surface* surface, TransferBuffer* transferBuffer) {
+    size_t requiredSize = transferBuffer->cOffset + texture->size;
+
+    if (requiredSize > transferBuffer->size) {
+        if (transferBuffer->management != MANAGEMENT_UNDEFINED) {
+            Log(0, std::format("Resizing transferBuffer at id {} to fit new texture", transferBuffer->id));
+
+            size_t defaultSize           = settings::DEFAULT_TEXTURETRANSFERBUFFER_SIZE;
+            size_t newTransferBufferSize = ((requiredSize / defaultSize) + 1) * defaultSize;
+
+            if (!ResizeTransferBuffer(transferBuffer->id, newTransferBufferSize)) {
+                Log(1, "Failed to resize texture transferBuffer");
+                return 0;
+            }
+        } else {
+            Log(1, "Not allowed to resize transferBuffer of undefined management type");
+            return 0;
+        }
+    }
+
     Uint8* transferBufferPtr = static_cast<Uint8*>(SDL_MapGPUTransferBuffer(gpu->device, transferBuffer->transferBuffer, 1));
+    if (!transferBufferPtr) {
+        Log(2, std::format("Failed to map GPU transfer buffer: {}", SDL_GetError()));
+        return 0;
+    }
 
     std::memcpy(transferBufferPtr + transferBuffer->cOffset, surface->pixels, texture->size);
 
@@ -31,6 +54,8 @@ void CopyTextureToTransferBuffer(Texture* texture, const SDL_Surface* surface, T
     texture->transferBufferId = transferBuffer->id;
     transferBuffer->cOffset += texture->size;
     transferBuffer->textures.push_front(texture);
+
+    return true;
 }
 
 bool CreateTexture(const id_t textureId, const id_t transferBufferId, const SDL_Surface* surface, SDL_GPUTextureCreateInfo info) {
@@ -84,7 +109,10 @@ bool CreateTexture(const id_t textureId, const id_t transferBufferId, const SDL_
         return 0;
     }
 
-    CopyTextureToTransferBuffer(texture, surface, transferBuffer);
+    if (!CopyTextureToTransferBuffer(texture, surface, transferBuffer)) {
+        delete texture;
+        return 0;
+    }
 
     Log(0, std::format("Successfully created texture at id {}", textureId));
     return 1;
@@ -188,19 +216,6 @@ bool UploadTextures(const id_t textureTransferBufferId, const id_t objectTransfe
     TransferBuffer* objectTransferBuffer = (*transferBuffers)[objectTransferBufferId];
 
     if (!gpu->cCmdBuffer) AcquireCommandBuffer();
-
-    if (textureTransferBuffer->cOffset > textureTransferBuffer->size) {
-        if (textureTransferBuffer->management) {
-            Log(0, std::format("Resizing transferBuffer at id {}", textureTransferBufferId));
-
-            size_t newTransferBufferSize = (static_cast<int>(textureTransferBuffer->cOffset / settings::DEFAULT_TEXTURETRANSFERBUFFER_SIZE) + 1) * settings::DEFAULT_TEXTURETRANSFERBUFFER_SIZE;
-
-            ResizeTransferBuffer(textureTransferBufferId, newTransferBufferSize);
-        } else {
-            Log(1, "Not allowed to resize transferBuffer of undefined management type");
-            return 0;
-        }
-    }
 
     {
         SDL_GPUCopyPass* copyPass = SDL_BeginGPUCopyPass(gpu->cCmdBuffer);

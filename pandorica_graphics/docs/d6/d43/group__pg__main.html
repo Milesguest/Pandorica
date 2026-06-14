@@ -72,9 +72,11 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:pg_3A_3AContext" id="r_pg_3A_3AContext"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="../../d8/d42/structpg_1_1Context.html">pg::Context</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct grouping all objects of a programm.  <a href="../../d8/d42/structpg_1_1Context.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct grouping all objects of a program.  <a href="../../d8/d42/structpg_1_1Context.html#details">More...</a><br /></td></tr>
 <tr class="memitem:pg_3A_3AEngineResource" id="r_pg_3A_3AEngineResource"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="../../d6/d05/structpg_1_1EngineResource.html">pg::EngineResource</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct used for engine resources.  <a href="../../d6/d05/structpg_1_1EngineResource.html#details">More...</a><br /></td></tr>
+<tr class="memitem:pg_3A_3Avector_3C_20T_20_3E" id="r_pg_3A_3Avector_3C_20T_20_3E"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="../../dd/dbe/structpg_1_1vector.html">pg::vector&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extension of std::vector.  <a href="../../dd/dbe/structpg_1_1vector.html#details">More...</a><br /></td></tr>
 <tr class="memitem:pg_3A_3AVertex" id="r_pg_3A_3AVertex"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="../../d1/db6/structpg_1_1Vertex.html">pg::Vertex</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct specifying the layout of a vertex.  <a href="../../d1/db6/structpg_1_1Vertex.html#details">More...</a><br /></td></tr>
 <tr class="memitem:pg_3A_3AInstance" id="r_pg_3A_3AInstance"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="../../d8/da8/structpg_1_1Instance.html">pg::Instance</a></td></tr>
@@ -168,7 +170,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="#gga3aa00c9733ff1f9d9b86f27d95ac36b2a2e6d9c9a8df84ec129d6b07db8e1edde">pg::OBJECT_ID</a>
 <br />
  }</td></tr>
-<tr class="memdesc:ga3aa00c9733ff1f9d9b86f27d95ac36b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changeable attributes for engine ressources.  <a href="#ga3aa00c9733ff1f9d9b86f27d95ac36b2">More...</a><br /></td></tr>
+<tr class="memdesc:ga3aa00c9733ff1f9d9b86f27d95ac36b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changeable attributes for engine resources.  <a href="#ga3aa00c9733ff1f9d9b86f27d95ac36b2">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -245,7 +247,7 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="gga2f62cb067eb4c1e036e91166b89b886ca6542aaa5d9a4d341d9f60182035dcc7a" name="gga2f62cb067eb4c1e036e91166b89b886ca6542aaa5d9a4d341d9f60182035dcc7a"></a>LOG_LEVEL&#160;</td><td class="fielddoc"><p>The log messages to output in the logs file. 0 for everything, 1 for warnings and errors, 2 for errors </p>
 </td></tr>
-<tr><td class="fieldname"><a id="gga2f62cb067eb4c1e036e91166b89b886ca04f4d6830aba38971ad123f5a16c537c" name="gga2f62cb067eb4c1e036e91166b89b886ca04f4d6830aba38971ad123f5a16c537c"></a>DEFAULT_SAMPLE_COUNT&#160;</td><td class="fielddoc"><p>Don't change after standard context was created. The default mulitsample count should be 1, 2, 4 or 8. Defaults to 1. Is not normally used in '<a class="el" href="#gadcb8c328e8caf71540add374bd5e4953" title="Renders the specified camera.">Render()</a>'. </p>
+<tr><td class="fieldname"><a id="gga2f62cb067eb4c1e036e91166b89b886ca04f4d6830aba38971ad123f5a16c537c" name="gga2f62cb067eb4c1e036e91166b89b886ca04f4d6830aba38971ad123f5a16c537c"></a>DEFAULT_SAMPLE_COUNT&#160;</td><td class="fielddoc"><p>Don't change after standard context was created. The default multisample count should be 1, 2, 4 or 8. Defaults to 1. Is not normally used in '<a class="el" href="#gadcb8c328e8caf71540add374bd5e4953" title="Renders the specified camera.">Render()</a>'. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga2f62cb067eb4c1e036e91166b89b886ca9c72222f60e405224a2819cb4cc408a1" name="gga2f62cb067eb4c1e036e91166b89b886ca9c72222f60e405224a2819cb4cc408a1"></a>VSYNC&#160;</td><td class="fielddoc"><p>Don't change after standard context was created. How v-sync should be implemented. See 'SDL_GPUPresentMode' for more info. If the current present mode is unsupported by the window, v-sync will automatically be enabled. </p>
 </td></tr>
@@ -273,7 +275,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Changeable attributes for engine ressources. </p>
+<p>Changeable attributes for engine resources. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga3aa00c9733ff1f9d9b86f27d95ac36b2aa849f5cf8c7b98d36c29dd35f5a87e13" name="gga3aa00c9733ff1f9d9b86f27d95ac36b2aa849f5cf8c7b98d36c29dd35f5a87e13"></a>POSITION_X&#160;</td><td class="fielddoc"><p>The X-coordinate [-FLOAT_MAX; FLOAT_MAX]. </p>
 </td></tr>
@@ -489,7 +491,7 @@ template&lt;typename TMapType&gt; </div>
 
 <p>Initializes Pandorica Graphics. </p>
 <p>This function initializes every required SDL3 system and also creates a context.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d8/d42/structpg_1_1Context.html" title="A struct grouping all objects of a programm.">Context</a>, <a class="el" href="#gab8f502267e7f6fa23204af8e9e7e0dbf" title="Quits Pandorica Graphics.">Quit()</a>, <a class="el" href="#ga2f8f67cfa0f0263521d084d03b374e88" title="Creates a window and GPUDevice.">CreateWindowAndGPU()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d8/d42/structpg_1_1Context.html" title="A struct grouping all objects of a program.">Context</a>, <a class="el" href="#gab8f502267e7f6fa23204af8e9e7e0dbf" title="Quits Pandorica Graphics.">Quit()</a>, <a class="el" href="#ga2f8f67cfa0f0263521d084d03b374e88" title="Creates a window and GPUDevice.">CreateWindowAndGPU()</a> </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../d8/d6d/tutorial_01_8cpp-example.html#a0">tutorial_01.cpp</a>.</dd>
 </dl>
 
@@ -512,7 +514,7 @@ template&lt;typename TMapType&gt; </div>
 
 <p>Quits Pandorica Graphics. </p>
 <p>This function destroys everything inside the current context and the context itself. Every SDL3 system will be deinitialized.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d8/d42/structpg_1_1Context.html" title="A struct grouping all objects of a programm.">Context</a>, <a class="el" href="#ga4649ad7bb8e7b76cc8d401ab8d71dee5" title="Initializes Pandorica Graphics.">Init()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d8/d42/structpg_1_1Context.html" title="A struct grouping all objects of a program.">Context</a>, <a class="el" href="#ga4649ad7bb8e7b76cc8d401ab8d71dee5" title="Initializes Pandorica Graphics.">Init()</a> </dd></dl>
 
 </div>
 </div>
@@ -539,7 +541,7 @@ template&lt;typename TMapType&gt; </div>
 <p>This function logs a message. If no window was created or the loop has not started, frame count will be invalid. You have to run <a class="el" href="#ga4649ad7bb8e7b76cc8d401ab8d71dee5" title="Init()">Init()</a> before this to work.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">level</td><td>The priority level of the message. 0 = info, 1 = warning, 2 = error. If 2 is selected, the programm will quit. </td></tr>
+    <tr><td class="paramname">level</td><td>The priority level of the message. 0 = info, 1 = warning, 2 = error. If 2 is selected, the program will quit. </td></tr>
     <tr><td class="paramname">message</td><td>The message to display.</td></tr>
   </table>
   </dd>

@@ -2,7 +2,7 @@ var group__pg__text =
 [
     [ "pg::Font", "d6/d3c/structpg_1_1Font.html", [
       [ "font", "d6/d3c/structpg_1_1Font.html#a835684ce12e870a92793cc52d561060b", null ],
-      [ "texts", "d6/d3c/structpg_1_1Font.html#afc7000d66594e14102131cff51c8e626", null ]
+      [ "texts", "d6/d3c/structpg_1_1Font.html#a65427e725a8bb7c441858b71ea56fe44", null ]
     ] ],
     [ "pg::Text", "d9/d8f/structpg_1_1Text.html", [
       [ "text", "d9/d8f/structpg_1_1Text.html#a023e345308189da053f3700acebc8cd0", null ],

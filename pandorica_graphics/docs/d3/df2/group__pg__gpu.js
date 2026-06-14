@@ -28,7 +28,7 @@ var group__pg__gpu =
     ] ],
     [ "pg::Texture", "d7/de8/structpg_1_1Texture.html", [
       [ "texture", "d7/de8/structpg_1_1Texture.html#a97f21b44a2145d8582f4e8588ea09c9f", null ],
-      [ "objects", "d7/de8/structpg_1_1Texture.html#a96caff991ce18894c8fc91744a835276", null ],
+      [ "objects", "d7/de8/structpg_1_1Texture.html#aabd90a2d8b20af1cf275778d53df0c03", null ],
       [ "samplerId", "d7/de8/structpg_1_1Texture.html#a4c2bd11df1299fb20f461056e3e26670", null ],
       [ "transferBufferId", "d7/de8/structpg_1_1Texture.html#ae8c63718cf19e7197f3e8bacd9d7177f", null ],
       [ "width", "d7/de8/structpg_1_1Texture.html#a1dbc89ad21f101d74752ee08a4d271e9", null ],
@@ -46,8 +46,8 @@ var group__pg__gpu =
       [ "management", "d6/deb/structpg_1_1TransferBuffer.html#ae4a91206e103093efb0e60f916a077c3", null ],
       [ "usage", "d6/deb/structpg_1_1TransferBuffer.html#a91a18363fd7d548b10936464b065c0ff", null ],
       [ "enabled", "d6/deb/structpg_1_1TransferBuffer.html#ab19641c0c50b5c868e558e5081ee08a1", null ],
-      [ "textures", "d6/deb/structpg_1_1TransferBuffer.html#ad9e26b3097771dfc233580a522c41dea", null ],
-      [ "texts", "d6/deb/structpg_1_1TransferBuffer.html#ad6f7a30473d1df6641b52f3c19f8accd", null ],
+      [ "textures", "d6/deb/structpg_1_1TransferBuffer.html#a497137071c7d8a8cc9a9d41bc9154a7e", null ],
+      [ "texts", "d6/deb/structpg_1_1TransferBuffer.html#a4fc3ec5a26e540aa3f016062b7018b6f", null ],
       [ "workspaceId", "d6/deb/structpg_1_1TransferBuffer.html#a14ae6120d3885580bcbee2f0badfd8da", null ]
     ] ],
     [ "pg::CreateBuffer", "d3/df2/group__pg__gpu.html#gaa9954e36fe9e9318b5fce6c318f7eba2", null ],

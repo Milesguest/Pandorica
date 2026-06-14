@@ -85,7 +85,15 @@ bool ResizeTransferBuffer(const id_t transferBufferId, const size_t size) {
 
         if (transferBuffer->cOffset) {
             auto oldTbPointer = SDL_MapGPUTransferBuffer(gpu->device, transferBuffer->transferBuffer, 1);
+            if (!oldTbPointer) {
+                Log(1, std::format("Could not map transferbuffer at id {}: {}", transferBufferId, SDL_GetError()));
+                return 0;
+            }
             auto newTbPointer = SDL_MapGPUTransferBuffer(gpu->device, SDLTransferBuffer, 1);
+            if (!newTbPointer) {
+                Log(1, std::format("Could not map new transferbuffer pointer: {}", SDL_GetError()));
+                return 0;
+            }
 
             std::memcpy(newTbPointer, oldTbPointer, transferBuffer->cOffset);
 
@@ -245,6 +253,10 @@ bool UploadData(const std::vector<id_t>& transferBufferIds) {
         }
 
         auto transferBufferPtr = SDL_MapGPUTransferBuffer(gpu->device, transferBuffer->transferBuffer, 1);
+        if (!transferBufferPtr) {
+            Log(1, std::format("Could not map transferbuffer at id {}: {}", transferBufferId, SDL_GetError()));
+            return 0;
+        }
 
         std::memcpy(transferBufferPtr, instances.data(), instances.size() * sizeof(Instance));
 

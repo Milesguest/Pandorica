@@ -9,7 +9,7 @@ namespace pg {
  *
  * A shader is essentially code that can be run on the GPU.
  * There are many different formats for shaders but the most common are: .dxil (DirectX), .msl (Metall), .spv (Vulkan "SPIR-V").
- * There is a utility programm named 'SDL3_shadercross' to convert them from one to another, however you will have to install this manually.
+ * There is a utility program named 'SDL3_shadercross' to convert them from one to another, however you will have to install this manually.
  * Usually you write shaders here in hlsl but glsl might also work.
  *
  * A shader can be added into the standard context by creating one at the id you wish to replace. For the ids see @ref CreateStandardContext().

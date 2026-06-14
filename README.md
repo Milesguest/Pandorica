@@ -1,8 +1,8 @@
 # Pandorica Graphics
 ## What is Pandorica Graphics?
 Pandorica Graphics is a WIP graphics engine optimized for speed. <br>
-It supports 3D and 2D, however everything in the engine is a 2D surface (plain). In the
-3D context, these plains can be turned, scaled and moved around.<br>
+It supports 3D and 2D, however everything in the engine is a 2D surface (plane). In the
+3D context, these planes can be turned, scaled and moved around.<br>
 The engine is highly customizable and works out of the box. To modify the engine to
 you liking, you would not use the predefined "main"-functions and instead develop your
 own.<br>
@@ -16,10 +16,10 @@ Download the binaries and after that include the files in
 your project. <br>
 ### How it works
 Pandorica Graphics consists of 2 types: devices and resources.<br>
-Devices can only exist once per programm and have to be initialized to use. These devices
+Devices can only exist once per program and have to be initialized to use. These devices
 then form a 'context'. Subordinated to these devices are the resources. They can be objects,
-textures, shaders and many more. Consult the [documentation](https://milesguest.github.io/Pandorica/index.html) (or the header file of the specific 
-type) for more information.<br><br>
+textures, shaders and many more. Consult the [documentation](https://milesguest.github.io/Pandorica/index.html) 
+(or the header file of the specific type) for more information.<br><br>
 ### How to use it
 To use Pandorica Graphics the following steps have to be done pretty much all the time:<br>
 - Initialize the context with '@ref pg::Init()'.

@@ -134,6 +134,7 @@ template&lt;typename T&gt; </div>
 
 <p>Saves the given object to a file. </p>
 <p>Using this function you can save any struct to a file using cereal. The struct only needs a 'serialize' or 'load' and 'save' function. See cereal for more.</p>
+<dl class="section note"><dt>Note</dt><dd>This does not work with normal pg types</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>A pointer to the object to save. </td></tr>
@@ -168,6 +169,7 @@ template&lt;typename T&gt; </div>
 
 <p>Loads the given file to an object. </p>
 <p>Using this function you can load any struct from a file using cereal. The struct only needs a 'serialize' or 'load' and 'save' function. See cereal for more.</p>
+<dl class="section note"><dt>Note</dt><dd>This does not work with normal pg types</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>A pointer to the object to load to. </td></tr>

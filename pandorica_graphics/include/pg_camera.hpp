@@ -31,7 +31,7 @@ struct Camera : EngineResource {
     bool changedView = 1; /**< @internal Whether the view matrix should be calculated again. */
     bool ddd         = 1; /**< Whether or not the camera should be 3D or 2D. */
 
-    std::list<id_t> enabledWorkspaces; /**< A list of workspaces the camera can 'see'. */
+    pg::vector<id_t> enabledWorkspaces; /**< A list of workspaces the camera can 'see'. */
 
     bool enabled = 1; /**< Whether or not the camera should be rendered. */
 

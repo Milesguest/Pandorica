@@ -9,6 +9,7 @@
     "sdl3-mixer",
     "cereal",
     "eigen3",
-    "cli11"
+    "cli11",
+    "boost"
   ]
 }

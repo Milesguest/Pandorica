@@ -42,7 +42,7 @@ extern idmap<AudioTrack>* audioTracks; /**< Pointer to 'audioDevice.audioTracks'
  */
 bool CreateAudioTrack(const id_t audioTrackId, const id_t audioDataId);
 /**
- * @brief Deletes and stops and audio track.
+ * @brief Deletes and stops an audio track.
  *
  * @param audioTrackId The id of the audio track to delete.
  * @return true if it succeeded, false if it failed. See the logs for more information.
@@ -79,7 +79,7 @@ bool PauseAudioTrack(const id_t audioTrackId);
 /**
  * @brief Get an audio track.
  *
- * @param audioTrackId The if of the audio track to return.
+ * @param audioTrackId The id of the audio track to return.
  * @return A pointer to the audio track if it succeeded, NULL if it could not be found.
  *
  * @see AudioTrack

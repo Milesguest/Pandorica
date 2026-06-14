@@ -25,7 +25,7 @@ struct AudioData : EngineResource {
      * @note Audio tracks will not stop playing if their audio
      * data is deleted.
      */
-    std::list<id_t> audioTrackIds;
+    pg::vector<id_t> audioTrackIds;
 
     AudioData(id_t id);
     ~AudioData();

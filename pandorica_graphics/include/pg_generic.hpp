@@ -1,5 +1,6 @@
 #pragma once
 
+#include <boost/unordered/unordered_node_map.hpp>
 #include <cereal/archives/binary.hpp>
 #include <cereal/types/string.hpp>
 #include <eigen3/Eigen/Core>
@@ -97,7 +98,7 @@ enum SettingsHint {
     DEFAULT_STATIC_SIZE,                /**< The default size for transfer-/Buffers which are used with a lot of data. They will only be upsized */
     START_SYSTEM_RESOURCES,             /**< Don't change after standard context was created. The id at which system resources start */
     LOG_LEVEL,                          /**< The log messages to output in the logs file. 0 for everything, 1 for warnings and errors, 2 for errors */
-    DEFAULT_SAMPLE_COUNT,               /**< Don't change after standard context was created. The default mulitsample count should be 1, 2, 4 or 8. Defaults to 1. Is not normally used in 'Render()'. */
+    DEFAULT_SAMPLE_COUNT,               /**< Don't change after standard context was created. The default multisample count should be 1, 2, 4 or 8. Defaults to 1. Is not normally used in 'Render()'. */
     VSYNC,                              /**< Don't change after standard context was created. How v-sync should be implemented. See 'SDL_GPUPresentMode' for more info. If the current present mode is unsupported by the window, v-sync will automatically be enabled. */
     COMPRESSED_TEXTURE_FORMAT,          /**< Don't change after standard context was created. The compression format for textures. -1 to not compress textures. If texture format is unsupported by the driver, uncompressed texture formats will be used. */
     LOGFILE_NAME,                       /**< Don't change after standard context was created. The name of the log file. */
@@ -120,7 +121,7 @@ enum SettingsHint {
 bool SetHint(SettingsHint hint, GenericValue32 value);
 
 /**
- * @brief Changeable attributes for engine ressources
+ * @brief Changeable attributes for engine resources
  *
  * @ingroup pg_main
  */
@@ -186,20 +187,47 @@ enum Attribute {
     OBJECT_ID              ///< The id of the object to use [0; 2^32]
 };
 
-typedef Eigen::Vector2f           vec2f;
-typedef Eigen::Vector2i           vec2i;
-typedef Eigen::Vector3f           vec3f;
-typedef Eigen::Vector3d           vec3d;
-typedef Eigen::Vector4f           vec4f;
-typedef Eigen::Vector<uint8_t, 4> vec4i;
-typedef Eigen::Matrix3f           mat3f;
-typedef Eigen::Matrix3d           mat3d;
-typedef Eigen::Matrix4f           mat4f;
-typedef Eigen::Matrix4d           mat4d;
-typedef Eigen::AngleAxisf         anglef;
-typedef Eigen::AngleAxisd         angled;
+typedef Eigen::Vector2f          vec2f;
+typedef Eigen::Vector2<int32_t>  vec2i;
+typedef Eigen::Vector2d          vec2d;
+typedef Eigen::Vector2<uint32_t> vec2ui;
+typedef Eigen::Vector2<int16_t>  vec2i16;
+typedef Eigen::Vector2<uint16_t> vec2ui16;
+typedef Eigen::Vector2<int8_t>   vec2i8;
+typedef Eigen::Vector2<uint8_t>  vec2ui8;
+
+typedef Eigen::Vector3f          vec3f;
+typedef Eigen::Vector3d          vec3d;
+typedef Eigen::Vector3<int32_t>  vec3i;
+typedef Eigen::Vector3<uint32_t> vec3ui;
+typedef Eigen::Vector3<int16_t>  vec3i16;
+typedef Eigen::Vector3<uint16_t> vec3ui16;
+typedef Eigen::Vector3<int8_t>   vec3i8;
+typedef Eigen::Vector3<uint8_t>  vec3ui8;
+
+typedef Eigen::Vector4f          vec4f;
+typedef Eigen::Vector4d          vec4d;
+typedef Eigen::Vector4<int32_t>  vec4i;
+typedef Eigen::Vector4<uint32_t> vec4ui;
+typedef Eigen::Vector4<int16_t>  vec4i16;
+typedef Eigen::Vector4<uint16_t> vec4ui16;
+typedef Eigen::Vector4<int8_t>   vec4i8;
+typedef Eigen::Vector4<uint8_t>  vec4ui8;
+
+typedef Eigen::Matrix2f mat2f;
+typedef Eigen::Matrix2d mat2d;
+
+typedef Eigen::Matrix3f mat3f;
+typedef Eigen::Matrix3d mat3d;
+
+typedef Eigen::Matrix4f mat4f;
+typedef Eigen::Matrix4d mat4d;
+
+typedef Eigen::AngleAxisf anglef;
+typedef Eigen::AngleAxisd angled;
+
 template <typename T>
-using idmap             = std::unordered_map<id_t, T*>;
+using idmap             = boost::unordered_node_map<id_t, T*>;
 using attributeAndValue = std::pair<Attribute, GenericValue32>;
 
 /**
@@ -210,6 +238,31 @@ using attributeAndValue = std::pair<Attribute, GenericValue32>;
 struct EngineResource {
     const id_t id; /**< The id of the specific engine resource. */
     EngineResource(id_t id) : id(id) {};
+};
+
+/**
+ * @brief Extension of std::vector
+ *
+ * Adds some std::list functions to a vector.
+ *
+ * @note This does not make it behave like a std::list.
+ *
+ * @ingroup pg_main
+ */
+template <typename T>
+struct vector : std::vector<T> {
+    bool remove(const T& value) {
+        auto it = std::find(std::vector<T>::begin(), std::vector<T>::end(), value);
+        if (it != std::vector<T>::end()) {
+            std::vector<T>::erase(it);
+            return 1;
+        }
+        return 0;
+    };
+
+    void push_front(const T& value) {
+        std::vector<T>::insert(std::vector<T>::begin(), value);
+    };
 };
 
 /**
@@ -243,6 +296,7 @@ struct Instance {
  * @brief A struct which can hold multiple 32bit mathematical types, as well as 'const char*'.
  *
  * @note This is not used in any structs and just as parameters.
+ * @note Only use texts as literals.
  *
  * @ingroup pg_main
  */

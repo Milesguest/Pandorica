@@ -75,7 +75,7 @@ $(function() {
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="../../d6/d3c/structpg_1_1Font.html">   17</a></span><span class="keyword">struct </span>Font : EngineResource {</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../d6/d3c/structpg_1_1Font.html#a835684ce12e870a92793cc52d561060b">   18</a></span>    TTF_Font* <a class="code hl_variable" href="../../d6/d3c/structpg_1_1Font.html#a835684ce12e870a92793cc52d561060b">font</a>; </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d6/d3c/structpg_1_1Font.html#afc7000d66594e14102131cff51c8e626">   20</a></span>    std::list&lt;Text*&gt; <a class="code hl_variable" href="../../d6/d3c/structpg_1_1Font.html#afc7000d66594e14102131cff51c8e626">texts</a>; </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d6/d3c/structpg_1_1Font.html#a65427e725a8bb7c441858b71ea56fe44">   20</a></span>    <a class="code hl_struct" href="../../dd/dbe/structpg_1_1vector.html">pg::vector&lt;Text*&gt;</a> <a class="code hl_variable" href="../../d6/d3c/structpg_1_1Font.html#a65427e725a8bb7c441858b71ea56fe44">texts</a>; </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    Font(id_t <span class="keywordtype">id</span>);</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    ~Font();</div>
@@ -94,8 +94,9 @@ $(function() {
 <div class="ttc" id="apg__generic_8hpp_html"><div class="ttname"><a href="../../d3/dbf/pg__generic_8hpp.html">pg_generic.hpp</a></div></div>
 <div class="ttc" id="apg__text_8hpp_html"><div class="ttname"><a href="../../d4/d8e/pg__text_8hpp.html">pg_text.hpp</a></div></div>
 <div class="ttc" id="astructpg_1_1Font_html"><div class="ttname"><a href="../../d6/d3c/structpg_1_1Font.html">pg::Font</a></div><div class="ttdoc">A font used for creating texts.</div><div class="ttdef"><b>Definition</b> pg_font.hpp:17</div></div>
+<div class="ttc" id="astructpg_1_1Font_html_a65427e725a8bb7c441858b71ea56fe44"><div class="ttname"><a href="../../d6/d3c/structpg_1_1Font.html#a65427e725a8bb7c441858b71ea56fe44">pg::Font::texts</a></div><div class="ttdeci">pg::vector&lt; Text * &gt; texts</div><div class="ttdef"><b>Definition</b> pg_font.hpp:20</div></div>
 <div class="ttc" id="astructpg_1_1Font_html_a835684ce12e870a92793cc52d561060b"><div class="ttname"><a href="../../d6/d3c/structpg_1_1Font.html#a835684ce12e870a92793cc52d561060b">pg::Font::font</a></div><div class="ttdeci">TTF_Font * font</div><div class="ttdef"><b>Definition</b> pg_font.hpp:18</div></div>
-<div class="ttc" id="astructpg_1_1Font_html_afc7000d66594e14102131cff51c8e626"><div class="ttname"><a href="../../d6/d3c/structpg_1_1Font.html#afc7000d66594e14102131cff51c8e626">pg::Font::texts</a></div><div class="ttdeci">std::list&lt; Text * &gt; texts</div><div class="ttdef"><b>Definition</b> pg_font.hpp:20</div></div>
+<div class="ttc" id="astructpg_1_1vector_html"><div class="ttname"><a href="../../dd/dbe/structpg_1_1vector.html">pg::vector</a></div><div class="ttdoc">Extension of std::vector.</div><div class="ttdef"><b>Definition</b> pg_generic.hpp:253</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

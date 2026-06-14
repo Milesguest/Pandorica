@@ -17,7 +17,7 @@ namespace pg {
 struct Font : EngineResource {
     TTF_Font* font; /**< A pointer to the actual font (SDL_ttf). */
 
-    std::list<Text*> texts; /**< A list of texts created with this font. */
+    pg::vector<Text*> texts; /**< A list of texts created with this font. */
 
     Font(id_t id);
     ~Font();

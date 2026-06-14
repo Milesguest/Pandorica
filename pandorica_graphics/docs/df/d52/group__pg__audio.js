@@ -4,7 +4,7 @@ var group__pg__audio =
       [ "audioData", "d4/dfd/structpg_1_1AudioData.html#a20dc15dff291e217f33c52e21b0ef307", null ],
       [ "path", "d4/dfd/structpg_1_1AudioData.html#a9b2736f32c1fbb1ba20a754973679850", null ],
       [ "workspaceId", "d4/dfd/structpg_1_1AudioData.html#aa9aac486317a7fa4a3d0c682f75d7def", null ],
-      [ "audioTrackIds", "d4/dfd/structpg_1_1AudioData.html#a419f96e06f5b947d17cf8d92531c941f", null ]
+      [ "audioTrackIds", "d4/dfd/structpg_1_1AudioData.html#a1895999c196ed31ab79aa59721437b0b", null ]
     ] ],
     [ "pg::AudioDevice", "d2/df1/structpg_1_1AudioDevice.html", [
       [ "audioDevice", "d2/df1/structpg_1_1AudioDevice.html#a151445debefa66dd1d27629031a5a25d", null ],

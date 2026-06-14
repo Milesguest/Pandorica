@@ -1,6 +1,7 @@
 var NAVTREEINDEX1 =
 {
 "dd/db9/tutorial_03_8cpp-example.html":[2,2],
+"dd/dbe/structpg_1_1vector.html":[0,0,2],
 "de/d16/structpg_1_1Shader.html":[0,2,4],
 "de/d16/structpg_1_1Shader.html#a0ce66c153aa90c0a4da85f40dedd167a":[0,2,4,0],
 "df/d52/group__pg__audio.html":[0,3],
@@ -16,8 +17,8 @@ var NAVTREEINDEX1 =
 "df/d52/group__pg__audio.html#gada9ba6d33115a71e49444423089810e2":[0,3,4],
 "df/d83/structpg_1_1Camera.html":[0,1,0],
 "df/d83/structpg_1_1Camera.html#a17f5bb3b10f1492809634f8c3073d40d":[0,1,0,0],
-"df/d83/structpg_1_1Camera.html#a187084b3aa8733191f1edc579159e167":[0,1,0,8],
 "df/d83/structpg_1_1Camera.html#a1c6d1ef68cb97981788d47deeaf13066":[0,1,0,4],
+"df/d83/structpg_1_1Camera.html#a241ab5f8ed6fa73c62ce55cb6a1f3640":[0,1,0,8],
 "df/d83/structpg_1_1Camera.html#a84358966b0d1aeddcd673d316b7b4f92":[0,1,0,9],
 "df/d83/structpg_1_1Camera.html#a9376433151ecec1a532c2fa21c547423":[0,1,0,1],
 "df/d83/structpg_1_1Camera.html#a93d5e61662ca2427764fc4fe08f83390":[0,1,0,5],

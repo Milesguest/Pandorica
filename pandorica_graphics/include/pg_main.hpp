@@ -37,7 +37,7 @@ void Quit();
  * 0 = info,
  * 1 = warning,
  * 2 = error.
- * If 2 is selected, the programm will quit.
+ * If 2 is selected, the program will quit.
  * @param message The message to display.
  *
  * @see LOGFILE_NAME

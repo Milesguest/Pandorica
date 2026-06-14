@@ -22,7 +22,7 @@ bool Init() {
 void Quit() {
     TTF_Quit();
     SDL_Quit();
-    Log(0, "Successfully exited the programm");
+    Log(0, "Successfully exited the program");
     std::flush(cContext->logFile);
     delete cContext;
 };
@@ -310,8 +310,10 @@ bool CreateStandardContext() {
     pipelineInfo.multisample_state   = msState;
     pipelineInfo.depth_stencil_state = depthState;
 
-    if (!CreatePipeline(settings::START_SYSTEM_RESOURCES + 1, pipelineInfo, settings::START_SYSTEM_RESOURCES, settings::START_SYSTEM_RESOURCES + 2))
+    if (!CreatePipeline(settings::START_SYSTEM_RESOURCES + 1, pipelineInfo, settings::START_SYSTEM_RESOURCES, settings::START_SYSTEM_RESOURCES + 2)) {
+        delete[] colorTargets;
         return 0;
+    }
 
     delete[] colorTargets;
 
@@ -434,9 +436,9 @@ void StartLoop(void (*mainFunction)(), const uint16_t frameRate) {
     uint64_t currentTime = SDL_GetTicksNS();
     uint64_t lastFrame   = currentTime;
 
-    window->frameCount    = 0;
-    window->timeMS        = 0;
-    long double frameTime = (1000000000.0 / frameRate) / 1000;
+    window->frameCount = 0;
+    window->timeMS     = 0;
+    double frameTime   = (1000000000.0 / frameRate) / 1000;
 
     SDL_Event e;
 

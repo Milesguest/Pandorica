@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
 
     // After you have your transferbuffer, we can start with the text device
     pg::CreateTextDevice();
-    // A text device is required to create texts and fonts. Trying to create fonts or texts without it will crash the programm.
+    // A text device is required to create texts and fonts. Trying to create fonts or texts without it will crash the program.
 
     // Now that we have the text device, we can load a font.
     pg::CreateFont(1, 12, "example/examplefont.ttf");
