@@ -84,7 +84,7 @@ bool DeleteText(const id_t textId);
  *
  * @ingroup pg_text
  */
-bool SetText(const id_t textId, const std::string& textData);
+bool SetText(const id_t textId, const std::string_view textData);
 /**
  * @brief Set the attributes of a text.
  *

@@ -25,7 +25,7 @@ struct Context {
     bool running; /**< Whether or not the context is currently running (@ref StartLoop()). */
 
     std::ofstream logFile;  /**< The file to log to. */
-    std::string   basePath; /**< The basePath of the program. It is safe to modify this, but beware, the paths are all relative. */
+    std::string   basePath; /**< The basePath of the program. It is safe to modify this, but beware, all paths are relative. */
 
     Context();
     ~Context();

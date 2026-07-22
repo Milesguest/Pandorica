@@ -1,4 +1,4 @@
-build/*
+pandorica_graphics/build/*
 pandorica_graphics/application
 pandorica_graphics/Doxyfile
 pandorica_graphics/DoxygenLayout.xml

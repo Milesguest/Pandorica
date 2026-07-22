@@ -128,7 +128,7 @@ bool DeleteText(const id_t textId) {
     return 1;
 }
 
-bool SetText(const id_t textId, const std::string& textData) {
+bool SetText(const id_t textId, const std::string_view textData) {
     if (!texts->contains(textId)) {
         Log(1, std::format("Text at id {} does not exist, cannot change text", textId));
         return 0;
@@ -136,7 +136,7 @@ bool SetText(const id_t textId, const std::string& textData) {
 
     Text* text = texts->at(textId);
 
-    if (!TTF_SetTextString(text->text, textData.c_str(), 0)) {
+    if (!TTF_SetTextString(text->text, textData.data(), 0)) {
         Log(1, std::format("Could not change text: {}", SDL_GetError()));
         return 0;
     }

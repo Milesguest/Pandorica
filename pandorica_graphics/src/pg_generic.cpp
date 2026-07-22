@@ -68,11 +68,7 @@ bool SetHint(SettingsHint hint, GenericValue32 value) {
         }
         settings::COMPRESSED_TEXTURE_FORMAT = value.asInt();
     case LOGFILE_NAME:
-        if (textures->contains(settings::START_SYSTEM_RESOURCES)) {
-            Log(1, "Not allowed to set LOGFILE_NAME after standard context was created.");
-            return 0;
-        }
-        settings::LOGFILE_NAME = value.asString();
+        Log(1, "Please directly set LOGFILE_NAME with \'settings::LOGFILE_NAME = VALUE\'");
         break;
     case DEFAULT_MANAGEMENT_TYPE:
         settings::DEFAULT_MANAGEMENT_TYPE = static_cast<ManagementType>(value.asUint());

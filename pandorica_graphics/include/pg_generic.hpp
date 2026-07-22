@@ -16,6 +16,7 @@
 #include <cfloat>
 #include <chrono>
 #include <cmath>
+#include <concepts>
 #include <cstdint>
 #include <filesystem>
 #include <fstream>
@@ -113,6 +114,8 @@ enum SettingsHint {
  * @param hint The setting to change.
  * @param value The new value of the setting.
  * @return true if it succeeded, false if it failed. See the logs for more information.
+ *
+ * @note Set LOGFILE_NAME manually
  *
  * @see SettingsHint
  *
@@ -293,49 +296,51 @@ struct Instance {
 };
 
 /**
- * @brief A struct which can hold multiple 32bit mathematical types, as well as 'const char*'.
- *
- * @note This is not used in any structs and just as parameters.
- * @note Only use texts as literals.
+ * @brief A struct which can hold multiple 32bit mathematical types.
  *
  * @ingroup pg_main
  */
 struct GenericValue32 {
     union {
-        float       f;
-        uint32_t    u;
-        int32_t     i;
-        bool        b;
-        const char* s;
+        float    f;
+        uint32_t u;
+        int32_t  i;
+        bool     b;
     };
 
     enum class Type : uint8_t { Invalid,
                                 Float,
                                 Uint,
                                 Int,
-                                Bool,
-                                String };
+                                Bool };
     Type type;
 
     GenericValue32() : u(0), type(Type::Uint) {}
-    GenericValue32(float v) { *this = v; }
-    GenericValue32(uint32_t v) { *this = v; }
-    GenericValue32(int32_t v) { *this = v; }
+    template <std::floating_point T>
+    GenericValue32(T v) { *this = v; };
+    template <std::unsigned_integral T>
+        requires(!std::same_as<T, bool>)
+    GenericValue32(T v) { *this = v; };
+    template <std::signed_integral T>
+    GenericValue32(T v) { *this = v; };
     GenericValue32(bool v) { *this = v; }
-    GenericValue32(const char* v) { *this = v; }
 
-    GenericValue32& operator=(float v) {
-        f    = v;
+    template <std::floating_point T>
+    GenericValue32& operator=(T v) {
+        f    = static_cast<float>(v);
         type = Type::Float;
         return *this;
     }
-    GenericValue32& operator=(uint32_t v) {
-        u    = v;
+    template <std::unsigned_integral T>
+        requires(!std::same_as<T, bool>)
+    GenericValue32& operator=(T v) {
+        u    = static_cast<uint32_t>(v);
         type = Type::Uint;
         return *this;
     }
-    GenericValue32& operator=(int32_t v) {
-        i    = v;
+    template <std::signed_integral T>
+    GenericValue32& operator=(T v) {
+        i    = static_cast<int32_t>(v);
         type = Type::Int;
         return *this;
     }
@@ -344,15 +349,10 @@ struct GenericValue32 {
         type = Type::Bool;
         return *this;
     }
-    GenericValue32& operator=(const char* v) {
-        s    = v;
-        type = Type::String;
-        return *this;
-    }
 
     template <typename T>
     explicit operator T() const {
-        static_assert(sizeof(T) <= 4 || type == Type::String, "Target type is too large");
+        static_assert(sizeof(T) <= 4);
         switch (type) {
         case Type::Invalid:
             return static_cast<T>(NULL);
@@ -364,15 +364,6 @@ struct GenericValue32 {
             return static_cast<T>(i);
         case Type::Bool:
             return static_cast<T>(b);
-        case Type::String:
-            if constexpr (std::is_same_v<T, float>)
-                return s ? static_cast<T>(std::atof(s)) : 0.0f;
-            else if constexpr (std::is_same_v<T, int32_t> || std::is_same_v<T, uint32_t>)
-                return s ? static_cast<T>(std::atoi(s)) : 0;
-            else if constexpr (std::is_same_v<T, bool>)
-                return s != nullptr && s[0] != '\0';
-            else
-                return T{};
         }
 
         std::unreachable();
@@ -390,9 +381,6 @@ struct GenericValue32 {
     bool asBool() const {
         return static_cast<bool>(*this);
     };
-    std::string asString() const {
-        return type == Type::String ? s : "";
-    }
 
     template <class Archive>
     void serialize(Archive& archive) {
