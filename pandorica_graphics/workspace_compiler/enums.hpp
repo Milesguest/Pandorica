@@ -4,23 +4,13 @@
 #include <string>
 #include <vector>
 
-#include "../include/pg_generic.hpp"
+#include <pandorica_graphics/pg.hpp>
 
 /** @file */
 namespace pg {
 namespace ws {
 
-inline constexpr std::array<std::pair<uint8_t, std::string_view>, 8> commands = {{
-    {1, "o"},
-    {2, "tex"},
-    {3, "cam"},
-    {4, "ws"},
-    {5, "tb"},
-    {6, "db"},
-    {7, "ad"},
-    {8, "txt"},
-}};
-#define WC_ATTRIBUTES                            \
+#define WS_ATTRIBUTES                            \
     X(POSX, "POSX", pg::POSITION_X)              \
     X(POSY, "POSY", pg::POSITION_Y)              \
     X(POSZ, "POSZ", pg::POSITION_Z)              \
@@ -41,6 +31,7 @@ inline constexpr std::array<std::pair<uint8_t, std::string_view>, 8> commands = 
     X(B, "B", pg::BLUE)                          \
     X(A, "A", pg::ALPHA)                         \
     X(TEXID, "TEXID", pg::TEXTURE_ID)            \
+    X(FONTID, "FONTID", pg::TEXTURE_ID)          \
     X(E, "E", pg::ENABLED)                       \
     X(TBID, "TBID", pg::TRANSFERBUFFER_ID)       \
     X(TBOFF, "TBOFF", pg::TRANSFERBUFFER_OFFSET) \
@@ -57,10 +48,11 @@ inline constexpr std::array<std::pair<uint8_t, std::string_view>, 8> commands = 
     X(DDD, "DDD", pg::DDD)                       \
     X(ADDWSID, "ADDWSID", pg::ADD_WORKSPACE_ID)  \
     X(RMWSID, "RMWSID", pg::REMOVE_WORKSPACE_ID) \
+    X(OBJID, "OBJID", pg::OBJECT_ID)             \
     X(ID, "ID", -1)                              \
-    X(PATH, "PATH", -1)                          \
+    X(PATH, "PATH", -2)                          \
+    X(TEXT, "TEXT", -2)                          \
     X(BSIZE, "BSIZE", -1)                        \
-    X(OBJID, "OBJID", -1)                        \
     Y(WIDTH, "SIZE", -1)                         \
     Y(CUTX, "CUTPOS", -1)                        \
     Y(CUTW, "CUTSIZE", -1)                       \
@@ -73,15 +65,14 @@ inline constexpr std::array<std::pair<uint8_t, std::string_view>, 8> commands = 
 #define X(enum, string, pg) enum,
 #define Y(enum, string, pg)
 enum class Attr : uint8_t {
-    WC_ATTRIBUTES
+    WS_ATTRIBUTES
 };
-
 #undef X
 #undef Y
 
-#define X(enum, string, pg) {string, Attr::enum},
-#define Y(enum, string, pg) {string, Attr::enum},
-inline constexpr std::array<std::pair<std::string_view, Attr>, 48> attrStrings = {{WC_ATTRIBUTES}};
+#define X(enum, string, pg) std::pair<std::string_view, Attr>{string, Attr::enum},
+#define Y(enum, string, pg) std::pair<std::string_view, Attr>{string, Attr::enum},
+inline constexpr auto attrStrings = std::array{WS_ATTRIBUTES};
 #undef X
 #undef Y
 
@@ -89,15 +80,15 @@ inline constexpr std::array<std::pair<std::string_view, Attr>, 48> attrStrings =
     case Attr::enum:        \
         return pg;
 #define Y(enum, string, pg)
-constexpr int GetPG(Attr attr) {
+constexpr int GetPGByAttribute(Attr attr) {
     switch (attr) {
-        WC_ATTRIBUTES
+        WS_ATTRIBUTES
     }
 }
 #undef X
 #undef Y
 
-inline std::optional<pg::ws::Attr> GetAttributeByName(std::string_view name) {
+inline constexpr std::optional<pg::ws::Attr> GetAttributeByName(std::string_view name) {
     for (const auto& pair : pg::ws::attrStrings) {
         if (pair.first == name) {
             return pair.second;
@@ -106,14 +97,7 @@ inline std::optional<pg::ws::Attr> GetAttributeByName(std::string_view name) {
     return std::nullopt;
 }
 
-inline std::string_view GetAttributeName(pg::ws::Attr attr) {
-    for (const auto& pair : pg::ws::attrStrings) {
-        if (pair.second == attr) {
-            return pair.first;
-        }
-    }
-    return "";
-}
+#undef WS_ATTRIBUTES
 
 } // namespace ws
 } // namespace pg

@@ -9,25 +9,18 @@
 #include <list>
 #include <variant>
 
-#include "../include/pg_generic.hpp"
+#include <pandorica_graphics/pg.hpp>
+
 #include <cereal/archives/binary.hpp>
 #include <cereal/types/string.hpp>
 #include <cereal/types/variant.hpp>
 
 #include <CLI/CLI.hpp>
 
+#include "commands.hpp"
 #include "enums.hpp"
 
 int8_t valueType = '0';
-
-uint8_t CheckCommand(std::string& command) {
-    for (const std::pair<int, std::string_view>& cPair : pg::ws::commands) {
-        if (cPair.second.compare(command) == 0) {
-            return cPair.first;
-        }
-    }
-    return 0;
-}
 
 pg::GenericValue32 parseString(std::string_view sv) {
     if (sv.back() == 'f' || sv.back() == 'F') {
@@ -66,7 +59,7 @@ pg::GenericValue32 parseString(std::string_view sv) {
 bool CheckValue(int16_t attribute, std::string& value, pg::GenericValue32& val32) {
     val32 = parseString(value);
 
-    if (val32.type == pg::GenericValue32::Type::Invalid && attribute != static_cast<uint8_t>(pg::ws::Attr::PATH)) {
+    if (val32.type == pg::GenericValue32::Type::Invalid && pg::ws::GetPGByAttribute(static_cast<pg::ws::Attr>(attribute)) != -2) {
         return 0;
     }
 
@@ -139,19 +132,11 @@ int main(int argc, char* argv[]) {
         pg::GenericValue32 attributeValue;
         std::string        line;
         std::string        command;
-        uint8_t            shortValue;
         std::string        attributeName;
 
         std::vector<std::pair<uint8_t, std::string>> attributes;
 
-        while (!eof) {
-            std::getline(in, line);
-
-            if (in.eof()) {
-                eof = 1;
-                continue;
-            }
-
+        while (std::getline(in, line)) {
             command.clear();
             attributes.clear();
             attributeName.clear();
@@ -224,22 +209,24 @@ int main(int argc, char* argv[]) {
             }
 
             if (isCommand) {
-                if (!(shortValue = CheckCommand(command))) {
-                    std::cout << std::format("ERROR: Command !{} does not exist\n", command);
+                auto commandValue = pg::ws::GetCommandByName(command);
+                if (!commandValue.has_value()) {
+                    std::cout << std::format("ERROR: Command !{} does not exist (check commands.hpp)\n", command);
                     continue;
                 }
 
-                archive(shortValue);
+                archive(static_cast<uint8_t>(commandValue.value()));
                 continue;
             }
 
             for (auto attribute : attributes) {
                 if (!CheckValue(attribute.first, attribute.second, attributeValue)) {
-                    std::cout << std::format("ERROR: Value {} is not supported for {} (check enums.hpp for real name)\n", attribute.second, attribute.first);
+                    std::cout << std::format("ERROR: Value {} is not supported for {} (check enums.hpp)\n", attribute.second, attribute.first);
+                    continue;
                 }
 
                 if (attributeValue.type == pg::GenericValue32::Type::Invalid) {
-                    archive(static_cast<uint8_t>(0xFF), static_cast<uint8_t>(0x00), attribute.second);
+                    archive(static_cast<uint8_t>(0xFF), attribute.first, attribute.second);
                     continue;
                 }
 

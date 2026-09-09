@@ -36,7 +36,7 @@ extern idmap<Font>* fonts; /** A pointer to 'textDevice.fonts'. */
  *
  * @ingroup pg_text
  */
-bool CreateFont(const id_t fontId, const size_t fontSize, const std::string& path);
+bool CreateFont(const id_t fontId, const size_t fontSize, std::string_view path);
 /**
  * @brief Delete a font.
  *

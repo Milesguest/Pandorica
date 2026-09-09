@@ -1,20 +1,20 @@
 # To use '.twf' (text workspace file) follow this simple syntax:
 #
-# '!o'      Create Object
+# '!o'      Create object
 # '!tex'    Create texture
 # '!cam'    Create camera
 # '!ws'     Create workspace
-# '!tb'     Create TransferBuffer
-# '!db'     Create buffer (data buffer)
+# '!tb'     Create transferBuffer
+# '!ib'     Create buffer (instance buffer)
 # '!ad'     Create audio data
 # '!txt'    Create text
 #
 # 'ATTRIBUTE=VALUE'             Set specific attribute to a value.
 # For this syntax possible attributes are:
 #   POSX, POSY, POSZ, WIDTH, HEIGHT, ROTX, ROTY, ROTZ, CUTX, CUTY, CUTW,
-#   CUTH, ORIX, ORIY, ORIZ, R, G, B, A, TEXID, E, TBID, TBOFF, WSID,
+#   CUTH, ORIX, ORIY, ORIZ, R, G, B, A, TEXID, FONTID, E, TBID, TBOFF, WSID,
 #   SAMID, IBID, IBOFF, MANAGE, TARX, TARY, TARZ, FOVY, AR (Aspect Ratio),
-#   DDD, ADDWSID, RMWSID, PATH, ID, BSIZE (Transfer-/Buffersize), OBJID
+#   DDD, ADDWSID, RMWSID, PATH, TEXT, ID, BSIZE (transfer-/Buffersize), OBJID
 #
 # 'ATTRIBUTE=VALUEX,VALUEY...'  Set multiple values for an attribute
 # For this syntax possible attributes are:
@@ -22,8 +22,6 @@
 #   COLOR (4), TAR (3)
 #
 # Whitespaces are ignored outside of a string.
-#
-# Note TEXID becomes the fontId for texts.
 #
 # If creating e.g. an object after a texture, the object will use that
 # texture if not specified otherwise.
@@ -55,6 +53,9 @@ ID=10
 ID=8
 POSX=10
 
+# Note: For resources that can't be modified (e.g. workspaces), the resource will
+# first get deleted and then created again.
+#
 # This would set the position x of the object at id 8 to 10.
 #
 # If no id is specified the progamm will automatically choose the lowest

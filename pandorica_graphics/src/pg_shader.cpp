@@ -14,7 +14,7 @@ Shader::~Shader() {
     (*shaders).erase(id);
 }
 
-bool CreateShader(const id_t shaderId, const std::string& path, SDL_GPUShaderCreateInfo info) {
+bool CreateShader(const id_t shaderId, std::string_view path, SDL_GPUShaderCreateInfo info) {
     if (!shaderId) {
         Log(1, "ShaderId not allowed to be 0");
         return 0;

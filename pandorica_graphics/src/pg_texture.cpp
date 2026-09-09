@@ -69,9 +69,12 @@ bool CreateTexture(const id_t textureId, const id_t transferBufferId, const SDL_
         return 0;
     }
 
+    Texture* texture;
+
     if (textures->contains(textureId)) {
-        Log(1, std::format("Texture at id {} already exists, deleting it", textureId));
-        delete (*textures)[textureId];
+        Log(1, std::format("Texture at id {} already exists, overwriting it", textureId));
+        texture = textures->at(textureId);
+        SDL_ReleaseGPUTexture(gpu->device, texture->texture);
     }
 
     TransferBuffer* transferBuffer = (*transferBuffers)[transferBufferId];
@@ -101,11 +104,13 @@ bool CreateTexture(const id_t textureId, const id_t transferBufferId, const SDL_
         info.usage = SDL_GPU_TEXTUREUSAGE_SAMPLER | SDL_GPU_TEXTUREUSAGE_COLOR_TARGET;
     }
 
-    Texture* texture = new Texture(textureId, info);
-    texture->size    = SDL_CalculateGPUTextureFormatSize(gpu->textureFormat, info.width, info.height, info.layer_count_or_depth);
+    if (!texture)
+        texture = new Texture(textureId, info);
+    texture->size = SDL_CalculateGPUTextureFormatSize(gpu->textureFormat, info.width, info.height, info.layer_count_or_depth);
 
     if (!texture->texture) {
         Log(1, SDL_GetError());
+        delete texture;
         return 0;
     }
 
@@ -118,7 +123,7 @@ bool CreateTexture(const id_t textureId, const id_t transferBufferId, const SDL_
     return 1;
 }
 
-bool CreateTexture(const id_t textureId, const id_t transferBufferId, const std::string& path, SDL_GPUTextureCreateInfo info) {
+bool CreateTexture(const id_t textureId, const id_t transferBufferId, std::string_view path, SDL_GPUTextureCreateInfo info) {
     Texture* texture;
 
     if (!textureId) {
@@ -126,12 +131,11 @@ bool CreateTexture(const id_t textureId, const id_t transferBufferId, const std:
         return 0;
     }
 
-    if (textures->contains(textureId)) {
-        Log(0, std::format("Texture at id {} already exists, deleting it", textureId));
-        DeleteTexture(textureId);
-    }
-
     if (path.empty()) {
+        if (textures->contains(textureId)) {
+            Log(1, std::format("Texture at id {} already exists, deleting it", textureId));
+            DeleteTexture(textureId);
+        }
 
         Log(0, std::format("Creating texture without image data at id {}", textureId));
 
@@ -156,6 +160,9 @@ bool CreateTexture(const id_t textureId, const id_t transferBufferId, const std:
         texture->height           = info.height;
         texture->transferBufferId = transferBufferId;
     } else {
+        if (textures->contains(textureId)) {
+            Log(0, std::format("Texture at id {} already exists, overwriting it", textureId));
+        }
         Log(0, std::format("Creating texture from {} at id {}", path, textureId));
 
         SDL_Surface* surface = IMG_Load(std::format("{}{}", cContext->basePath, path).c_str());
@@ -177,7 +184,7 @@ bool CreateTexture(const id_t textureId, const id_t transferBufferId, const std:
     return 1;
 }
 
-bool CreateTexture(const id_t textureId, const id_t transferBufferId, const std::string& path) {
+bool CreateTexture(const id_t textureId, const id_t transferBufferId, std::string_view path) {
     return CreateTexture(textureId, transferBufferId, path, {.format = gpu->textureFormat, .usage = SDL_GPU_TEXTUREUSAGE_SAMPLER | SDL_GPU_TEXTUREUSAGE_COLOR_TARGET});
 }
 

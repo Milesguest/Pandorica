@@ -44,7 +44,7 @@ extern idmap<Shader>* shaders; /**< Pointer to 'gpu->shaders'. */
  *
  * @ingroup pg_gpu
  */
-bool CreateShader(const id_t shaderId, const std::string& path, SDL_GPUShaderCreateInfo info);
+bool CreateShader(const id_t shaderId, std::string_view path, SDL_GPUShaderCreateInfo info);
 /**
  * @brief Deletes a shader.
  *

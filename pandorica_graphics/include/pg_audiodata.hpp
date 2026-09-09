@@ -53,9 +53,9 @@ extern idmap<AudioData>* audioDatas; /**< @brief Pointer to 'audioDevice.audioDa
  * @see AudioData, DeleteAudioData()
  * @ingroup pg_audio
  */
-bool CreateAudioData(const id_t audioDataId, const std::string& path);
+bool CreateAudioData(const id_t audioDataId, std::string_view path);
 /**
- * @overload bool CreateAudioData(const id_t audioDataId, const std::string& path)
+ * @overload bool CreateAudioData(const id_t audioDataId, std::string_view path)
  *
  * @param audioDataId The id for the newly created audio data.
  * @param path The path from which to load the audio data.
@@ -66,7 +66,7 @@ bool CreateAudioData(const id_t audioDataId, const std::string& path);
  *
  * @ingroup pg_audio
  */
-bool CreateAudioData(const id_t audioDataId, const std::string& path, const id_t workspaceId);
+bool CreateAudioData(const id_t audioDataId, std::string_view path, const id_t workspaceId);
 /**
  * @brief Deletes audio data.
  *

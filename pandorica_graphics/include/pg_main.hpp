@@ -44,7 +44,7 @@ void Quit();
  *
  * @ingroup pg_main
  */
-void Log(const int level, const std::string& message);
+void Log(const int level, std::string_view message);
 /**
  * @brief Creates a window and GPUDevice.
  *
@@ -64,7 +64,7 @@ void Log(const int level, const std::string& message);
  *
  * @ingroup pg_main
  */
-bool CreateWindowAndGPU(const std::string& title, const int width, const int height, const SDL_WindowFlags flags, const bool debug);
+bool CreateWindowAndGPU(std::string_view title, const int width, const int height, const SDL_WindowFlags flags, const bool debug);
 /**
  * @brief Creates a standard context.
  *

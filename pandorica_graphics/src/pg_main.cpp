@@ -27,7 +27,7 @@ void Quit() {
     delete cContext;
 };
 
-void Log(const int level, const std::string& message) {
+void Log(const int level, std::string_view message) {
     switch (level) {
     case 0:
         if (settings::LOG_LEVEL == 0) {
@@ -63,7 +63,7 @@ void Log(const int level, const std::string& message) {
 };
 
 bool CreateWindowAndGPU(const std::string& title, const int width, const int height, const SDL_WindowFlags flags, const bool debug) {
-    // SDL_SetHint(SDL_HINT_AUDIO_DEVICE_STREAM_NAME, title.c_str());
+    SDL_SetHint(SDL_HINT_AUDIO_DEVICE_STREAM_NAME, title.c_str());
 
     if (cContext->window) {
         Log(1, "Window was already created, deleting the old one");

@@ -67,7 +67,7 @@ bool DeleteWorkspace(const id_t workspaceId);
  *
  * @ingroup pg_window
  */
-bool LoadWorkspace(const std::string& path);
+bool LoadWorkspace(std::string_view path);
 /**
  * @brief Get a workspace.
  *

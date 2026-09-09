@@ -13,7 +13,7 @@ AudioData::~AudioData() {
     audioDatas->erase(id);
 }
 
-bool CreateAudioData(const id_t audioDataId, const std::string& path) {
+bool CreateAudioData(const id_t audioDataId, std::string_view path) {
     if (!audioDataId) {
         Log(1, "AudioDataId is not allowed to be 0");
         return 0;
@@ -45,7 +45,7 @@ bool CreateAudioData(const id_t audioDataId, const std::string& path) {
     return 1;
 }
 
-bool CreateAudioData(const id_t audioDataId, const std::string& path, const id_t workspaceId) {
+bool CreateAudioData(const id_t audioDataId, std::string_view path, const id_t workspaceId) {
     if (!workspaces->contains(workspaceId)) {
         Log(1, std::format("Workspace at id {} does not exist, cannot create audio data", workspaceId));
         return 0;

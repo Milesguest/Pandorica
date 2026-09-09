@@ -393,7 +393,7 @@ struct GenericValue32 {
 /**
  * @brief Finds the lowest key in the specified list.
  *
- * @param mapToLookIn The map to look in.NO
+ * @param mapToLookIn The map to look in.
  * @param startValue The value at which to start searching.
  * @return The lowest key of the map starting from 'startValue'.
  *

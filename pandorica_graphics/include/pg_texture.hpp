@@ -48,6 +48,8 @@ extern idmap<Texture>* textures; /**< Pointer to 'gpu->textures'. */
  *
  * This function creates a texture at the specified id with the specified data (surface or path). That data is then copied to the transferbuffer.
  *
+ * @note If this function is called on an already existing texture, the image data will simply be replaced.
+ *
  * @param textureId The id at which to create the texture.
  * @param transferBufferId The id of the transferbuffer that is used for uploading the texture.
  * @param surface The image data of the texture (usually acquired with 'IMG_Load()').
@@ -72,7 +74,7 @@ bool CreateTexture(const id_t textureId, const id_t transferBufferId, const SDL_
  *
  * @ingroup pg_gpu
  */
-bool CreateTexture(const id_t textureId, const id_t transferBufferId, const std::string& path, SDL_GPUTextureCreateInfo info);
+bool CreateTexture(const id_t textureId, const id_t transferBufferId, std::string_view path, SDL_GPUTextureCreateInfo info);
 /**
  * @overload bool CreateTexture(const id_t textureId, const id_t transferBufferId, const SDL_Surface* surface, SDL_GPUTextureCreateInfo info)
  *
@@ -85,7 +87,7 @@ bool CreateTexture(const id_t textureId, const id_t transferBufferId, const std:
  *
  * @ingroup pg_gpu
  */
-bool CreateTexture(const id_t textureId, const id_t transferBufferId, const std::string& path);
+bool CreateTexture(const id_t textureId, const id_t transferBufferId, std::string_view path);
 /**
  * @brief Deletes a texture
  *
