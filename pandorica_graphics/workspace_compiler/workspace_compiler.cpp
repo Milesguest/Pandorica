@@ -11,7 +11,7 @@
 
 #include <pandorica_graphics/pg.hpp>
 
-#include <cereal/archives/binary.hpp>
+#include <cereal/archives/portable_binary.hpp>
 #include <cereal/types/string.hpp>
 #include <cereal/types/variant.hpp>
 
@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
             continue;
         }
 
-        cereal::BinaryOutputArchive archive(out);
+        cereal::PortableBinaryOutputArchive archive(out);
 
         bool               eof          = 0;
         bool               insidestring = 0;

@@ -43,7 +43,7 @@ bool SaveState(T* data, std::string path) {
         return 0;
     }
 
-    cereal::BinaryOutputArchive archive(out);
+    cereal::PortableBinaryOutputArchive archive(out);
     archive(*data);
 
     Log(0, std::format("Successfully saved state to {}", path));
@@ -84,7 +84,7 @@ bool LoadState(T* data, std::string path) {
         return 0;
     }
 
-    cereal::BinaryInputArchive archive(in);
+    cereal::PortableBinaryInputArchive archive(in);
     archive(*data);
 
     Log(0, std::format("Successfully loaded state from {}", path));

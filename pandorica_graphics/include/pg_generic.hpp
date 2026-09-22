@@ -1,7 +1,7 @@
 #pragma once
 
 #include <boost/unordered/unordered_node_map.hpp>
-#include <cereal/archives/binary.hpp>
+#include <cereal/archives/portable_binary.hpp>
 #include <cereal/types/string.hpp>
 #include <eigen3/Eigen/Core>
 #include <eigen3/Eigen/Eigen>

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "cereal/archives/portable_binary.hpp"
 #include "commands.hpp"
 #include "enums.hpp"
 #include <pandorica_graphics/pg.hpp>
@@ -38,7 +39,7 @@ inline bool LoadBWF(std::string_view path) {
 
     std::ifstream in(std::format("{}/{}", cContext->basePath, path), std::ios::binary);
 
-    cereal::BinaryInputArchive archive(in);
+    cereal::PortableBinaryInputArchive archive(in);
 
     bool    eof     = 0;
     uint8_t command = 0;
