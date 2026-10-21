@@ -10,6 +10,6 @@
     "cereal",
     "eigen3",
     "cli11",
-    "boost"
+    "boost-unordered"
   ]
 }
