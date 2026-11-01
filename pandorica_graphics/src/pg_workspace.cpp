@@ -11,6 +11,11 @@ Workspace::Workspace(id_t id) : EngineResource(id) {
 }
 Workspace::~Workspace() {
     (*workspaces).erase(id);
+
+    for (TransferBuffer* transferBuffer : this->transferBuffers)
+        DeleteTransferBuffer(transferBuffer->id);
+    for (AudioData* audioData : this->audioDatas)
+        DeleteAudioData(audioData->id);
 }
 
 bool CreateWorkspace(const id_t workspaceId) {
@@ -35,13 +40,6 @@ bool DeleteWorkspace(const id_t workspaceId) {
         Log(1, std::format("Workspace at id {} does not exist, exiting delete function", workspaceId));
         return 0;
     }
-
-    Workspace* workspace = workspaces->at(workspaceId);
-
-    for (TransferBuffer* transferBuffer : workspace->transferBuffers)
-        DeleteTransferBuffer(transferBuffer->id);
-    for (AudioData* audioData : workspace->audioDatas)
-        DeleteAudioData(audioData->id);
 
     delete window->workspaces[workspaceId];
 

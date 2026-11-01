@@ -22,7 +22,7 @@ bool CreateShader(const id_t shaderId, std::string_view path, SDL_GPUShaderCreat
 
     if (shaders->contains(shaderId)) {
         Log(1, std::format("Shader at id {} already exists, deleting it", shaderId));
-        return 0;
+        delete shaders->at(shaderId);
     }
 
     // Altered code from 'https://github.com/TheSpydog/SDL_gpu_examples'.

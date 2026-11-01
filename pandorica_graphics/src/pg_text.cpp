@@ -19,6 +19,10 @@ Text::~Text() {
     if (text) {
         TTF_DestroyText(text);
     }
+
+    if (this->attachedObjectId >= settings::START_SYSTEM_RESOURCES)
+        DeleteObject(this->attachedObjectId);
+
     texts->erase(id);
 
     transferBuffers->at(transferBufferId)->texts.remove(this);
@@ -117,12 +121,7 @@ bool DeleteText(const id_t textId) {
         return 0;
     }
 
-    Text* text = texts->at(textId);
-
-    if (text->attachedObjectId >= settings::START_SYSTEM_RESOURCES)
-        DeleteObject(text->attachedObjectId);
-
-    delete text;
+    delete texts->at(textId);
 
     Log(0, std::format("Successfully deleted text at id {}", textId));
     return 1;

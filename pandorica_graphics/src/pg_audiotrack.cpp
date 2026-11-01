@@ -10,6 +10,8 @@ AudioTrack::AudioTrack(id_t id) : EngineResource(id) {
 }
 
 AudioTrack::~AudioTrack() {
+    MIX_StopTrack(this->audioTrack, 0);
+
     audioTracks->erase(id);
 }
 
@@ -31,8 +33,7 @@ bool CreateAudioTrack(const id_t audioTrackId, const id_t audioDataId) {
 
     AudioTrack* audioTrack = new AudioTrack(audioTrackId);
 
-    audioTrack->audioDataId = audioDataId;
-    audioTrack->audioTrack  = MIX_CreateTrack(audioDevice->audioDevice);
+    audioTrack->audioTrack = MIX_CreateTrack(audioDevice->audioDevice);
     if (!MIX_SetTrackAudio(audioTrack->audioTrack, audioDatas->at(audioDataId)->audioData)) {
         Log(1, std::format("Could not set track audio: {}", SDL_GetError()));
         return 0;
@@ -50,10 +51,7 @@ bool DeleteAudioTrack(const id_t audioTrackId) {
         return 0;
     }
 
-    AudioTrack* audioTrack = audioTracks->at(audioTrackId);
-
-    MIX_StopTrack(audioTrack->audioTrack, 0);
-    delete audioTrack;
+    delete audioTracks->at(audioTrackId);
 
     Log(0, std::format("Successfully deleted audioTrack at id {}", audioTrackId));
     return 1;

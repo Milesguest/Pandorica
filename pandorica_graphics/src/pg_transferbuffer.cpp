@@ -14,6 +14,16 @@ TransferBuffer::TransferBuffer(id_t id, const SDL_GPUTransferBufferCreateInfo& i
 TransferBuffer::~TransferBuffer() {
     SDL_ReleaseGPUTransferBuffer(cContext->gpu->device, this->transferBuffer);
     (*transferBuffers).erase(id);
+
+    if (buffers->contains(this->instanceBufferId))
+        if (buffers->at(this->instanceBufferId)->deleteWithTransferBuffer)
+            DeleteBuffer(this->instanceBufferId);
+
+    for (Texture* texture : this->textures)
+        DeleteTexture(texture->id);
+
+    for (Text* text : this->texts)
+        DeleteText(text->id);
 }
 
 bool CreateTransferBuffer(const id_t transferBufferId, SDL_GPUTransferBufferCreateInfo info) {
@@ -45,16 +55,6 @@ bool DeleteTransferBuffer(const id_t transferBufferId) {
         return 0;
     }
     TransferBuffer* transferBuffer = cContext->gpu->transferBuffers[transferBufferId];
-
-    if (buffers->contains(transferBuffer->instanceBufferId))
-        if (buffers->at(transferBuffer->instanceBufferId)->deleteWithTransferBuffer)
-            DeleteBuffer(transferBuffer->instanceBufferId);
-
-    for (Texture* texture : transferBuffer->textures)
-        DeleteTexture(texture->id);
-
-    for (Text* text : transferBuffer->texts)
-        DeleteText(text->id);
 
     delete transferBuffer;
 

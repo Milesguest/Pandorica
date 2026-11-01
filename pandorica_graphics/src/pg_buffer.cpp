@@ -24,7 +24,7 @@ bool CreateBuffer(const id_t bufferId, SDL_GPUBufferCreateInfo info) {
 
     if (buffers->contains(bufferId)) {
         Log(1, std::format("Buffer at id {} already exists, overwriting it", bufferId));
-        delete (*buffers)[bufferId];
+        DeleteBuffer(bufferId);
     }
 
     if (!info.usage)

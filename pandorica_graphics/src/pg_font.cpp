@@ -47,9 +47,6 @@ bool DeleteFont(const id_t fontId) {
 
     Font* font = fonts->at(fontId);
 
-    for (Text* text : font->texts) {
-        DeleteText(text->id);
-    }
     delete font;
 
     Log(0, std::format("Successfully deleted font at id {}", fontId));

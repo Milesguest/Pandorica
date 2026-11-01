@@ -38,6 +38,11 @@ bool CreateObject(const id_t objectId, id_t textureId) {
         return 0;
     }
 
+    if (objects->contains(objectId)) {
+        Log(1, std::format("Object at id {} already exists, deleting it", objectId));
+        delete objects->at(objectId);
+    }
+
     if (!textureId) {
         Log(0, std::format("TextureId is 0, creating object without texture"));
 

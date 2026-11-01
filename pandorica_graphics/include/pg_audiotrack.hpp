@@ -22,8 +22,6 @@ struct AudioTrack : EngineResource {
      */
     MIX_Track* audioTrack;
 
-    id_t audioDataId; /**< The id of the audio track */
-
     AudioTrack(id_t id);
     ~AudioTrack();
 };
