@@ -12,10 +12,9 @@ var group__pg__audio =
       [ "audioTracks", "d2/df1/structpg_1_1AudioDevice.html#a5c8708db91640585193f76793cc3b8e9", null ]
     ] ],
     [ "pg::AudioTrack", "da/d2f/structpg_1_1AudioTrack.html", [
-      [ "audioTrack", "da/d2f/structpg_1_1AudioTrack.html#a7cd57457dca0499cc91725e8d1b799b6", null ],
-      [ "audioDataId", "da/d2f/structpg_1_1AudioTrack.html#a23db207dda907cf0bb488beb58e5dc32", null ]
+      [ "audioTrack", "da/d2f/structpg_1_1AudioTrack.html#a7cd57457dca0499cc91725e8d1b799b6", null ]
     ] ],
-    [ "pg::CreateAudioData", "df/d52/group__pg__audio.html#ga630b0420b6e8177651b17c5e24037e31", null ],
+    [ "pg::CreateAudioData", "df/d52/group__pg__audio.html#ga21aeeea9199dbfa3a0d79e334e4b8840", null ],
     [ "pg::DeleteAudioData", "df/d52/group__pg__audio.html#gada9ba6d33115a71e49444423089810e2", null ],
     [ "pg::SetAudioDataAttributes", "df/d52/group__pg__audio.html#ga61c67e6f00c460165a475e1e1281267b", null ],
     [ "pg::GetAudioData", "df/d52/group__pg__audio.html#ga655d42d93318451a5ac1c52eb181ce59", null ],

@@ -19,12 +19,12 @@ var group__pg__text =
       [ "fonts", "d9/d23/structpg_1_1TextDevice.html#a0eaa23a3d8498efacf1732eed25520b0", null ],
       [ "texts", "d9/d23/structpg_1_1TextDevice.html#ae59d48c8ba43c11b511a2ad57de930f5", null ]
     ] ],
-    [ "pg::CreateFont", "dc/d33/group__pg__text.html#gad6c2246f61a8fbb01c084d02053d5424", null ],
+    [ "pg::CreateFont", "dc/d33/group__pg__text.html#ga04cceadbf3f3e3884909cacd46c3706b", null ],
     [ "pg::DeleteFont", "dc/d33/group__pg__text.html#ga1cfcec2cee828600008dac51a0626f99", null ],
     [ "pg::GetFont", "dc/d33/group__pg__text.html#ga62380864122c99a3ac851687a6ff8082", null ],
     [ "pg::CreateText", "dc/d33/group__pg__text.html#ga25bdafc928619a48c380aab71cbb3ea6", null ],
     [ "pg::DeleteText", "dc/d33/group__pg__text.html#ga4099182bbf914d19c894aa5fc56837ea", null ],
-    [ "pg::SetText", "dc/d33/group__pg__text.html#ga50cbd1ec1f8d45d7c79abcab38be3e25", null ],
+    [ "pg::SetText", "dc/d33/group__pg__text.html#ga97a1878e0e7d96176e8cceafd9d441d8", null ],
     [ "pg::SetTextAttributes", "dc/d33/group__pg__text.html#ga2e166dd379fe2674a6a874de73068baf", null ],
     [ "pg::GetText", "dc/d33/group__pg__text.html#ga57f0f87c07c2bb6afa135ce57578c85e", null ],
     [ "pg::CreateTextDevice", "dc/d33/group__pg__text.html#ga6ffce061aed4e23778e6a8551ff6985a", null ]

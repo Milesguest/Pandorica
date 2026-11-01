@@ -1,13 +1,12 @@
 var NAVTREEINDEX1 =
 {
-"dd/db9/tutorial_03_8cpp-example.html":[2,2],
 "dd/dbe/structpg_1_1vector.html":[0,0,2],
 "de/d16/structpg_1_1Shader.html":[0,2,4],
 "de/d16/structpg_1_1Shader.html#a0ce66c153aa90c0a4da85f40dedd167a":[0,2,4,0],
 "df/d52/group__pg__audio.html":[0,3],
+"df/d52/group__pg__audio.html#ga21aeeea9199dbfa3a0d79e334e4b8840":[0,3,3],
 "df/d52/group__pg__audio.html#ga5568126b5203eb3bf2468c4031677700":[0,3,9],
 "df/d52/group__pg__audio.html#ga61c67e6f00c460165a475e1e1281267b":[0,3,5],
-"df/d52/group__pg__audio.html#ga630b0420b6e8177651b17c5e24037e31":[0,3,3],
 "df/d52/group__pg__audio.html#ga655d42d93318451a5ac1c52eb181ce59":[0,3,6],
 "df/d52/group__pg__audio.html#ga7a2c2f854ce036f6fb1f821af56c2b59":[0,3,11],
 "df/d52/group__pg__audio.html#ga836eb945e7dcd2218cc274a46ae450a3":[0,3,8],

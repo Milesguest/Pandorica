@@ -63,7 +63,7 @@ var group__pg__gpu =
     [ "pg::CreateSampler", "d3/df2/group__pg__gpu.html#ga7eb1bed6857df9a1337e5150a510a4cc", null ],
     [ "pg::DeleteSampler", "d3/df2/group__pg__gpu.html#gaa6e26d4b6c91c61ab6dd72bc96c3b355", null ],
     [ "pg::GetSampler", "d3/df2/group__pg__gpu.html#ga3a5da596ca104add77da685483f40f49", null ],
-    [ "pg::CreateShader", "d3/df2/group__pg__gpu.html#gae41894ace8c80648f38e1dc1f7738aac", null ],
+    [ "pg::CreateShader", "d3/df2/group__pg__gpu.html#ga253d5c83607af17ebf42a2859a54c733", null ],
     [ "pg::DeleteShader", "d3/df2/group__pg__gpu.html#gadee8a8b46224e2bfbd37079836fb20c2", null ],
     [ "pg::GetShader", "d3/df2/group__pg__gpu.html#gac20cc240e76e65a306b26f31b5ba8164", null ],
     [ "pg::CreateTexture", "d3/df2/group__pg__gpu.html#ga348acc3d23896a7a7bc1417f6316d258", null ],

@@ -48,6 +48,6 @@ var group__pg__window =
     [ "pg::GetObject", "d5/d30/group__pg__window.html#ga71c250223290826fba575e2a4c1fbd7f", null ],
     [ "pg::CreateWorkspace", "d5/d30/group__pg__window.html#gaf1a98887c8b8da575f69c5b138f9e711", null ],
     [ "pg::DeleteWorkspace", "d5/d30/group__pg__window.html#ga87a1065d8ff8d4c035ac409ac306646a", null ],
-    [ "pg::LoadWorkspace", "d5/d30/group__pg__window.html#gaeb7117566dcca2fe0f57ad42deeb2e7b", null ],
+    [ "pg::LoadWorkspace", "d5/d30/group__pg__window.html#gad2575a4a366f0db31343f609aed58d7f", null ],
     [ "pg::GetWorkspace", "d5/d30/group__pg__window.html#ga5aa0a3c3db7d74e75a580b71bbd421cb", null ]
 ];

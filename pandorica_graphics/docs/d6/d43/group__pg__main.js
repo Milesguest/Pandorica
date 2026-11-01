@@ -8,7 +8,7 @@ var group__pg__main =
       [ "running", "d8/d42/structpg_1_1Context.html#ae9495a4db878af09e4fd406801d1e680", null ],
       [ "logFile", "d8/d42/structpg_1_1Context.html#aeaef47860e6afa731827953f95d3adef", null ],
       [ "basePath", "d8/d42/structpg_1_1Context.html#a18c77412d0b5039b5b76c150aff759a6", null ],
-      [ "linkToPlugin", "d8/d42/structpg_1_1Context.html#a56a10026403f45ab7fc12dd05634348b", null ]
+      [ "linkToPlugin", "d8/d42/structpg_1_1Context.html#aa164f5153d66b420344f2a75d9dac39f", null ]
     ] ],
     [ "pg::EngineResource", "d6/d05/structpg_1_1EngineResource.html", [
       [ "id", "d6/d05/structpg_1_1EngineResource.html#add684b1be9db75515a8bea611a103d4a", null ]
@@ -99,8 +99,8 @@ var group__pg__main =
     [ "pg::GetLowestKey", "d6/d43/group__pg__main.html#gabbf62026ee38bd076e8ec8cfde592bbe", null ],
     [ "pg::Init", "d6/d43/group__pg__main.html#ga4649ad7bb8e7b76cc8d401ab8d71dee5", null ],
     [ "pg::Quit", "d6/d43/group__pg__main.html#gab8f502267e7f6fa23204af8e9e7e0dbf", null ],
-    [ "pg::Log", "d6/d43/group__pg__main.html#ga4856dd528222f6ca715ec6c85722cd9d", null ],
-    [ "pg::CreateWindowAndGPU", "d6/d43/group__pg__main.html#ga2f8f67cfa0f0263521d084d03b374e88", null ],
+    [ "pg::Log", "d6/d43/group__pg__main.html#ga8c45d4229c1abc3f9185b0b54b490f5c", null ],
+    [ "pg::CreateWindowAndGPU", "d6/d43/group__pg__main.html#ga6e312a9fda247a20fffa7e2137d23e1f", null ],
     [ "pg::CreateStandardContext", "d6/d43/group__pg__main.html#ga6924effc49bdd3edf3869a1a0621507a", null ],
     [ "pg::StartLoop", "d6/d43/group__pg__main.html#ga36c1cc7b17c165c54bf1b126c4929098", null ],
     [ "pg::Render", "d6/d43/group__pg__main.html#gadcb8c328e8caf71540add374bd5e4953", null ]

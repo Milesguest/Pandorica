@@ -34,9 +34,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "d0/dbc/structpg_1_1Buffer.html",
-"dd/db9/tutorial_03_8cpp-example.html"
+"dd/dbe/structpg_1_1vector.html"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronization';
-var SYNCOFFMSG = 'click to enable panel synchronization';
-var LISTOFALLMEMBERS = 'List of all members';
+const SYNCONMSG = 'click to disable panel synchronization';
+const SYNCOFFMSG = 'click to enable panel synchronization';
+const LISTOFALLMEMBERS = 'List of all members';
