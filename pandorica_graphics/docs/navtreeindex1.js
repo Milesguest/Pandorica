@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"dc/d33/group__pg__text.html#ga97a1878e0e7d96176e8cceafd9d441d8":[0,4,8],
+"dd/db9/tutorial_03_8cpp-example.html":[2,2],
 "dd/dbe/structpg_1_1vector.html":[0,0,2],
 "de/d16/structpg_1_1Shader.html":[0,2,4],
 "de/d16/structpg_1_1Shader.html#a0ce66c153aa90c0a4da85f40dedd167a":[0,2,4,0],

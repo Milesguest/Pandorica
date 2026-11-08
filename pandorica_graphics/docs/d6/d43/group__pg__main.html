@@ -185,6 +185,8 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:gabb27939c5aeecc1606957a3bdc223dcf" id="r_gabb27939c5aeecc1606957a3bdc223dcf"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#gabb27939c5aeecc1606957a3bdc223dcf">pg::LinkPluginFunction</a> (void(*pluginFunction)(), void(**newPluginLink)())</td></tr>
+<tr class="memdesc:gabb27939c5aeecc1606957a3bdc223dcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Links a function that will be called in the loop.  <br /></td></tr>
 <tr class="memitem:ga9389ded7d54f124f53dd63369efd7917" id="r_ga9389ded7d54f124f53dd63369efd7917"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ga9389ded7d54f124f53dd63369efd7917">pg::SetHint</a> (<a class="el" href="#ga2f62cb067eb4c1e036e91166b89b886c">SettingsHint</a> hint, <a class="el" href="../../d8/d8d/structpg_1_1GenericValue32.html">GenericValue32</a> value)</td></tr>
 <tr class="memdesc:ga9389ded7d54f124f53dd63369efd7917"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use to set settings for the engine.  <br /></td></tr>
 <tr class="memitem:gabbf62026ee38bd076e8ec8cfde592bbe" id="r_gabbf62026ee38bd076e8ec8cfde592bbe"><td class="memTemplParams" colspan="2">template&lt;typename TMapType&gt; </td></tr>
@@ -411,6 +413,40 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="gabb27939c5aeecc1606957a3bdc223dcf" name="gabb27939c5aeecc1606957a3bdc223dcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabb27939c5aeecc1606957a3bdc223dcf">&#9670;&#160;</a></span>LinkPluginFunction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pg::LinkPluginFunction </td>
+          <td>(</td>
+          <td class="paramtype">void(*</td>          <td class="paramname"><span class="paramname"><em>pluginFunction&#160;</em></span>)(), </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*</td>          <td class="paramname"><span class="paramname"><em>newPluginLink&#160;</em></span>*)()&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Links a function that will be called in the loop. </p>
+<p>Allows to link a function from another plugin or file to be used with pandorica graphics</p>
+<dl class="section note"><dt>Note</dt><dd>The new plugin can be a nullptr when trying to call it</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pluginFunction</td><td>The function you would like to be called inside of the loop. </td></tr>
+    <tr><td class="paramname">newPluginLink</td><td>The function that you will have to call inside your pluginFunction. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if it succeeded, false if it failed. See the logs for more information.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d8/d42/structpg_1_1Context.html" title="A struct grouping all objects of a program.">Context</a> </dd></dl>
+
+</div>
+</div>
 <a id="ga9389ded7d54f124f53dd63369efd7917" name="ga9389ded7d54f124f53dd63369efd7917"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga9389ded7d54f124f53dd63369efd7917">&#9670;&#160;</a></span>SetHint()</h2>
 

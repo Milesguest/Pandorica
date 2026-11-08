@@ -30,8 +30,27 @@ struct Context {
     Context();
     ~Context();
 
-    void (*linkToPlugin)() = nullptr; /**< Use this to link a function which is called inside StartLoop() before mainFunction(). */
+    void (*linkToPlugin)()    = nullptr;       /**< Use this to link a function which is called inside StartLoop() before mainFunction(). */
+    void (**lastPluginLink)() = &linkToPlugin; /**< The link of the last plugin that was linked. These functions should be chained together. */
 };
 extern Context* cContext; /**< The current context of the program. */
+
+/**
+ * @brief Links a function that will be called in the loop
+ *
+ * Allows to link a function from another plugin or file to be used with pandorica graphics
+ *
+ * @note The new plugin can be a nullptr when trying to call it
+ *
+ * @param pluginFunction The function you would like to be called inside of the loop.
+ * @param newPluginLink The function that you will have to call inside your pluginFunction.
+ * @return true if it succeeded, false if it failed. See the logs for more information.
+ *
+ *
+ * @see Context
+ *
+ * @ingroup pg_main
+ */
+bool LinkPluginFunction(void (*pluginFunction)(), void (**newPluginLink)());
 
 } // namespace pg

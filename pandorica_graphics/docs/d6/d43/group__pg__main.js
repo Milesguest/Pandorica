@@ -8,7 +8,8 @@ var group__pg__main =
       [ "running", "d8/d42/structpg_1_1Context.html#ae9495a4db878af09e4fd406801d1e680", null ],
       [ "logFile", "d8/d42/structpg_1_1Context.html#aeaef47860e6afa731827953f95d3adef", null ],
       [ "basePath", "d8/d42/structpg_1_1Context.html#a18c77412d0b5039b5b76c150aff759a6", null ],
-      [ "linkToPlugin", "d8/d42/structpg_1_1Context.html#aa164f5153d66b420344f2a75d9dac39f", null ]
+      [ "linkToPlugin", "d8/d42/structpg_1_1Context.html#aa164f5153d66b420344f2a75d9dac39f", null ],
+      [ "lastPluginLink", "d8/d42/structpg_1_1Context.html#ae115c2d05d6628dee54dfc02a04f441d", null ]
     ] ],
     [ "pg::EngineResource", "d6/d05/structpg_1_1EngineResource.html", [
       [ "id", "d6/d05/structpg_1_1EngineResource.html#add684b1be9db75515a8bea611a103d4a", null ]
@@ -95,6 +96,7 @@ var group__pg__main =
       [ "pg::REMOVE_WORKSPACE_ID", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a215d3a1a7273beb9d59dee14699e189d", null ],
       [ "pg::OBJECT_ID", "d6/d43/group__pg__main.html#gga3aa00c9733ff1f9d9b86f27d95ac36b2a2e6d9c9a8df84ec129d6b07db8e1edde", null ]
     ] ],
+    [ "pg::LinkPluginFunction", "d6/d43/group__pg__main.html#gabb27939c5aeecc1606957a3bdc223dcf", null ],
     [ "pg::SetHint", "d6/d43/group__pg__main.html#ga9389ded7d54f124f53dd63369efd7917", null ],
     [ "pg::GetLowestKey", "d6/d43/group__pg__main.html#gabbf62026ee38bd076e8ec8cfde592bbe", null ],
     [ "pg::Init", "d6/d43/group__pg__main.html#ga4649ad7bb8e7b76cc8d401ab8d71dee5", null ],

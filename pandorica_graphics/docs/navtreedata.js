@@ -34,7 +34,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "d0/dbc/structpg_1_1Buffer.html",
-"dd/dbe/structpg_1_1vector.html"
+"dc/d33/group__pg__text.html#ga97a1878e0e7d96176e8cceafd9d441d8"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';
