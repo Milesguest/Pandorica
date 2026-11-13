@@ -3,10 +3,10 @@
 
 namespace pg {
 
-bool Init() {
+bool Init(SDL_InitFlags initFlags = SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_AUDIO) {
     SDL_SetHint(SDL_HINT_LOGGING, "app=info, *=verbose");
     cContext = new Context;
-    if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_AUDIO))
+    if (!SDL_Init(initFlags))
         Log(2, std::format("Could not initialize SDL: {}", SDL_GetError()));
 
     if (!TTF_Init())
@@ -62,15 +62,15 @@ void Log(const int level, std::string_view message) {
     }
 };
 
-bool CreateWindowAndGPU(const std::string& title, const int width, const int height, const SDL_WindowFlags flags, const bool debug) {
-    SDL_SetHint(SDL_HINT_AUDIO_DEVICE_STREAM_NAME, title.c_str());
+bool CreateWindowAndGPU(const std::string_view title, const int width, const int height, const SDL_WindowFlags flags, const bool debug) {
+    SDL_SetHint(SDL_HINT_AUDIO_DEVICE_STREAM_NAME, title.data());
 
     if (cContext->window) {
         Log(1, "Window was already created, deleting the old one");
         delete cContext->window;
     }
 
-    cContext->window = new Window(SDL_CreateWindow(title.c_str(), width, height, flags));
+    cContext->window = new Window(SDL_CreateWindow(title.data(), width, height, flags));
     if (!cContext->window->window) {
         Log(2, std::format("Could not create a window: {}", SDL_GetError()));
         return 0;
