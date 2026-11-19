@@ -55,20 +55,6 @@ bool CreateWorkspace(const id_t workspaceId);
  */
 bool DeleteWorkspace(const id_t workspaceId);
 /**
- * @brief Load a workspace(s) from a binary workspace file (.bwf)
- *
- * Loads the workspace(s) from the file into the program.
- * See @ref example.twf for more information.
- *
- * @param path The path at which to find the .bwf
- * @return true if it succeeded, false if it failed. See the logs for more information.
- *
- * @see Workspace, DeleteWorkspace()
- *
- * @ingroup pg_window
- */
-bool LoadWorkspace(std::string_view path);
-/**
  * @brief Get a workspace.
  *
  * @param workspaceId The id of the workspace to return.

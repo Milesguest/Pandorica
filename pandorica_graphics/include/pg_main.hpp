@@ -10,11 +10,14 @@ namespace pg {
  *
  * This function initializes every required SDL3 system and also creates a context.
  *
+ * @param initFlags The flags to initialize SDL with.
+ * @return true if it succeeded, false if it failed. See the logs for more information.
+ *
  * @see Context, Quit(), CreateWindowAndGPU()
  *
  * @ingroup pg_main
  */
-bool Init();
+bool Init(SDL_InitFlags initFlags = SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_AUDIO);
 /**
  * @brief Quits Pandorica Graphics.
  *

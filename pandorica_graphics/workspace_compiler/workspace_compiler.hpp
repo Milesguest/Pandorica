@@ -3,7 +3,6 @@
 #include "cereal/archives/portable_binary.hpp"
 #include "commands.hpp"
 #include "enums.hpp"
-#include <pandorica_graphics/pg.hpp>
 
 namespace pg {
 namespace ws {
@@ -83,7 +82,7 @@ inline bool LoadBWF(std::string_view path) {
         }
     }
 
-    if (error)
+    if (!error)
         Log(1, std::format("Some problems accured while loading {}, some data may be incorrect", path));
     Log(0, std::format("Successfully loaded {}", path));
     return error;

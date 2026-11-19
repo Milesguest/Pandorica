@@ -100,20 +100,19 @@ mat4f CreateProjectionMatrix(const float fovY, const float aspect, const float n
 }
 
 mat4f Create2DProjectionMatrix(const float fovY, const float aspect) {
+    const float near = 0.0001f;
+    const float far  = 99999.f;
+
     mat4f proj = mat4f::Zero();
 
-    float       height = fovY;
-    float       width  = aspect * height;
-    const float far    = 1000000.f;
-    const float near   = fovY / 2;
+    proj(0, 0) = 1.0f / aspect;
 
-    proj(0, 0) = (2.0f * near) / width;
-    proj(1, 1) = -(2.0f * near) / height;
+    proj(1, 1) = -1.0f;
 
     proj(2, 2) = near / (far - near);
     proj(2, 3) = (near * far) / (far - near);
 
-    proj(3, 3) = 1.0f;
+    proj(3, 2) = -1.0f;
 
     return proj;
 }

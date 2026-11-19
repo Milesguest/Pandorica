@@ -3,10 +3,10 @@
 
 using namespace metal;
 
-constant uint2 _285 = {};
-constant float2 _286 = {};
-constant float4 _287 = {};
-constant float3 _288 = {};
+constant float4 _199 = {};
+constant float3 _200 = {};
+constant float4 _201 = {};
+constant float2 _202 = {};
 
 struct main0_out
 {
@@ -24,208 +24,208 @@ struct main0_in
 fragment main0_out main0(main0_in in [[stage_in]], texture2d<float> tex [[texture(0)]], sampler smp [[sampler(0)]], float4 gl_FragCoord [[position]])
 {
     main0_out out = {};
-    uint2 _325 = uint2(tex.get_width(), tex.get_height());
-    float2 _336 = float2(float(_325.x), float(_325.y));
-    float2 _340 = float2(1.0) / _336;
-    float2 _344 = in.in_var_TEXCOORD0 * _336;
-    float2 _348 = fwidth(_344);
-    float2 _356 = _344 - float2(0.5);
-    float2 _364 = fast::clamp(_348, float2(9.9999997473787516355514526367188e-06), float2(1.0)) * 0.5;
-    float2 _370 = smoothstep(float2(0.5) - _364, float2(0.5) + _364, fract(_356));
-    float2 _374 = floor(_356);
-    float2 _382 = (_374 + float2(1.5, 0.5)) * _340;
-    float2 _388 = (_374 + float2(0.5, 1.5)) * _340;
-    float2 _394 = (_374 + float2(1.5)) * _340;
-    float2 _398 = (_374 + float2(0.5)) * _340;
-    float2 _402 = dfdx(in.in_var_TEXCOORD0);
-    float2 _406 = dfdy(in.in_var_TEXCOORD0);
-    float _434 = _398.x;
-    bool _454;
-    if (!(_434 < in.in_var_TEXCOORD2.x))
+    uint2 _302 = uint2(tex.get_width(), tex.get_height());
+    float2 _313 = float2(float(_302.x), float(_302.y));
+    float2 _317 = float2(1.0) / _313;
+    float2 _321 = in.in_var_TEXCOORD0 * _313;
+    float2 _325 = fwidth(_321);
+    float2 _333 = _321 - float2(0.5);
+    float2 _341 = fast::clamp(_325, float2(9.9999997473787516355514526367188e-06), float2(1.0)) * 0.5;
+    float2 _347 = smoothstep(float2(0.5) - _341, float2(0.5) + _341, fract(_333));
+    float2 _351 = floor(_333);
+    float2 _359 = (_351 + float2(1.5, 0.5)) * _317;
+    float2 _365 = (_351 + float2(0.5, 1.5)) * _317;
+    float2 _371 = (_351 + float2(1.5)) * _317;
+    float2 _375 = (_351 + float2(0.5)) * _317;
+    float2 _379 = dfdx(in.in_var_TEXCOORD0);
+    float2 _383 = dfdy(in.in_var_TEXCOORD0);
+    float _411 = _375.x;
+    bool _429;
+    if ((isunordered(_411, in.in_var_TEXCOORD2.x) || _411 >= in.in_var_TEXCOORD2.x))
     {
-        _454 = _434 > in.in_var_TEXCOORD2.z;
+        _429 = _411 > in.in_var_TEXCOORD2.z;
     }
     else
     {
-        _454 = true;
+        _429 = true;
     }
-    bool _470;
-    if (!_454)
+    bool _445;
+    if (!_429)
     {
-        _470 = _398.y < in.in_var_TEXCOORD2.y;
+        _445 = _375.y < in.in_var_TEXCOORD2.y;
     }
     else
     {
-        _470 = true;
+        _445 = true;
     }
-    bool _486;
-    if (!_470)
+    bool _461;
+    if (!_445)
     {
-        _486 = _398.y > in.in_var_TEXCOORD2.w;
+        _461 = _375.y > in.in_var_TEXCOORD2.w;
     }
     else
     {
-        _486 = true;
+        _461 = true;
     }
-    float4 _496;
-    if (_486)
+    float4 _471;
+    if (_461)
     {
-        float4 _492;
-        _492.w = 0.0;
-        _496 = _492;
+        float4 _467;
+        _467.w = 0.0;
+        _471 = _467;
     }
     else
     {
-        _496 = tex.sample(smp, _398, gradient2d(_402, _406));
+        _471 = tex.sample(smp, _375, gradient2d(_379, _383));
     }
-    float _499 = _388.x;
-    bool _515;
-    if (!(_499 < in.in_var_TEXCOORD2.x))
+    float _474 = _365.x;
+    bool _488;
+    if ((isunordered(_474, in.in_var_TEXCOORD2.x) || _474 >= in.in_var_TEXCOORD2.x))
     {
-        _515 = _499 > in.in_var_TEXCOORD2.z;
+        _488 = _474 > in.in_var_TEXCOORD2.z;
     }
     else
     {
-        _515 = true;
+        _488 = true;
     }
-    bool _531;
-    if (!_515)
+    bool _504;
+    if (!_488)
     {
-        _531 = _388.y < in.in_var_TEXCOORD2.y;
+        _504 = _365.y < in.in_var_TEXCOORD2.y;
     }
     else
     {
-        _531 = true;
+        _504 = true;
     }
+    bool _520;
+    if (!_504)
+    {
+        _520 = _365.y > in.in_var_TEXCOORD2.w;
+    }
+    else
+    {
+        _520 = true;
+    }
+    float4 _530;
+    if (_520)
+    {
+        float4 _526;
+        _526.w = 0.0;
+        _530 = _526;
+    }
+    else
+    {
+        _530 = tex.sample(smp, _365, gradient2d(_379, _383));
+    }
+    float _533 = _359.x;
     bool _547;
-    if (!_531)
+    if ((isunordered(_533, in.in_var_TEXCOORD2.x) || _533 >= in.in_var_TEXCOORD2.x))
     {
-        _547 = _388.y > in.in_var_TEXCOORD2.w;
+        _547 = _533 > in.in_var_TEXCOORD2.z;
     }
     else
     {
         _547 = true;
     }
-    float4 _557;
-    if (_547)
+    bool _563;
+    if (!_547)
     {
-        float4 _553;
-        _553.w = 0.0;
-        _557 = _553;
+        _563 = _359.y < in.in_var_TEXCOORD2.y;
     }
     else
     {
-        _557 = tex.sample(smp, _388, gradient2d(_402, _406));
+        _563 = true;
     }
-    float _560 = _382.x;
-    bool _576;
-    if (!(_560 < in.in_var_TEXCOORD2.x))
+    bool _579;
+    if (!_563)
     {
-        _576 = _560 > in.in_var_TEXCOORD2.z;
+        _579 = _359.y > in.in_var_TEXCOORD2.w;
     }
     else
     {
-        _576 = true;
+        _579 = true;
     }
-    bool _592;
-    if (!_576)
+    float4 _589;
+    if (_579)
     {
-        _592 = _382.y < in.in_var_TEXCOORD2.y;
+        float4 _585;
+        _585.w = 0.0;
+        _589 = _585;
     }
     else
     {
-        _592 = true;
+        _589 = tex.sample(smp, _359, gradient2d(_379, _383));
     }
-    bool _608;
-    if (!_592)
+    float _592 = _371.x;
+    bool _606;
+    if ((isunordered(_592, in.in_var_TEXCOORD2.x) || _592 >= in.in_var_TEXCOORD2.x))
     {
-        _608 = _382.y > in.in_var_TEXCOORD2.w;
+        _606 = _592 > in.in_var_TEXCOORD2.z;
     }
     else
     {
-        _608 = true;
+        _606 = true;
     }
-    float4 _618;
-    if (_608)
+    bool _622;
+    if (!_606)
     {
-        float4 _614;
-        _614.w = 0.0;
-        _618 = _614;
+        _622 = _371.y < in.in_var_TEXCOORD2.y;
     }
     else
     {
-        _618 = tex.sample(smp, _382, gradient2d(_402, _406));
+        _622 = true;
     }
-    float _621 = _394.x;
-    bool _637;
-    if (!(_621 < in.in_var_TEXCOORD2.x))
+    bool _638;
+    if (!_622)
     {
-        _637 = _621 > in.in_var_TEXCOORD2.z;
+        _638 = _371.y > in.in_var_TEXCOORD2.w;
     }
     else
     {
-        _637 = true;
+        _638 = true;
     }
-    bool _653;
-    if (!_637)
+    float4 _648;
+    if (_638)
     {
-        _653 = _394.y < in.in_var_TEXCOORD2.y;
+        float4 _644;
+        _644.w = 0.0;
+        _648 = _644;
     }
     else
     {
-        _653 = true;
+        _648 = tex.sample(smp, _371, gradient2d(_379, _383));
     }
-    bool _669;
-    if (!_653)
+    float4 _669 = float4(_347.x);
+    float4 _683 = mix(mix(float4(_200.x, _200.y, _200.z, _471.w), float4(_200.x, _200.y, _200.z, _589.w), _669), mix(float4(_200.x, _200.y, _200.z, _530.w), float4(_200.x, _200.y, _200.z, _648.w), _669), float4(_347.y));
+    float4 _699;
+    if (_683.w > 9.9999997473787516355514526367188e-06)
     {
-        _669 = _394.y > in.in_var_TEXCOORD2.w;
+        _699 = float4(_200.x, _200.y, _200.z, _683.w);
     }
     else
     {
-        _669 = true;
+        _699 = _683;
     }
-    float4 _679;
-    if (_669)
+    float _722 = fast::clamp((log(precise::max(gl_FragCoord.w, 0.001000000047497451305389404296875)) - (-6.907755374908447265625)) * 0.072382412850856781005859375, 0.0, 1.0);
+    float _732 = _699.w * in.in_var_TEXCOORD1.w;
+    bool _744;
+    if ((isunordered(_732, 9.9999997473787516355514526367188e-06) || _732 >= 9.9999997473787516355514526367188e-06))
     {
-        float4 _675;
-        _675.w = 0.0;
-        _679 = _675;
+        _744 = _732 > 0.999989986419677734375;
     }
     else
     {
-        _679 = tex.sample(smp, _394, gradient2d(_402, _406));
+        _744 = true;
     }
-    float4 _700 = float4(_370.x);
-    float4 _714 = mix(mix(float4(_288.x, _288.y, _288.z, _496.w), float4(_288.x, _288.y, _288.z, _618.w), _700), mix(float4(_288.x, _288.y, _288.z, _557.w), float4(_288.x, _288.y, _288.z, _679.w), _700), float4(_370.y));
-    float4 _730;
-    if (_714.w > 9.9999997473787516355514526367188e-06)
-    {
-        _730 = float4(_288.x, _288.y, _288.z, _714.w);
-    }
-    else
-    {
-        _730 = _714;
-    }
-    float _753 = fast::clamp((log(precise::max(gl_FragCoord.w, 0.001000000047497451305389404296875)) - (-6.907755374908447265625)) * 0.072382412850856781005859375, 0.0, 1.0);
-    float _763 = _730.w * in.in_var_TEXCOORD1.w;
-    bool _777;
-    if (!(_763 < 9.9999997473787516355514526367188e-06))
-    {
-        _777 = _763 > 0.999989986419677734375;
-    }
-    else
-    {
-        _777 = true;
-    }
-    if (_777)
+    if (_744)
     {
         discard_fragment();
     }
-    float _790 = -log(fast::clamp(1.0 - _763, 0.001000000047497451305389404296875, 0.999000012874603271484375));
-    float _794 = _753 * _753;
-    float _796 = _794 * _753;
-    out.out_var_SV_Target0 = float4(_753, _794, _796, _796 * _753) * _790;
-    out.out_var_SV_Target1 = _790;
+    float _757 = -log(fast::clamp(1.0 - _732, 0.001000000047497451305389404296875, 0.999000012874603271484375));
+    float _761 = _722 * _722;
+    float _763 = _761 * _722;
+    out.out_var_SV_Target0 = float4(_722, _761, _763, _763 * _722) * _757;
+    out.out_var_SV_Target1 = _757;
     return out;
 }
 

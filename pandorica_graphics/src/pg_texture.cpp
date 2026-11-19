@@ -6,18 +6,18 @@ namespace pg {
 idmap<Texture>* textures;
 
 Texture::Texture(id_t id, const SDL_GPUTextureCreateInfo& info) : EngineResource(id) {
+    (*textures)[id] = this;
     this->texture   = SDL_CreateGPUTexture(gpu->device, &info);
     this->mipmap    = info.num_levels;
     this->size      = SDL_CalculateGPUTextureFormatSize(info.format, info.width, info.height, 1);
     this->width     = info.width;
     this->height    = info.height;
-    (*textures)[id] = this;
 }
 Texture::~Texture() {
     SDL_ReleaseGPUTexture(gpu->device, this->texture);
     textures->erase(id);
 
-    if (this->transferBufferId)
+    if (transferBuffers->contains(transferBufferId))
         transferBuffers->at(transferBufferId)->textures.remove(this);
 }
 
@@ -58,7 +58,7 @@ bool CopyTextureToTransferBuffer(Texture* texture, const SDL_Surface* surface, T
     return true;
 }
 
-bool CreateTexture(const id_t textureId, const id_t transferBufferId, const SDL_Surface* surface, SDL_GPUTextureCreateInfo info) {
+bool CreateTexture(const id_t textureId, const id_t transferBufferId, SDL_Surface* surface, SDL_GPUTextureCreateInfo info) {
     if (!textureId) {
         Log(1, "TextureId is not allowed to be 0");
         return 0;
@@ -69,7 +69,7 @@ bool CreateTexture(const id_t textureId, const id_t transferBufferId, const SDL_
         return 0;
     }
 
-    Texture* texture;
+    Texture* texture = nullptr;
 
     if (textures->contains(textureId)) {
         Log(1, std::format("Texture at id {} already exists, overwriting it", textureId));
@@ -98,6 +98,13 @@ bool CreateTexture(const id_t textureId, const id_t transferBufferId, const SDL_
 
     if (!info.num_levels) {
         info.num_levels = 1;
+    }
+
+    SDL_PixelFormat trgtFmt = SDL_GetPixelFormatFromGPUTextureFormat(info.format);
+    if (surface->format != trgtFmt) {
+        SDL_Surface* swap = SDL_ConvertSurface(surface, trgtFmt);
+        SDL_DestroySurface(surface);
+        surface = swap;
     }
 
     if (!info.usage) {

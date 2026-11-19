@@ -60,7 +60,7 @@ extern idmap<Texture>* textures; /**< Pointer to 'gpu->textures'. */
  *
  * @ingroup pg_gpu
  */
-bool CreateTexture(const id_t textureId, const id_t transferBufferId, const SDL_Surface* surface, SDL_GPUTextureCreateInfo info);
+bool CreateTexture(const id_t textureId, const id_t transferBufferId, SDL_Surface* surface, SDL_GPUTextureCreateInfo info);
 /**
  * @overload bool CreateTexture(const id_t textureId, const id_t transferBufferId, const SDL_Surface* surface, SDL_GPUTextureCreateInfo info)
  *

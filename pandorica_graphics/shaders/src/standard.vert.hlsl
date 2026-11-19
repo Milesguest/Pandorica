@@ -6,9 +6,10 @@ cbuffer VPB : register(b0, space1) {
 FS_Input main(VS_Input input) {
     FS_Input output;
 
-    float2 bias = (input.position.xy * 2.0f - 1.0f) * 0.03125f;
+    float2 worldBias = (input.position.xy * 2.0f - 1.0f) * 0.03125f;
+    float2 uvBias    = worldBias * (input.instCutSize / input.instSize);
 
-    output.uv = input.uv * input.instCutSize + input.instCutPos + bias;
+    output.uv = input.uv * input.instCutSize + input.instCutPos + uvBias;
 
     output.uvMax = float4(
         input.instCutPos.x,
@@ -24,9 +25,7 @@ FS_Input main(VS_Input input) {
 
     float3 pos = input.position;
 
-    pos.xy = (pos.xy - input.instOrigin.xy) * input.instSize;
-
-    pos.xy += bias;
+    pos.xy = (input.position.xy - input.instOrigin.xy) * input.instSize + worldBias;
 
     pos = mul(pos, rotationMatrix);
 

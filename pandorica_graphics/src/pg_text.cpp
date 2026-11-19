@@ -33,13 +33,18 @@ inline void CreateLetters(Text* text) {
     if (text->instance.use_count() < 2) {
         text->attachedObjectId = 0;
     }
+
+    text->letters.clear();
+
     TTF_GPUAtlasDrawSequence* drawData = TTF_GetGPUTextDrawData(text->text);
+    if (!drawData) {
+        text->letterAtlas = nullptr;
+        return;
+    }
 
     text->letterAtlas = drawData->atlas_texture;
 
     std::vector<SDL_FPoint> coordinates(drawData->xy, drawData->xy + drawData->num_vertices);
-
-    text->letters.clear();
 
     for (int i = 0; i < drawData->num_vertices / 4; ++i) {
         text->letters.push_back(Instance());
@@ -199,10 +204,10 @@ bool SetTextAttributes(const id_t textId, const std::vector<attributeAndValue>& 
         if (text->attachedObjectId)
             error &= SetObjectAttributes(text->attachedObjectId, objectAttributes);
         else {
-            Log(0, "There is no object attached to the text. Creating one.");
             text->attachedObjectId = GetLowestKey(objects, settings::START_SYSTEM_RESOURCES);
-            Object* object         = new Object(text->attachedObjectId);
-            object->instance       = text->instance;
+            Log(0, std::format("There is no object attached to the text. Creating one at {}.", text->attachedObjectId));
+            Object* object   = new Object(text->attachedObjectId);
+            object->instance = text->instance;
             error &= SetObjectAttributes(text->attachedObjectId, objectAttributes);
         }
     }

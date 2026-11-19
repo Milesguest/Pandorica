@@ -9,8 +9,6 @@
 #include <list>
 #include <variant>
 
-#include <pandorica_graphics/pg.hpp>
-
 #include <cereal/archives/portable_binary.hpp>
 #include <cereal/types/string.hpp>
 #include <cereal/types/variant.hpp>

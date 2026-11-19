@@ -1,8 +1,6 @@
 #pragma once
 
 #include "enums.hpp"
-#include <pandorica_graphics/pg.hpp>
-
 namespace pg {
 namespace ws {
 
@@ -14,13 +12,195 @@ namespace ws {
     X(tb, "tb", pg::ws::CreateTransferBuffer, ws::Attr::TBID) \
     Y(ib, "ib", pg::ws::CreateBuffer, -1)                     \
     Y(ad, "ad", pg::ws::CreateAudioData, -1)                  \
-    Y(txt, "txt", pg::ws::CreateText, -1)
+    X(txt, "txt", pg::ws::CreateText, ws::Attr::TEXTID)       \
+    X(butt, "butt", pg::ws::CreateButton, ws::Attr::BUTTONID) \
+    X(sc, "sc", pg::ws::CreateScene, ws::Attr::SCENEID)       \
+    Y(txtf, "txtf", pg::ws::CreateTextField, -1)
 
 #define X(enum, string, function, attribute) std::pair<int, id_t>{static_cast<int>(attribute), 0},
 #define Y(enum, string, function, attribute)
 inline auto lastCommands = std::unordered_map{WS_COMMANDS};
 #undef X
 #undef Y
+
+inline bool CreateTextField(pg::vector<std::pair<int, GenericValue32>>& attributes, pg::vector<std::pair<int, std::string>>& attributesString) {
+    bool error = 1;
+
+    std::vector<std::pair<interface::Attribute, GenericValue32>> setAttributes{};
+
+    id_t txtFId = GetLowestKey(interface::textFields, pg::settings::START_SYSTEM_RESOURCES);
+    id_t txtId  = 0;
+    id_t bId    = 0;
+
+    for (auto it = attributes.begin(); it != attributes.end();) {
+        auto attribute = *it;
+
+        int pgAttr = GetPGByAttribute(static_cast<ws::Attr>(attribute.first));
+
+        if (attribute.first == static_cast<int>(ws::Attr::ID)) {
+            txtFId = attribute.second.asUint();
+            it     = attributes.erase(it);
+            continue;
+        }
+
+        if (pgAttr < 0) {
+            it = attributes.erase(it);
+            continue;
+        }
+
+        if (attribute.first == static_cast<int>(ws::Attr::TEXTID)) {
+            txtId = attribute.second.asUint();
+            it    = attributes.erase(it);
+            continue;
+        }
+
+        if (attribute.first == static_cast<int>(ws::Attr::BUTTONID)) {
+            bId = attribute.second.asUint();
+            it  = attributes.erase(it);
+            continue;
+        }
+
+        setAttributes.push_back({pgAttr, attribute.second});
+
+        ++it;
+    }
+
+    if (!interface::textFields->contains(txtFId)) {
+        if (!txtId)
+            txtId = lastCommands.at(static_cast<int>(ws::Attr::TEXTID));
+        if (!bId)
+            bId = lastCommands.at(static_cast<int>(ws::Attr::BUTTONID));
+        error &= interface::CreateTextField(txtFId, bId);
+    } else {
+        if (txtId)
+            setAttributes.push_back({interface::TEXT_ID, txtId});
+        if (bId)
+            setAttributes.push_back({interface::BUTTON_ID, bId});
+    }
+    error &= interface::SetTextFieldAttributes(txtFId, setAttributes);
+
+    return error;
+}
+
+inline bool CreateScene(pg::vector<std::pair<int, GenericValue32>>& attributes, pg::vector<std::pair<int, std::string>>& attributesString) {
+    bool error = 1;
+
+    std::vector<std::pair<interface::Attribute, GenericValue32>> setAttributes{};
+
+    id_t sId = GetLowestKey(interface::scenes, pg::settings::START_SYSTEM_RESOURCES);
+
+    for (auto it = attributes.begin(); it != attributes.end();) {
+        auto attribute = *it;
+
+        int pgAttr = GetPGByAttribute(static_cast<ws::Attr>(attribute.first));
+
+        if (attribute.first == static_cast<int>(ws::Attr::ID)) {
+            sId = attribute.second.asUint();
+            it  = attributes.erase(it);
+            continue;
+        }
+
+        if (pgAttr < 0) {
+            it = attributes.erase(it);
+            continue;
+        }
+
+        setAttributes.push_back({pgAttr, attribute.second});
+
+        ++it;
+    }
+
+    if (!interface::scenes->contains(sId)) {
+        error &= interface::CreateScene(sId);
+    }
+    error &= interface::SetSceneAttributes(sId, setAttributes);
+
+    return error;
+}
+
+inline bool CreateButton(pg::vector<std::pair<int, GenericValue32>>& attributes, pg::vector<std::pair<int, std::string>>& attributesString) {
+    bool error = 1;
+
+    std::vector<std::pair<interface::Attribute, std::variant<GenericValue32, const char*>>> setAttributes{};
+
+    id_t bId = GetLowestKey(interface::buttons, pg::settings::START_SYSTEM_RESOURCES);
+    id_t sId = 0;
+
+    for (auto it = attributes.begin(); it != attributes.end();) {
+        auto attribute = *it;
+
+        int pgAttr = GetPGByAttribute(static_cast<ws::Attr>(attribute.first));
+
+        if (attribute.first == static_cast<int>(ws::Attr::ID)) {
+            bId = attribute.second.asUint();
+            it  = attributes.erase(it);
+            continue;
+        }
+
+        if (pgAttr < 0) {
+            it = attributes.erase(it);
+            continue;
+        }
+
+        if (attribute.first == static_cast<int>(ws::Attr::SCENEID)) {
+            sId = attribute.second.asUint();
+            it  = attributes.erase(it);
+            continue;
+        }
+
+        setAttributes.push_back({pgAttr, attribute.second});
+
+        ++it;
+    }
+
+    for (auto it = attributesString.begin(); it != attributesString.end();) {
+        auto attribute = *it;
+
+        int pgAttr = GetPGByAttribute(static_cast<ws::Attr>(attribute.first));
+
+        if (pgAttr == -2) {
+            switch (static_cast<ws::Attr>(attribute.first)) {
+            case Attr::KEY_DOWN_FUNC:
+                pgAttr = interface::KEY_DOWN_FUNC;
+                break;
+            case Attr::KEY_UP_FUNC:
+                pgAttr = interface::KEY_UP_FUNC;
+                break;
+            case Attr::HOVER_DOWN_FUNC:
+                pgAttr = interface::HOVER_DOWN_FUNC;
+                break;
+            case Attr::HOVER_UP_FUNC:
+                pgAttr = interface::HOVER_UP_FUNC;
+                break;
+            default:
+                break;
+            }
+            if (pgAttr >= 0)
+                setAttributes.push_back({pgAttr, attribute.second.data()});
+        }
+
+        if (pgAttr < 0) {
+            it = attributesString.erase(it);
+            continue;
+        }
+
+        setAttributes.push_back({pgAttr, attribute.second.data()});
+
+        ++it;
+    }
+
+    if (!interface::buttons->contains(bId)) {
+        if (!sId)
+            sId = lastCommands.at(static_cast<int>(ws::Attr::SCENEID));
+        error &= interface::CreateButton(bId);
+    } else {
+        if (sId)
+            setAttributes.push_back({interface::SCENE_ID, sId});
+    }
+    error &= interface::SetButtonAttributes(bId, setAttributes);
+
+    return error;
+}
 
 inline bool CreateObject(pg::vector<std::pair<int, GenericValue32>>& attributes, pg::vector<std::pair<int, std::string>>& attributesString) {
     bool error = 1;
@@ -408,6 +588,7 @@ inline bool CreateText(pg::vector<std::pair<int, GenericValue32>>& attributes, p
     if (text != "") {
         error &= SetText(txtId, text);
     }
+    lastCommands.at(static_cast<int>(ws::Attr::TEXTID)) = txtId;
 
     return error;
 }
@@ -415,6 +596,7 @@ inline bool CreateText(pg::vector<std::pair<int, GenericValue32>>& attributes, p
 #define X(enum, string, function, attribute) enum,
 #define Y(enum, string, function, attribute) enum,
 enum class Command : uint8_t {
+    START = 0,
     WS_COMMANDS
 };
 #undef X
@@ -446,6 +628,8 @@ using FuncPtrReturn = bool (*)(pg::vector<std::pair<int, GenericValue32>>&,
 inline constexpr FuncPtrReturn GetFunctionByCommand(Command command) {
     switch (command) {
         WS_COMMANDS
+    default:
+        break;
     }
     return nullptr;
 }

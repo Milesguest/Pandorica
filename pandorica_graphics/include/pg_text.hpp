@@ -29,10 +29,10 @@ struct Text : EngineResource {
 
     std::vector<Instance> letters; /**< Vector of all the letters. */
 
-    id_t fontId;           /**< The id of the font this text is using. */
-    id_t attachedObjectId; /**< Id of the object the text is attached to. */
-    id_t transferBufferId; /**< Id of the transferbuffer the text is assigned to. */
-    bool enabled = 1;      /**< Whether or not the text should be drawn. */
+    id_t fontId           = 0; /**< The id of the font this text is using. */
+    id_t attachedObjectId = 0; /**< Id of the object the text is attached to. */
+    id_t transferBufferId = 0; /**< Id of the transferbuffer the text is assigned to. */
+    bool enabled          = 1; /**< Whether or not the text should be drawn. */
 
     Text(id_t id, id_t fontId, id_t transferBufferId);
     ~Text();

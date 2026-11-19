@@ -3,7 +3,7 @@
 
 namespace pg {
 
-bool Init(SDL_InitFlags initFlags = SDL_INIT_VIDEO | SDL_INIT_GAMEPAD | SDL_INIT_AUDIO) {
+bool Init(SDL_InitFlags initFlags) {
     SDL_SetHint(SDL_HINT_LOGGING, "app=info, *=verbose");
     cContext = new Context;
     if (!SDL_Init(initFlags))
@@ -336,7 +336,7 @@ bool CreateStandardContext() {
     compositeTarget.format  = SDL_GetGPUSwapchainTextureFormat(gpu->device, window->window);
     blendState.enable_blend = 1;
 
-    blendState.src_color_blendfactor = SDL_GPU_BLENDFACTOR_SRC_ALPHA;
+    blendState.src_color_blendfactor = SDL_GPU_BLENDFACTOR_ONE;
     blendState.dst_color_blendfactor = SDL_GPU_BLENDFACTOR_ONE_MINUS_SRC_ALPHA;
     blendState.dst_alpha_blendfactor = SDL_GPU_BLENDFACTOR_ONE_MINUS_SRC_ALPHA;
 
@@ -345,7 +345,6 @@ bool CreateStandardContext() {
     compositeTarget.blend_state         = blendState;
 
     targetInfo.color_target_descriptions = &compositeTarget;
-    rsState.cull_mode                    = SDL_GPU_CULLMODE_FRONT;
 
     pipelineInfo.target_info         = targetInfo;
     pipelineInfo.rasterizer_state    = rsState;
@@ -357,7 +356,7 @@ bool CreateStandardContext() {
     depthState.enable_depth_write = 1;
     depthState.enable_depth_test  = 1;
 
-    rsState.cull_mode = SDL_GPU_CULLMODE_BACK;
+    rsState.cull_mode = SDL_GPU_CULLMODE_FRONT;
 
     targetInfo.has_depth_stencil_target = 1;
 
@@ -470,6 +469,9 @@ void StartLoop(void (*mainFunction)(), const uint16_t frameRate) {
 
         mainFunction();
 
+        while (!window->events.empty())
+            window->events.pop();
+
         currentTime       = SDL_GetTicksNS();
         window->deltaTime = (currentTime - lastFrame) / 1000000.0;
         window->timeMS += window->deltaTime;
@@ -553,6 +555,12 @@ bool Render(const id_t cameraId) {
             for (TransferBuffer* transferBuffer : workspace->transferBuffers) {
                 if (!transferBuffer->enabled)
                     continue;
+
+                if (!buffers->contains(transferBuffer->instanceBufferId)) {
+                    pg::Log(1, std::format("Buffer at id {} does not exist, cannot use it as buffer in Render", transferBuffer->instanceBufferId));
+                    continue;
+                }
+
                 Buffer* instanceBuffer = (*buffers)[transferBuffer->instanceBufferId];
 
                 vertexBindings[1].buffer = instanceBuffer->buffer;
@@ -584,6 +592,7 @@ bool Render(const id_t cameraId) {
                     }
                     if (!text->enabled) {
                         instance_offset += text->letters.size();
+                        continue;
                     }
 
                     SDL_GPUTextureSamplerBinding texBind{};
@@ -632,6 +641,12 @@ bool Render(const id_t cameraId) {
             for (TransferBuffer* transferBuffer : workspace->transferBuffers) {
                 if (!transferBuffer->enabled)
                     continue;
+
+                if (!buffers->contains(transferBuffer->instanceBufferId)) {
+                    pg::Log(1, std::format("Buffer at id {} does not exist, cannot use it as buffer in Render", transferBuffer->instanceBufferId));
+                    continue;
+                }
+
                 Buffer* instanceBuffer = (*buffers)[transferBuffer->instanceBufferId];
 
                 vertexBindings[1].buffer = instanceBuffer->buffer;
@@ -662,6 +677,7 @@ bool Render(const id_t cameraId) {
                     }
                     if (!text->enabled) {
                         instance_offset += text->letters.size();
+                        continue;
                     }
 
                     SDL_GPUTextureSamplerBinding texBind{};
@@ -701,6 +717,11 @@ bool Render(const id_t cameraId) {
             for (TransferBuffer* transferBuffer : workspace->transferBuffers) {
                 if (!transferBuffer->enabled)
                     continue;
+
+                if (!buffers->contains(transferBuffer->instanceBufferId)) {
+                    pg::Log(1, std::format("Buffer at id {} does not exist, cannot use it as buffer in Render", transferBuffer->instanceBufferId));
+                    continue;
+                }
                 Buffer* instanceBuffer = (*buffers)[transferBuffer->instanceBufferId];
 
                 vertexBindings[1].buffer = instanceBuffer->buffer;
@@ -732,6 +753,7 @@ bool Render(const id_t cameraId) {
                     }
                     if (!text->enabled) {
                         instance_offset += text->letters.size();
+                        continue;
                     }
 
                     SDL_GPUTextureSamplerBinding texBind{};

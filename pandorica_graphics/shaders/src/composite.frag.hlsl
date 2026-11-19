@@ -21,5 +21,5 @@ float4 main(FS_Input input) : SV_Target {
         transparentColors.a = 1.0f;
     }
 
-    return (float4(transparentColors.rgb + (opaqueColors.rgb * totalTransmittance), transparentColors.a));
-}
+    float outAlpha = (opaqueColors.a == 0.0f) ? (1.0f - totalTransmittance) : 1.0f;
+    return float4(transparentColors.rgb + (opaqueColors.rgb * totalTransmittance), outAlpha);}

@@ -4,63 +4,71 @@
 #include <string>
 #include <vector>
 
-#include <pandorica_graphics/pg.hpp>
+#include "../include/pg.hpp"
+#include "../include/plugins/interface/system.hpp"
 
 /** @file */
 namespace pg {
 namespace ws {
-
-#define WS_ATTRIBUTES                            \
-    X(POSX, "POSX", pg::POSITION_X)              \
-    X(POSY, "POSY", pg::POSITION_Y)              \
-    X(POSZ, "POSZ", pg::POSITION_Z)              \
-    X(WIDTH, "WIDTH", pg::WIDTH)                 \
-    X(HEIGHT, "HEIGHT", pg::HEIGHT)              \
-    X(ROTX, "ROTX", pg::ROTATION_X)              \
-    X(ROTY, "ROTY", pg::ROTATION_Y)              \
-    X(ROTZ, "ROTZ", pg::ROTATION_Z)              \
-    X(CUTX, "CUTX", pg::CUT_X)                   \
-    X(CUTY, "CUTY", pg::CUT_Y)                   \
-    X(CUTW, "CUTW", pg::CUT_WIDTH)               \
-    X(CUTH, "CUTH", pg::CUT_HEIGHT)              \
-    X(ORIX, "ORIX", pg::ORIGIN_X)                \
-    X(ORIY, "ORIY", pg::ORIGIN_Y)                \
-    X(ORIZ, "ORIZ", pg::ORIGIN_Z)                \
-    X(R, "R", pg::RED)                           \
-    X(G, "G", pg::GREEN)                         \
-    X(B, "B", pg::BLUE)                          \
-    X(A, "A", pg::ALPHA)                         \
-    X(TEXID, "TEXID", pg::TEXTURE_ID)            \
-    X(FONTID, "FONTID", pg::TEXTURE_ID)          \
-    X(E, "E", pg::ENABLED)                       \
-    X(TBID, "TBID", pg::TRANSFERBUFFER_ID)       \
-    X(TBOFF, "TBOFF", pg::TRANSFERBUFFER_OFFSET) \
-    X(WSID, "WSID", pg::WORKSPACE_ID)            \
-    X(SAMID, "SAMID", pg::SAMPLER_ID)            \
-    X(IBID, "IBID", pg::INSTANCEBUFFER_ID)       \
-    X(IBOFF, "IBOFF", pg::INSTANCEBUFFER_OFFSET) \
-    X(MANAGE, "MANAGE", pg::MANAGEMENT_TYPE)     \
-    X(TARX, "TARX", pg::TARGET_X)                \
-    X(TARY, "TARY", pg::TARGET_Y)                \
-    X(TARZ, "TARZ", pg::TARGET_Z)                \
-    X(FOVY, "FOVY", pg::FOV_Y)                   \
-    X(AR, "AR", pg::ASPECT_RATIO)                \
-    X(DDD, "DDD", pg::DDD)                       \
-    X(ADDWSID, "ADDWSID", pg::ADD_WORKSPACE_ID)  \
-    X(RMWSID, "RMWSID", pg::REMOVE_WORKSPACE_ID) \
-    X(OBJID, "OBJID", pg::OBJECT_ID)             \
-    X(ID, "ID", -1)                              \
-    X(PATH, "PATH", -2)                          \
-    X(TEXT, "TEXT", -2)                          \
-    X(BSIZE, "BSIZE", -1)                        \
-    Y(WIDTH, "SIZE", -1)                         \
-    Y(CUTX, "CUTPOS", -1)                        \
-    Y(CUTW, "CUTSIZE", -1)                       \
-    Y(POSX, "POS", -1)                           \
-    Y(ROTX, "ROT", -1)                           \
-    Y(TARX, "TAR", -1)                           \
-    Y(ORIX, "ORIPOS", -1)                        \
-    Y(R, "COLOR", -1)
+#define WS_ATTRIBUTES                             \
+    X(POSX, "POSX", pg::POSITION_X)               \
+    X(POSY, "POSY", pg::POSITION_Y)               \
+    X(POSZ, "POSZ", pg::POSITION_Z)               \
+    X(WIDTH, "WIDTH", pg::WIDTH)                  \
+    X(HEIGHT, "HEIGHT", pg::HEIGHT)               \
+    X(ROTX, "ROTX", pg::ROTATION_X)               \
+    X(ROTY, "ROTY", pg::ROTATION_Y)               \
+    X(ROTZ, "ROTZ", pg::ROTATION_Z)               \
+    X(CUTX, "CUTX", pg::CUT_X)                    \
+    X(CUTY, "CUTY", pg::CUT_Y)                    \
+    X(CUTW, "CUTW", pg::CUT_WIDTH)                \
+    X(CUTH, "CUTH", pg::CUT_HEIGHT)               \
+    X(ORIX, "ORIX", pg::ORIGIN_X)                 \
+    X(ORIY, "ORIY", pg::ORIGIN_Y)                 \
+    X(ORIZ, "ORIZ", pg::ORIGIN_Z)                 \
+    X(R, "R", pg::RED)                            \
+    X(G, "G", pg::GREEN)                          \
+    X(B, "B", pg::BLUE)                           \
+    X(A, "A", pg::ALPHA)                          \
+    X(TEXID, "TEXID", pg::TEXTURE_ID)             \
+    X(FONTID, "FONTID", pg::TEXTURE_ID)           \
+    X(E, "E", pg::ENABLED)                        \
+    X(TBID, "TBID", pg::TRANSFERBUFFER_ID)        \
+    X(TBOFF, "TBOFF", pg::TRANSFERBUFFER_OFFSET)  \
+    X(WSID, "WSID", pg::WORKSPACE_ID)             \
+    X(SAMID, "SAMID", pg::SAMPLER_ID)             \
+    X(IBID, "IBID", pg::INSTANCEBUFFER_ID)        \
+    X(IBOFF, "IBOFF", pg::INSTANCEBUFFER_OFFSET)  \
+    X(MANAGE, "MANAGE", pg::MANAGEMENT_TYPE)      \
+    X(TARX, "TARX", pg::TARGET_X)                 \
+    X(TARY, "TARY", pg::TARGET_Y)                 \
+    X(TARZ, "TARZ", pg::TARGET_Z)                 \
+    X(FOVY, "FOVY", pg::FOV_Y)                    \
+    X(AR, "AR", pg::ASPECT_RATIO)                 \
+    X(DDD, "DDD", pg::DDD)                        \
+    X(ADDWSID, "ADDWSID", pg::ADD_WORKSPACE_ID)   \
+    X(RMWSID, "RMWSID", pg::REMOVE_WORKSPACE_ID)  \
+    X(OBJID, "OBJID", pg::OBJECT_ID)              \
+    X(ID, "ID", -1)                               \
+    X(PATH, "PATH", -2)                           \
+    X(TEXT, "TEXT", -2)                           \
+    X(BSIZE, "BSIZE", -1)                         \
+    Y(WIDTH, "SIZE", -1)                          \
+    Y(CUTX, "CUTPOS", -1)                         \
+    Y(CUTW, "CUTSIZE", -1)                        \
+    Y(POSX, "POS", -1)                            \
+    Y(ROTX, "ROT", -1)                            \
+    Y(TARX, "TAR", -1)                            \
+    Y(ORIX, "ORIPOS", -1)                         \
+    Y(R, "COLOR", -1)                             \
+    X(SCENEID, "SCENEID", interface::SCENE_ID)    \
+    X(TEXTID, "TEXTID", interface::TEXT_ID)       \
+    X(BUTTONID, "BUTTONID", interface::BUTTON_ID) \
+    X(WRITABLE, "WRITABLE", interface::WRITABLE)  \
+    X(KEY_DOWN_FUNC, "KEY_DOWN", -2)              \
+    X(KEY_UP_FUNC, "KEY_UP", -2)                  \
+    X(HOVER_DOWN_FUNC, "HOVER_DOWN", -2)          \
+    X(HOVER_UP_FUNC, "HOVER_UP", -2)
 
 #define X(enum, string, pg) enum,
 #define Y(enum, string, pg)

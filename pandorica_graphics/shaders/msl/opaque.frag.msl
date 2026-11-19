@@ -3,7 +3,8 @@
 
 using namespace metal;
 
-constant float2 _247 = {};
+constant float4 _174 = {};
+constant float2 _175 = {};
 
 struct main0_out
 {
@@ -17,207 +18,207 @@ struct main0_in
     float4 in_var_TEXCOORD2 [[user(locn2), flat]];
 };
 
-fragment main0_out main0(main0_in in [[stage_in]], texture2d<float> tex [[texture(0)]], sampler smp [[sampler(0)]], float4 gl_FragCoord [[position]])
+fragment main0_out main0(main0_in in [[stage_in]], texture2d<float> tex [[texture(0)]], sampler smp [[sampler(0)]])
 {
     main0_out out = {};
-    uint2 _275 = uint2(tex.get_width(), tex.get_height());
-    float2 _286 = float2(float(_275.x), float(_275.y));
-    float2 _290 = float2(1.0) / _286;
-    float2 _294 = in.in_var_TEXCOORD0 * _286;
-    float2 _298 = fwidth(_294);
-    float2 _306 = _294 - float2(0.5);
-    float2 _314 = fast::clamp(_298, float2(9.9999997473787516355514526367188e-06), float2(1.0)) * 0.5;
-    float2 _320 = smoothstep(float2(0.5) - _314, float2(0.5) + _314, fract(_306));
-    float2 _324 = floor(_306);
-    float2 _332 = (_324 + float2(1.5, 0.5)) * _290;
-    float2 _338 = (_324 + float2(0.5, 1.5)) * _290;
-    float2 _344 = (_324 + float2(1.5)) * _290;
-    float2 _348 = (_324 + float2(0.5)) * _290;
-    float2 _352 = dfdx(in.in_var_TEXCOORD0);
-    float2 _356 = dfdy(in.in_var_TEXCOORD0);
-    float4 _362 = tex.sample(smp, _348, gradient2d(_352, _356));
-    float4 _368 = tex.sample(smp, _332, gradient2d(_352, _356));
-    float4 _374 = tex.sample(smp, _338, gradient2d(_352, _356));
-    float4 _380 = tex.sample(smp, _344, gradient2d(_352, _356));
-    float _384 = _348.x;
-    bool _404;
-    if (!(_384 < in.in_var_TEXCOORD2.x))
+    uint2 _257 = uint2(tex.get_width(), tex.get_height());
+    float2 _268 = float2(float(_257.x), float(_257.y));
+    float2 _272 = float2(1.0) / _268;
+    float2 _276 = in.in_var_TEXCOORD0 * _268;
+    float2 _280 = fwidth(_276);
+    float2 _288 = _276 - float2(0.5);
+    float2 _296 = fast::clamp(_280, float2(9.9999997473787516355514526367188e-06), float2(1.0)) * 0.5;
+    float2 _302 = smoothstep(float2(0.5) - _296, float2(0.5) + _296, fract(_288));
+    float2 _306 = floor(_288);
+    float2 _314 = (_306 + float2(1.5, 0.5)) * _272;
+    float2 _320 = (_306 + float2(0.5, 1.5)) * _272;
+    float2 _326 = (_306 + float2(1.5)) * _272;
+    float2 _330 = (_306 + float2(0.5)) * _272;
+    float2 _334 = dfdx(in.in_var_TEXCOORD0);
+    float2 _338 = dfdy(in.in_var_TEXCOORD0);
+    float4 _344 = tex.sample(smp, _330, gradient2d(_334, _338));
+    float4 _350 = tex.sample(smp, _314, gradient2d(_334, _338));
+    float4 _356 = tex.sample(smp, _320, gradient2d(_334, _338));
+    float4 _362 = tex.sample(smp, _326, gradient2d(_334, _338));
+    float _366 = _330.x;
+    bool _384;
+    if ((isunordered(_366, in.in_var_TEXCOORD2.x) || _366 >= in.in_var_TEXCOORD2.x))
     {
-        _404 = _384 > in.in_var_TEXCOORD2.z;
+        _384 = _366 > in.in_var_TEXCOORD2.z;
     }
     else
     {
-        _404 = true;
+        _384 = true;
     }
-    bool _420;
-    if (!_404)
+    bool _400;
+    if (!_384)
     {
-        _420 = _348.y < in.in_var_TEXCOORD2.y;
+        _400 = _330.y < in.in_var_TEXCOORD2.y;
     }
     else
     {
-        _420 = true;
+        _400 = true;
     }
-    bool _436;
-    if (!_420)
+    bool _416;
+    if (!_400)
     {
-        _436 = _348.y > in.in_var_TEXCOORD2.w;
+        _416 = _330.y > in.in_var_TEXCOORD2.w;
     }
     else
     {
-        _436 = true;
+        _416 = true;
     }
-    float4 _446;
-    if (_436)
+    float4 _426;
+    if (_416)
     {
-        float4 _442 = _362;
-        _442.w = 0.0;
-        _446 = _442;
+        float4 _422 = _344;
+        _422.w = 0.0;
+        _426 = _422;
     }
     else
     {
-        _446 = _362;
+        _426 = _344;
     }
-    float _449 = _338.x;
-    bool _465;
-    if (!(_449 < in.in_var_TEXCOORD2.x))
+    float _429 = _320.x;
+    bool _443;
+    if ((isunordered(_429, in.in_var_TEXCOORD2.x) || _429 >= in.in_var_TEXCOORD2.x))
     {
-        _465 = _449 > in.in_var_TEXCOORD2.z;
+        _443 = _429 > in.in_var_TEXCOORD2.z;
     }
     else
     {
-        _465 = true;
+        _443 = true;
     }
-    bool _481;
-    if (!_465)
+    bool _459;
+    if (!_443)
     {
-        _481 = _338.y < in.in_var_TEXCOORD2.y;
+        _459 = _320.y < in.in_var_TEXCOORD2.y;
     }
     else
     {
-        _481 = true;
+        _459 = true;
     }
-    bool _497;
-    if (!_481)
+    bool _475;
+    if (!_459)
     {
-        _497 = _338.y > in.in_var_TEXCOORD2.w;
+        _475 = _320.y > in.in_var_TEXCOORD2.w;
     }
     else
     {
-        _497 = true;
+        _475 = true;
     }
-    float4 _507;
-    if (_497)
+    float4 _485;
+    if (_475)
     {
-        float4 _503 = _374;
-        _503.w = 0.0;
-        _507 = _503;
+        float4 _481 = _356;
+        _481.w = 0.0;
+        _485 = _481;
     }
     else
     {
-        _507 = _374;
+        _485 = _356;
     }
-    float _510 = _332.x;
-    bool _526;
-    if (!(_510 < in.in_var_TEXCOORD2.x))
+    float _488 = _314.x;
+    bool _502;
+    if ((isunordered(_488, in.in_var_TEXCOORD2.x) || _488 >= in.in_var_TEXCOORD2.x))
     {
-        _526 = _510 > in.in_var_TEXCOORD2.z;
+        _502 = _488 > in.in_var_TEXCOORD2.z;
     }
     else
     {
-        _526 = true;
+        _502 = true;
     }
-    bool _542;
-    if (!_526)
+    bool _518;
+    if (!_502)
     {
-        _542 = _332.y < in.in_var_TEXCOORD2.y;
+        _518 = _314.y < in.in_var_TEXCOORD2.y;
     }
     else
     {
-        _542 = true;
+        _518 = true;
     }
-    bool _558;
-    if (!_542)
+    bool _534;
+    if (!_518)
     {
-        _558 = _332.y > in.in_var_TEXCOORD2.w;
+        _534 = _314.y > in.in_var_TEXCOORD2.w;
     }
     else
     {
-        _558 = true;
+        _534 = true;
     }
-    float4 _568;
-    if (_558)
+    float4 _544;
+    if (_534)
     {
-        float4 _564 = _368;
-        _564.w = 0.0;
-        _568 = _564;
+        float4 _540 = _350;
+        _540.w = 0.0;
+        _544 = _540;
     }
     else
     {
-        _568 = _368;
+        _544 = _350;
     }
-    float _571 = _344.x;
-    bool _587;
-    if (!(_571 < in.in_var_TEXCOORD2.x))
+    float _547 = _326.x;
+    bool _561;
+    if ((isunordered(_547, in.in_var_TEXCOORD2.x) || _547 >= in.in_var_TEXCOORD2.x))
     {
-        _587 = _571 > in.in_var_TEXCOORD2.z;
+        _561 = _547 > in.in_var_TEXCOORD2.z;
     }
     else
     {
-        _587 = true;
+        _561 = true;
     }
-    bool _603;
-    if (!_587)
+    bool _577;
+    if (!_561)
     {
-        _603 = _344.y < in.in_var_TEXCOORD2.y;
+        _577 = _326.y < in.in_var_TEXCOORD2.y;
     }
     else
     {
-        _603 = true;
+        _577 = true;
     }
-    bool _619;
-    if (!_603)
+    bool _593;
+    if (!_577)
     {
-        _619 = _344.y > in.in_var_TEXCOORD2.w;
+        _593 = _326.y > in.in_var_TEXCOORD2.w;
     }
     else
     {
-        _619 = true;
+        _593 = true;
     }
-    float4 _629;
-    if (_619)
+    float4 _603;
+    if (_593)
     {
-        float4 _625 = _380;
-        _625.w = 0.0;
-        _629 = _625;
+        float4 _599 = _362;
+        _599.w = 0.0;
+        _603 = _599;
     }
     else
     {
-        _629 = _380;
+        _603 = _362;
     }
-    float3 _636 = _446.xyz * _446.w;
-    float3 _646 = _568.xyz * _568.w;
-    float3 _656 = _507.xyz * _507.w;
-    float3 _666 = _629.xyz * _629.w;
-    float4 _674 = float4(_320.x);
-    float4 _688 = mix(mix(float4(_636.x, _636.y, _636.z, _446.w), float4(_646.x, _646.y, _646.z, _568.w), _674), mix(float4(_656.x, _656.y, _656.z, _507.w), float4(_666.x, _666.y, _666.z, _629.w), _674), float4(_320.y));
-    float _692 = _688.w;
-    float4 _710;
-    if (_692 > 9.9999997473787516355514526367188e-06)
+    float3 _610 = _426.xyz * _426.w;
+    float3 _620 = _544.xyz * _544.w;
+    float3 _630 = _485.xyz * _485.w;
+    float3 _640 = _603.xyz * _603.w;
+    float4 _648 = float4(_302.x);
+    float4 _662 = mix(mix(float4(_610.x, _610.y, _610.z, _426.w), float4(_620.x, _620.y, _620.z, _544.w), _648), mix(float4(_630.x, _630.y, _630.z, _485.w), float4(_640.x, _640.y, _640.z, _603.w), _648), float4(_302.y));
+    float _666 = _662.w;
+    float4 _684;
+    if (_666 > 9.9999997473787516355514526367188e-06)
     {
-        float3 _704 = _688.xyz / float3(_692);
-        _710 = float4(_704.x, _704.y, _704.z, _688.w);
+        float3 _678 = _662.xyz / float3(_666);
+        _684 = float4(_678.x, _678.y, _678.z, _662.w);
     }
     else
     {
-        _710 = _688;
+        _684 = _662;
     }
-    float4 _713 = _710 * in.in_var_TEXCOORD1;
-    if (_713.w <= 0.999989986419677734375)
+    float4 _687 = _684 * in.in_var_TEXCOORD1;
+    if (_687.w <= 0.999989986419677734375)
     {
         discard_fragment();
     }
-    out.out_var_SV_Target = _713;
+    out.out_var_SV_Target = _687;
     return out;
 }
 
